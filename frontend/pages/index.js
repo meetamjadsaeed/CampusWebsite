@@ -6,6 +6,11 @@ import { Slider } from "../components/slider/MainSlider";
 import { Main } from "../components/card/Main";
 import { Group } from "../components/card/Group";
 import Programs from "../components/card/Programs";
+import { Gallery } from "../components/card/Gallery";
+import { Scholarships } from "../components/card/Scholarships";
+import { Footer } from "../layout/Footer/Footer";
+
+
 
 export default function Home() {
   return (
@@ -23,9 +28,10 @@ export default function Home() {
         <Main/>
         <Group/>
         <Programs/>
-
-
+        <Gallery/>
+        <Scholarships/>
       </div>
+      <Footer/>
     </>
   );
 }
