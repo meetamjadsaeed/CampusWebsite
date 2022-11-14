@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
 import { Card } from "antd";
 import { ProgramsSlider } from "../slider/ProgramsSlider";
+import styles from "./Programs.module.css";
 
 const Programs = () => {
+
+  const styles = {
+    padding: "13px",
+  };
+
+
   return (
     <>
       <div
@@ -10,7 +17,9 @@ const Programs = () => {
         style={{ marginTop: "5%" }}
       >
         <Card
-          title="Descriptive Content about Sukkur IBA KKOT Campus"
+          // styles={styles.tittle}
+          className={styles.tittle}
+          title="Offered Programs"
           bordered={true}
           style={{ width: "auto" }}
         >

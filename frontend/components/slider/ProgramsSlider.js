@@ -5,6 +5,7 @@ import { CarouselComponent } from "./CarouselComponent";
 import { Card, Col, Row } from "antd";
 
 
+
 export const ProgramsSlider = () => {
   const onChange = (currentSlide) => {
     console.log(currentSlide);

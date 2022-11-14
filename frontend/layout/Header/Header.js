@@ -5,7 +5,7 @@ import { Row, Col } from "antd";
 import { Image } from "antd";
 import { Nav } from './Nav'
 import { Slider } from "../../components/slider/MainSlider";
-
+import styles from './Header.module.css';
 
 
 export const Header = () => {
@@ -17,8 +17,9 @@ export const Header = () => {
           <Row>
             <Col span={24}>
               <Image
+              className={styles.logo}
                 // width={800}
-                height={200}
+                height={100}
                 src="logo.jpeg"
               />
             </Col>
@@ -26,7 +27,7 @@ export const Header = () => {
             <Col span={24}>
               <div
                 style={{
-                  height: "303px",
+                  height: "195px",
                   backgroundColor: "#ea6645",
                   width: "700px",
                 }}
@@ -35,7 +36,7 @@ export const Header = () => {
           </Row>
         </Col>
 
-        <Col span={16} className="box" style={{ height: "500px", backgroundColor: "#012447" }}>
+        <Col span={16} className="box" style={{ height: "300px", backgroundColor: "#012447" }}>
             
           <Nav/>
 
