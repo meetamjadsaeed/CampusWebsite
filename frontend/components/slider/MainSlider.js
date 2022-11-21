@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "antd";
 import { Image } from "antd";
-// import styles from ".../Assets/Styles/slider/Slider.module.css'";
+import styles from "../../Assets/Styles/slider/Slider.module.css"
 
 // const contentStyle = {
 //   margin: 0,
