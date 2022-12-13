@@ -1,7 +1,8 @@
 import React from "react";
-import { Carousel } from "antd";
+// import { Carousel } from "antd";
 import { Image } from "antd";
 import { Card, Col, Row } from "antd";
+import { Button, Space } from "antd";
 import {
   HomeOutlined,
   ArrowRightOutlined,
@@ -10,59 +11,48 @@ import {
   SyncOutlined,
 } from "@ant-design/icons";
 
-export const Scholarships = () => {
+import Marquee from "react-easy-marquee";
+
+const images = [
+  "https://picsum.photos/200",
+  "https://picsum.photos/100",
+  "https://picsum.photos/100",
+  "https://picsum.photos/100",
+  "https://picsum.photos/100",
+  "https://picsum.photos/100",
+];
+
+const Scholarships = () => {
   return (
     <>
       <Card
-        title="Scholarships /Financial Ads "
-        bordered={true}
-        style={{ width: "auto", marginTop: 16 }}
+        title="Scholarships /Financial Ad"
+        extra={
+          <a href="#">
+            <Button type="primary">Make a Donation</Button>
+          </a>
+        }
+        style={{ marginTop: "5%" }}
       >
-        <Row gutter={100} style={{ marginTop: 16 }}>
-        <Col span={10}>
-        <Row gutter={100} style={{ marginTop: 16 }}>
-        <Col span={3}>
-        <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-        </Col>
-
-        <Col span={3}>
-        <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-        </Col>
-
-        <Col span={3}>
-        <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-        </Col>
-
-        <Col span={3}>
-        <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-        </Col>
-        
-        </Row>
-        </Col>
-
-        <Col span={14}>
-            <button className="primary-button">Pay Online</button>
-        </Col>
-
-
-        </Row>
+        <div>
+          <Marquee
+            duration={7000}
+            background="#ffffff"
+            height="100px"
+            width="100%"
+            axis="X"
+            align="center"
+            pauseOnHover={true}
+            reverse={true}
+          >
+            {images.map((image) => (
+              <img src={image} alt="picsum" style={{ borderRadius: "10px" }} />
+            ))}
+          </Marquee>
+        </div>
       </Card>
     </>
   );
 };
+
+export default Scholarships;

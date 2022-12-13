@@ -29,14 +29,14 @@ export const Footer = () => {
   ];
   return (
     <>
-      <div className="footer">
+      <div className="footer" style={{marginTop:'5%'}}>
         <div className="container">
           <Row gutter={100} style={{ marginTop: 16 }}>
             <Col span={6}>
               <Image
                 width={80}
                 height={80}
-                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                src="https://www.freelogoservices.com/blog/wp-content/uploads/transparent-logo.jpg"
               />
             </Col>
             <Col span={6}>
@@ -101,3 +101,5 @@ export const Footer = () => {
     </>
   );
 };
+
+export default Footer;

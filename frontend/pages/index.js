@@ -1,18 +1,16 @@
 import Head from "next/head";
-import Image from "next/image";
-import cardStyles from "../Assets/Styles/Card/Card.module.css";
-import { Header } from "../layout/Header/Header";
-import { Slider } from "../components/slider/MainSlider";
-import { Main } from "../components/card/Main";
-import { Group } from "../components/card/Group";
+// import Image from "next/image";
+// import cardStyles from "../Assets/Styles/Card/Card.module.css";
+import Header  from "../layout/Header/Header";
+import Slider from "../components/slider/MainSlider";
+import Main from "../components/card/Main";
+import Group from "../components/card/Group";
 import Programs from "../components/card/Programs";
-import { Gallery } from "../components/card/Gallery";
-import { Scholarships } from "../components/card/Scholarships";
-import { Footer } from "../layout/Footer/Footer";
+import Gallery from "../components/card/Gallery";
+import Scholarships from "../components/card/Scholarships";
+import Footer from "../layout/Footer/Footer";
 
-
-
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Head>
@@ -25,13 +23,15 @@ export default function Home() {
 
       <div className="container">
         <Slider />
-        <Main/>
-        <Group/>
-        <Programs/>
-        <Gallery/>
-        <Scholarships/>
+        <Main />
+        <Group />
+        <Programs />
+        <Gallery />
+        <Scholarships />
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
-}
+};
+
+export default Home;

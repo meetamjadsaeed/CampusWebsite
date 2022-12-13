@@ -1,56 +1,127 @@
-import React from "react";
+// import React from "react";
+import React, { useState } from 'react';
+// import { Menu } from 'antd';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+const items = [
+ {
+    label: 'University',
+    key: 'SubMenu',
+    icon: <SettingOutlined />,
+    children: [
+      {
+        type: 'group',
+        label: 'About',
+        children: [
+          {
+            label: 'Vision',
+            key: 'setting:1',
+          },
+          {
+            label: 'Mission',
+            key: 'setting:2',
+          },
+          {
+            label: 'History',
+            key: 'setting:3',
+          },
+        ],
+      },
+      {
+        type: 'group',
+        label: 'Founders',
+        children: [
+          {
+            label: 'Vice Chancellor',
+            key: 'setting:4',
+          },
+          {
+            label: 'Registrar',
+            key: 'setting:5',
+          },
+          {
+            label: 'Director',
+            key: 'setting:6',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: (
+      <a href="/events" rel="noopener noreferrer">
+        Events
+      </a>
+    ),
+    key: 'Events',
+    icon: <SettingOutlined />,
+  },
+  {
+    label: (
+      <a href="/news" rel="noopener noreferrer">
+        News
+      </a>
+    ),
+    key: 'News',
+    icon: <SettingOutlined />,
+  },
+  {
+    label: (
+      <a href="/announcements" rel="noopener noreferrer">
+        Annoucements
+      </a>
+    ),
+    key: 'Annoucements',
+    icon: <SettingOutlined />,
+  },
+  {
+    label: (
+      <a href="/departments" rel="noopener noreferrer">
+        Departments
+      </a>
+    ),
+    key: 'Departments',
+    icon: <SettingOutlined />,
+  },
+  {
+    label: (
+      <a href="/faculty" rel="noopener noreferrer">
+        Faculties
+      </a>
+    ),
+    key: 'Faculties',
+    icon: <SettingOutlined />,
+  },
+  {
+    label: (
+      <a href="/resources" rel="noopener noreferrer">
+        Resources
+      </a>
+    ),
+    key: 'Resources',
+    icon: <SettingOutlined />,
+  },
+
+];
 
 
 
 export const Nav = () => {
+  const [current, setCurrent] = useState('mail');
+  const onClick = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
   return (
     <>
       {/* <div>Nav</div> */}
 
       {/* <h1 style={{color:'#fff'}}>Nav</h1> */}
-    <div style={{    marginLeft: '30%',marginTop: '10%'}}>
+    <div style={{    marginLeft: '30%',marginTop: '2%'}}>
 
-    <Menu mode="horizontal" defaultSelectedKeys={['mail']} style={{background:'#012447', color:'#fff',border: 'none'}}>
-    <Menu.Item key="mail" style={{color:'#fff'}}>
-      University
-    </Menu.Item>
-
-    <Menu.Item key="mail" style={{color:'#fff'}}>
-      University
-    </Menu.Item>
-
-    <Menu.Item key="mail" style={{color:'#fff'}}>
-      University
-    </Menu.Item>
-
-    <Menu.Item key="mail" style={{color:'#fff'}}>
-      University
-    </Menu.Item>
-
-    <Menu.Item key="mail" style={{color:'#fff'}}>
-      University
-    </Menu.Item>
-
-    {/* <Menu.SubMenu key="SubMenu" title="Navigation Two - Submenu" >
-      <Menu.Item key="two" >
-        Navigation Two
-      </Menu.Item>
-      <Menu.Item key="three">
-        Navigation Three
-      </Menu.Item>
-      <Menu.ItemGroup title="Item Group">
-        <Menu.Item key="four" >
-          Navigation Four
-        </Menu.Item>
-        <Menu.Item key="five">
-          Navigation Five
-        </Menu.Item>
-      </Menu.ItemGroup>
-    </Menu.SubMenu> */}
-  </Menu>
-
+    <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} style={{backgroundColor:'#012447',backgroundColor: 'rgb(1, 36, 71)',
+    borderBottom: 'none', color: '#ffffff'}}/>
+    
     </div>
      
 

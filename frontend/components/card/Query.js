@@ -31,38 +31,56 @@ const Query = () => {
               <Radio.Button value={false}>Hidden</Radio.Button>
             </Radio.Group>
           </Form.Item> */}
-          <Form.Item
+          {/* <Form.Item
             label="Email Address *"
             required
             tooltip="This is a required field"
           >
             <Input placeholder="input placeholder" />
-          </Form.Item>
-          <Form.Item
+          </Form.Item> */}
+          {/* <Form.Item
             label="Full Name *"
+            required
             tooltip={{
               title: "Tooltip with customize icon",
               icon: <InfoCircleOutlined />,
             }}
           >
             <Input placeholder="Full Name " />
+          </Form.Item> */}
+          <Form.Item
+            label="Program of Interest *"
+            required
+            tooltip={{
+              title: "Tooltip with customize icon",
+              icon: <InfoCircleOutlined />,
+            }}
+          >
+            <TreeSelect
+              treeData={[
+                {
+                  title: "BS",
+                  value: "bs",
+                  children: [
+                    {
+                      title: "BSCS",
+                      value: "bscs",
+                    },
+                  ],
+                },
+                {
+                  title: "BUSSINES",
+                  value: "bussines",
+                  children: [
+                    {
+                      title: "BBA",
+                      value: "bba",
+                    },
+                  ],
+                },
+              ]}
+            />
           </Form.Item>
-          <Form.Item label="TreeSelect">
-          <TreeSelect
-            treeData={[
-              {
-                title: 'Light',
-                value: 'light',
-                children: [
-                  {
-                    title: 'Bamboo',
-                    value: 'bamboo',
-                  },
-                ],
-              },
-            ]}
-          />
-        </Form.Item>
           <Form.Item>
             <Button type="primary">Submit</Button>
           </Form.Item>

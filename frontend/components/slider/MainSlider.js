@@ -1,7 +1,9 @@
 import React from "react";
-import { Carousel } from "antd";
 import { Image } from "antd";
-import styles from "../../Assets/Styles/slider/Slider.module.css"
+import styles from "../../Assets/Styles/slider/Slider.module.css";
+import ReactDOM from "react-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 // const contentStyle = {
 //   margin: 0,
@@ -11,23 +13,27 @@ import styles from "../../Assets/Styles/slider/Slider.module.css"
 // };
 
 const contentStyle = {
-  margin: 0,
-  height: "400px",
-  color: "#fff",
-  // lineHeight: "260px",
-  // textAlign: "center",
-  // background: '#364d79',
-  // background:URL('https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png')
-  backgroundImage:
-    "url(" +
-    "https://images.unsplash.com/photo-1621640786029-220e9ff8dd09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dW5pdmVyc2l0eSUyMGJ1aWxkaW5nfGVufDB8fDB8fA%3D%3D&w=1000&q=80" +
-    ")",
-    flexDirection: 'column',
-    alignContent: 'flex-start',
-    justifyContent: 'flex-end',
-    border: '10px solid #51484847',
-    display: 'flex',
-    alignItems: 'flex-start',
+  // margin: 0,
+  // height: "400px",
+  // color: "#fff",
+  // // lineHeight: "260px",
+  // // textAlign: "center",
+  // // background: '#364d79',
+  // // background:URL('https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png')
+  // backgroundImage:
+  //   "url(" +
+  //   "https://images.unsplash.com/photo-1621640786029-220e9ff8dd09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dW5pdmVyc2l0eSUyMGJ1aWxkaW5nfGVufDB8fDB8fA%3D%3D&w=1000&q=80" +
+  //   ")",
+  // flexDirection: "column",
+  // alignContent: "flex-start",
+  // justifyContent: "flex-end",
+  // display: "flex",
+  // alignItems: "flex-start",
+  marginTop: "5%"
+};
+
+const parentStyles = {
+  border: "10px solid #51484847",
 };
 
 const content = {
@@ -45,53 +51,46 @@ const displayFlex = {
   alignItems: "flex-start",
 };
 
-export const Slider = () => {
-  const onChange = (currentSlide) => {
-    console.log(currentSlide);
-  };
-
+const Slider = () => {
   return (
     <>
-     
-        <Carousel afterChange={onChange} style={{marginTop: "5%"}}>
+      <div styles={contentStyle}>
+        <Carousel
+          axis="vertical"
+          showArrows={true}
+          showStatus={true}
+          showIndicators={true}
+          infiniteLoop={true}
+          showThumbs={true}
+          useKeyboardArrows={true}
+          autoPlay={true}
+          stopOnHover={true}
+          swipeable={true}
+          dynamicHeight={true}
+          emulateTouch={true}
+          autoFocus={false}
+          thumbWidth={100}
+          selectedItem={0}
+          interval={2000}
+          transitionTime={500}
+          // swipeScrollTolerance = {5}
+        >
           <div>
-            <div style={contentStyle}>
-              <div style={content} >
-                <h1 style={{ color: "#fff", marginLeft: "2%" }}>
-                  Sukkur IBA University Kandhkot Campus
-                </h1>
-                <p style={{ color: "#fff", marginLeft: "2%" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipis
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div style={contentStyle}>
-              <div style={content}>
-                <h1 style={{ color: "#fff", marginLeft: "2%" }}>
-                  Sukkur IBA University Kandhkot Campus
-                </h1>
-                <p style={{ color: "#fff", marginLeft: "2%" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipis
-                </p>
-              </div>
-            </div>
+            <img src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg" />
+            <p className="legend">Legend 1</p>
           </div>
           <div>
-            <div style={contentStyle}>
-              <div style={content}>
-                <h1 style={{ color: "#fff", marginLeft: "2%" }}>
-                  Sukkur IBA University Kandhkot Campus
-                </h1>
-                <p style={{ color: "#fff", marginLeft: "2%" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipis
-                </p>
-              </div>
-            </div>
+            <img src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg" />
+            <p className="legend">Legend 2</p>
+          </div>
+          <div>
+            <img src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg" />
+            <p className="legend">Legend 3</p>
           </div>
         </Carousel>
+      </div>
     </>
   );
 };
+
+export default Slider;

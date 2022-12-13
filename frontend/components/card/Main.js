@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Card } from "antd";
 
-export const Main = (props) => {
+const Main = (props) => {
   // console.log(props);
   useEffect(() => {
     console.log(props.content);
@@ -42,3 +42,5 @@ export const Main = (props) => {
     </>
   );
 };
+
+export default Main;

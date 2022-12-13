@@ -21,13 +21,13 @@ const Announcement = () => {
 
   
 
-  <header class="hero">
-    <div class="hero-text">
+  <header className="hero">
+    <div className="hero-text">
       <h1>Event Tittle</h1>
       <p>Details</p>
     </div>
-    <a href="#blogPost-header" class="hero-arrow">
-      <i class="ri-arrow-down-s-line"></i>
+    <a href="#blogPost-header" className="hero-arrow">
+      <i className="ri-arrow-down-s-line"></i>
     </a>
   </header>
   

@@ -3,23 +3,25 @@ import "antd/dist/antd.css";
 import { Col, Row } from "antd";
 import { Breadcrumb, Button } from "antd";
 import { Image } from 'antd';
-import { Header } from "../layout/Header/Header";
-import { Footer } from "../layout/Footer/Footer";
+import Header from "../layout/Header/Header";
+import Footer from "../layout/Footer/Footer";
 import { Space, Table, Tag } from 'antd';
 import { useEffect, useState } from 'react';
+
+
 // import qs from 'qs';
 var qs = require('qs');
 
 const columns = [
   {
-    title: 'Name',
+    title: 'Project Title',
     dataIndex: 'name',
     sorter: true,
     render: (name) => `${name.first} ${name.last}`,
-    width: '20%',
+    width: '70%',
   },
   {
-    title: 'Gender',
+    title: 'Documents( PDF )',
     dataIndex: 'gender',
     filters: [
       {
@@ -34,7 +36,11 @@ const columns = [
     width: '20%',
   },
   {
-    title: 'Email',
+    title: 'Last Date',
+    dataIndex: 'email',
+  },
+  {
+    title: 'Publish Date',
     dataIndex: 'email',
   },
 ];
@@ -94,9 +100,15 @@ const getRandomuserParams = (params) => ({
     <Breadcrumb style={{ marginTop: 16 }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>
-          <a href="">Application Center</a>
+          <a href="">Announcements</a>
         </Breadcrumb.Item>
       </Breadcrumb>
+
+      
+      <Row>
+      <Col span={16}><h2>Announcements</h2></Col>
+      <Col span={8}><Button type="primary">Apply Online</Button></Col>
+    </Row>
 
       <Table
       columns={columns}
