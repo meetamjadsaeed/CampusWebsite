@@ -107,7 +107,7 @@ const getRandomuserParams = (params) => ({
       
       <Row>
       <Col span={16}><h2>Announcements</h2></Col>
-      <Col span={8}><Button type="primary">Apply Online</Button></Col>
+      {/* <Col span={8}><Button type="">Apply Online</Button></Col> */}
     </Row>
 
       <Table

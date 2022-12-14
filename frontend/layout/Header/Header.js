@@ -30,7 +30,21 @@ const Header = () => {
                   backgroundColor: "#ea6645",
                   width: "700px",
                 }}
-              ></div>
+              >
+                <h2
+                style={{
+                  color: '#ffffff',
+                  padding: '30px 0 0 0',
+                  width: '70%',
+                  margin: 'auto',
+                  fontWeight: 'bolder',
+                }}
+                >
+                SIBA KDK Campus
+                </h2>
+               
+                
+                </div>
             </Col>
           </Row>
         </Col>

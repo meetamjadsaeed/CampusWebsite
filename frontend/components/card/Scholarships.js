@@ -29,7 +29,7 @@ const Scholarships = () => {
         title="Scholarships /Financial Ad"
         extra={
           <a href="#">
-            <Button type="primary">Make a Donation</Button>
+            <Button type="">Make a Donation</Button>
           </a>
         }
         style={{ marginTop: "5%" }}

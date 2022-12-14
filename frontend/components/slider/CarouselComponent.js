@@ -70,7 +70,7 @@ export const CarouselComponent = () => {
                   augue non ligula porttitor viverra. Nulla id dignissim lacus.
                   Nullam vehicula aliquam{" "}
                 </p>
-                <button className="primary-button">
+                <button className="">
                   View Details <ArrowRightOutlined />
                 </button>
               </Col>
@@ -96,7 +96,7 @@ export const CarouselComponent = () => {
                   augue non ligula porttitor viverra. Nulla id dignissim lacus.
                   Nullam vehicula aliquam{" "}
                 </p>
-                <button className="primary-button">
+                <button className="">
                   View Details <ArrowRightOutlined />
                 </button>
               </Col>

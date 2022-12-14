@@ -1,0 +1,315 @@
+/* hero styles  */
+.hero-container {
+  /* background: url(https://images.unsplash.com/photo-1590579491624-f98f36d4c763?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1443&q=80)
+    center/ cover; */
+  height: 100vh;
+  position: relative;
+}
+
+.fixed-bg {
+  background: url(https://images.unsplash.com/photo-1590579491624-f98f36d4c763?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1443&q=80)
+  center/ cover;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+  /* height: 100vh; */
+  min-width: 100%;
+
+}
+
+
+.fixed-bg::before {
+  content: "";
+  background: #000000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+/* .hero-container::before {
+  content: "";
+  background: #000000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+} */
+
+.hero-body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+/*   
+  h1{
+    margin: 0;
+    display: inline;
+    color: #ffffff;
+    font-size: 7rem;
+    opacity: 0.8;
+    line-height: 120px;
+  } */
+
+span.hero-span {
+  /* font-size: 2rem; */
+  color: #ffffff;
+  /* opacity: 0.8; */
+  /* font-weight: bold; */
+  /* margin-bottom: 20px; */
+}
+
+.form {
+  display: flex;
+}
+
+.ant-carousel .slick-dots {
+  justify-content: flex-end !important;
+}
+
+.ant-list-item-meta-title > a {
+  color: rgb(255 255 255 / 85%) !important;
+}
+
+/* Anouncement single styles */
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  color: var(--neutral-lt);
+  /* background: url("https://images.unsplash.com/photo-1571805381873-a5e51f692c16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"); */
+  /* background-size: cover; */
+  /* background-position: center center; */
+  height: 100vh;
+  text-align: center;
+  opacity: 0.8;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  /* background: linear-gradient(0deg, rgba(210,79,29, 0.45),rgba(315, 212, 707, 0.45)), url(https://plus.unsplash.com/premium_photo-1661713240994-5b3dbc6ba336?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80); */
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86)), url(https://plus.unsplash.com/premium_photo-1661713240994-5b3dbc6ba336?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80);
+}
+
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--dark-gradient);
+  z-index: 0;
+}
+.hero-text {
+  /* color: var(--neutral-white); */
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4), 2px 2px 2px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.hero h1 {
+  font-size: 5rem;
+  color: #ffffff;
+}
+.hero-description{
+    padding: 20px 0px 20px 0px;
+    text-align: center;
+}
+.hero-arrow {
+  position: absolute;
+  bottom: 10px;
+  font-size: 5rem;
+  color: var(--neutral-white);
+  z-index: 1;
+}
+.hero-arrow:active,
+.hero-arrow:visited {
+  opacity: 70%;
+}
+.hero-arrow:hover,
+.hero-arrow:focus {
+  transition: var(--transition);
+  animation: bounce 1000ms infinite;
+}
+@keyframes bounce {
+  25%,
+  75% {
+    transform: translateY(-10%) scale(1.2);
+  }
+  0%,
+  50% {
+    transform: translateY(0%) scale(1.2);
+  }
+}
+
+/* SEARCH */
+#search {
+  padding: 20px;
+}
+input.hero-input {
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  max-width: 500px;
+  padding: 5px 100px;
+  border: 1px solid var(--neutral-md);
+  margin: 0 auto;
+}
+input:focus {
+  outline: none;
+}
+
+/* single profile  */
+.profileheader.panel-mask {
+  overflow: hidden;
+}
+
+.border-default-light {
+  border: solid 1px #e6e6e6;
+}
+.panel {
+  margin-bottom: 15px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.profileheader .coverprofile {
+  /* height: 300px;
+  margin-bottom: -75px; */
+}
+
+.bg-cover,
+.bg-page {
+  background-image: url("https://alumni.iba-suk.edu.pk/alumni/wp-content/uploads/2018/12/slide-1.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.text-center,
+.strike-center {
+  text-align: center !important;
+}
+.margbot-none {
+  margin-bottom: 0 !important;
+}
+.avatar-150 {
+  width: 150px;
+  height: 150px;
+}
+
+.photo,
+.modal-header .close,
+.modal-body .close,
+.preview-form .close,
+.timeline > li:before,
+.circle-icon,
+.numbering-circle,
+.notif.unread .notif-counter,
+.notif.read:before,
+.notification-counter {
+  border-radius: 50% !important;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+.dropdown,
+.dropup {
+  position: relative;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.btn-capsule {
+  border-radius: 20px;
+  padding: 5px 20px;
+}
+
+.margbot,
+.polling-result .polling-result-item {
+  margin-bottom: 15px !important;
+}
+
+.btn-,
+.introjs-donebutton,
+.introjs-nextbutton {
+  color: #fff;
+  background-color: #00a5af;
+  border-color: #008d96;
+}
+
+/* test styles */
+.box {
+  /* clip-path: polygon(50% 0, 100% 0%, 100% 99%, 0 100%); */
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0 100%);
+}
+
+/* menu  */
+.ant-menu-horizontal > .ant-menu-item a {
+  color: rgb(255 255 255 / 85%) !important;
+}
+
+/* main slide  */
+.thumbs {
+  display: flex;
+  flex-direction: row;
+  /* align-content: center; */
+  justify-content: center;
+  align-items: stretch;
+}
+
+.carousel-root {
+  margin-top: 5% !important;
+  height: auto;
+}
+
+
+div.event-card > .ant-card-body{
+    height: 250px
+    /* max-height:250px; */
+}
+
+div.event-card > .ant-card-cover img{
+    height: 200px
+    /* max-height:250px; */
+}
+
+div.news-card > .ant-card-body{
+    height: 250px
+    /* max-height:250px; */
+}
+
+div.news-card > .ant-card-cover img{
+    height: 200px
+    /* max-height:250px; */
+}
+
+div.department-card > .ant-card-body{
+    height: 250px
+    /* max-height:250px; */
+}
+
+div.department-card > .ant-card-cover img{
+    height: 200px
+    /* max-height:250px; */
+}
+
+.slider-wrapper{
+  height: 300px !important;
+}

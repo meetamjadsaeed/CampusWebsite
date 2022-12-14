@@ -106,7 +106,16 @@ const faculty = () => {
     <>
     <Header/>
       <div className="container">
-        <div className="panel panel-mask profileheader border-default-light">
+        <div className="panel panel-mask profileheader border-default-light"
+        style={{
+          marginTop: '50px',
+          padding:"20px",
+          boxShadow: '0 2px 10px 0 rgb(45 60 75 / 10%)',
+border: '1px solid #e8e8e8',
+borderRadius: '4px',
+background: '#fff',
+        }}
+        >
           <div className="coverprofile bg-cover"></div>
           <div className="text-center">
             <img

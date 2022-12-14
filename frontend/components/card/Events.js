@@ -43,7 +43,9 @@ const Events = () => {
 
   return (
     <>
-      <Card title="Events title" bordered={true}>
+      <Card title="Events title" bordered={true}
+      className="event-slide"
+      >
         <Carousel
           autoPlay={true}
           infiniteLoop={true}

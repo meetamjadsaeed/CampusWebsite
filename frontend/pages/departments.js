@@ -57,9 +57,9 @@ const Departments = () => {
             marginTop: "2%",
           }}
         >
-          <Button type="primary">Admission process</Button>
-          {/* <Button type="primary">Fee Structure</Button> */}
-          <Button type="primary">Apply Online</Button>
+          <Button type="">Admission process</Button>
+          {/* <Button type="">Fee Structure</Button> */}
+          <Button type="">Apply Online</Button>
         </div>
 
         <div className="site-card-wrapper">
@@ -68,21 +68,24 @@ const Departments = () => {
               Departments.map((item) => {
                 // console.log(item);
                 return (
-                  <Col span={8}>
+                  <Col span={8}
+                  style={{marginBottom: '50px'}}
+                  >
                     <Link href={`program/${item.id}`}>
                       <Card
                         style={{
                           width: 300,
                         }}
                         cover={<img alt="example" src={item.thumbnail} />}
-                        actions={[
-                          <SettingOutlined key="setting" />,
-                          <EditOutlined key="edit" />,
-                          <EllipsisOutlined key="ellipsis" />,
-                        ]}
+                        // actions={[
+                        //   <SettingOutlined key="setting" />,
+                        //   <EditOutlined key="edit" />,
+                        //   <EllipsisOutlined key="ellipsis" />,
+                        // ]}
+                      className="department-card"
                       >
                         <Meta
-                          avatar={<Avatar src={item.thumbnail} />}
+                          // avatar={<Avatar src={item.thumbnail} />}
                           title={item.title}
                           description={item.description}
                         />

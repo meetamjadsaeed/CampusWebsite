@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 // import { Menu } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
+import Link from "next/link"; 
+
 const items = [
  {
     label: 'University',
@@ -49,54 +51,42 @@ const items = [
   },
   {
     label: (
-      <a href="/events" rel="noopener noreferrer">
-        Events
-      </a>
+      <Link href="/events">Events</Link>
     ),
     key: 'Events',
     icon: <SettingOutlined />,
   },
   {
     label: (
-      <a href="/news" rel="noopener noreferrer">
-        News
-      </a>
+      <Link href="/news">News</Link>
     ),
     key: 'News',
     icon: <SettingOutlined />,
   },
   {
     label: (
-      <a href="/announcements" rel="noopener noreferrer">
-        Annoucements
-      </a>
+      <Link href="/announcements">Annoucements</Link>
     ),
     key: 'Annoucements',
     icon: <SettingOutlined />,
   },
   {
     label: (
-      <a href="/departments" rel="noopener noreferrer">
-        Departments
-      </a>
+      <Link href="/departments">Departments</Link>
     ),
     key: 'Departments',
     icon: <SettingOutlined />,
   },
   {
     label: (
-      <a href="/faculty" rel="noopener noreferrer">
-        Faculties
-      </a>
+      <Link href="/faculty">Faculties</Link>
     ),
     key: 'Faculties',
     icon: <SettingOutlined />,
   },
   {
     label: (
-      <a href="/resources" rel="noopener noreferrer">
-        Resources
-      </a>
+      <Link href="/">Resources</Link>
     ),
     key: 'Resources',
     icon: <SettingOutlined />,

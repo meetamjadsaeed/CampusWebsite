@@ -14,7 +14,7 @@ import { Player } from "video-react";
 const Gallery = () => {
   return (
     <>
-      <Row gutter={100} style={{ marginTop: 16 }}>
+      <Row gutter={100} style={{ marginTop: "16px" }}>
         <Col span={14}>
           <Card title="Gallery" bordered={true} style={{ width: "auto" }}>
             <Row gutter={90} style={{ padding: "10px" }}>
@@ -122,7 +122,7 @@ const Gallery = () => {
             <p>Pioneer Batch 2018 - Our Alumni</p>
             <p>"We are very lucky to have this campus in our Kandhkot city"</p>
           </div>
-          <button className="primary-button">View all</button> */}
+          <button className="">View all</button> */}
         </Col>
         <Col span={10}>
           <Card title="Campus tour" bordered={true} style={{ width: "auto" }}>

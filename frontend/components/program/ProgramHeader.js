@@ -29,16 +29,16 @@ const ProgramHeader = ({props}) => {
             }}
           >
             <Link href="#">
-              <Button type="primary">Admission process</Button>
+              <Button type="">Admission process</Button>
             </Link>
             <Link href="#">
-              <Button type="primary">Fee Structure</Button>
+              <Button type="">Fee Structure</Button>
             </Link>
             <Link href="#">
-              <Button type="primary">Course Schema</Button>
+              <Button type="">Course Schema</Button>
             </Link>
             <Link href="#">
-              <Button type="primary">Apply Online</Button>
+              <Button type="">Apply Online</Button>
             </Link>
           </div>
           <h1 style={{ marginTop: "2%" }}>{props.title}</h1>

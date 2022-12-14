@@ -33,7 +33,7 @@ const [Event, setEvent] = useState();
        <header className="hero">
         <div className="hero-text">
           <h1>{Event &&  Event.title}</h1>
-          <p>Details</p>
+          {/* <p>Details</p> */}
         </div>
         <a href="#blogPost-header" className="hero-arrow">
           <i className="ri-arrow-down-s-line"></i>
@@ -41,7 +41,7 @@ const [Event, setEvent] = useState();
       </header>
 
       <div className="container">
-        <p>
+        <p className='hero-description'>
         {Event &&  Event.description}
         </p>
       </div>

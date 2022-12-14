@@ -2,6 +2,7 @@ import Head from "next/head";
 // import Image from "next/image";
 // import cardStyles from "../Assets/Styles/Card/Card.module.css";
 import Header  from "../layout/Header/Header";
+import MainHero  from "../layout/MainHero";
 import Slider from "../components/slider/MainSlider";
 import Main from "../components/card/Main";
 import Group from "../components/card/Group";
@@ -21,8 +22,9 @@ const Home = () => {
 
       <Header />
 
+      <MainHero/>
       <div className="container">
-        <Slider />
+        {/* <Slider /> */}
         <Main />
         <Group />
         <Programs />

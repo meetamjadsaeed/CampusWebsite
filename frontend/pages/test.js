@@ -4,42 +4,64 @@
 // import {Scholarships}  from '../components/card/Scholarships'
 import React from "react";
 // JSX
-import HeroSlider, { Slide, MenuNav, OverlayContainer } from "hero-slider";
-import Navbar from "./UI/Navbar/Navbar";
-import Wrapper from "./UI/Wrapper/Wrapper";
-import Title from "./UI/Title/Title";
-import Subtitle from "./UI/Subtitle/Subtitle";
+// import HeroSlider, { Slide, MenuNav, OverlayContainer } from "hero-slider";
+// import Navbar from "./UI/Navbar/Navbar";
+// import Wrapper from "./UI/Wrapper/Wrapper";
+// import Title from "./UI/Title/Title";
+// import Subtitle from "./UI/Subtitle/Subtitle";
 
-import BasicSlider from "./testcomponents/BasicSlider/BasicSlider";
-import VerticalSlider from "./testcomponents/VerticalSlider/VerticalSlider";
-import ZoomSlider from "./testcomponents/ZoomSlider/ZoomSlider";
-import SlidesChildrenSlider from "./testcomponents/SlidesChildrenSlider/SlidesChildrenSlider";
-import BlendModeSlider from "./testcomponents/BlendModeSlider/BlendModeSlider";
-import NavbarSlider from "./testcomponents/NavbarSlider/NavbarSlider";
-import ButtonsSlider from "./testcomponents/ButtonsSlider/ButtonsSlider";
-import AutoplayButtonSlider from "./testcomponents/AutoplayButtonSlider/AutoplayButtonSlider";
+// import BasicSlider from "./testcomponents/BasicSlider/BasicSlider";
+// import VerticalSlider from "./testcomponents/VerticalSlider/VerticalSlider";
+// import ZoomSlider from "./testcomponents/ZoomSlider/ZoomSlider";
+// import SlidesChildrenSlider from "./testcomponents/SlidesChildrenSlider/SlidesChildrenSlider";
+// import BlendModeSlider from "./testcomponents/BlendModeSlider/BlendModeSlider";
+// import NavbarSlider from "./testcomponents/NavbarSlider/NavbarSlider";
+// import ButtonsSlider from "./testcomponents/ButtonsSlider/ButtonsSlider";
+// import AutoplayButtonSlider from "./testcomponents/AutoplayButtonSlider/AutoplayButtonSlider";
 
 // Images
-const kyoto = "https://i.imgur.com/xw5Abku.jpg";
-const tenryuJiTemple = "https://i.imgur.com/g5JNdYL.jpg";
-const hakone = "https://i.imgur.com/Iq6XtFR.jpg";
-const byodoInTemple = "https://i.imgur.com/le9OeEC.jpg";
+// const kyoto = "https://i.imgur.com/xw5Abku.jpg";
+// const tenryuJiTemple = "https://i.imgur.com/g5JNdYL.jpg";
+// const hakone = "https://i.imgur.com/Iq6XtFR.jpg";
+// const byodoInTemple = "https://i.imgur.com/le9OeEC.jpg";
+// import {Carousel} from '3d-react-carousal';
+// import dynamic from "next/dynamic";
 
 const test = () => {
+  // const Carousel = dynamic(() => import("3d-react-carousal"), { ssr: false });
+
+  // let slides = [
+  //   <img  src="https://picsum.photos/800/300/?random" alt="1" />,
+  //   <img  src="https://picsum.photos/800/301/?random" alt="2" />  ,
+  //   <img  src="https://picsum.photos/800/302/?random" alt="3" />  ,
+  //   <img  src="https://picsum.photos/800/303/?random" alt="4" />  ,
+  //   <img src="https://picsum.photos/800/304/?random" alt="5" />   ];
   return (
     <>
    {/* <Profile/> */}
    {/* <Scholarships/> */}
 
    {/* <Profile/> */}
-   <div
+   {/* <div
       style={{
         color: "#FFF"
       }}
     >
       <NavbarSlider />
-    </div>
+    </div> */}
 
+{/* <Carousel slides={slides} autoplay={true} interval={1000}/> */}
+<div class="hero-container">
+    <div class="hero-body">
+      <h1>Hero Image</h1>
+      <span>Efecto hero image</span>
+      <div class="form">
+        <input type="text" />
+    <button>Buscar</button>
+      </div>
+      
+    </div>
+  </div>
     
     </>
   )

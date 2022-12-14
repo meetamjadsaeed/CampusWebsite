@@ -33,7 +33,7 @@ a {
   margin: auto;
 }
 
-.primary-button {
+/* . {
   color: #ea6645;
   padding: 10px;
   border-radius: 5px;
@@ -52,7 +52,7 @@ a {
   padding: 10px;
   border-radius: 5px;
   border: #fff;
-}
+} */
 
 h1,
 h2,
@@ -84,8 +84,7 @@ p {
 
 
 .footer {
-  background-image: url("https://img.freepik.com/free-photo/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg?w=2000"),
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  /* background-image: url(https://images.unsplash.com/photo-1527891751199-7225231a68dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80), linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));  */
   background-blend-mode: overlay;
   background-repeat: no-repeat;
   background-position: center;
@@ -93,213 +92,55 @@ p {
   background-origin: revert;
   background-size: cover;
   padding: 20px 0px 20px 0px;
+  background-color: #0129515c;
+  /* border-top: none; */
+  background: linear-gradient(to bottom, #0129515c 0%, #ea66455c 90%);
 }
 
-.ant-carousel .slick-dots {
-  justify-content: flex-end !important;
-}
-
-.ant-list-item-meta-title > a {
-  color: rgb(255 255 255 / 85%) !important;
-}
-
-/* Anouncement single styles */
-.hero {
-  position: relative;
-  display: grid;
-  place-items: center;
-  color: var(--neutral-lt);
-  background: url("https://images.unsplash.com/photo-1571805381873-a5e51f692c16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
-  background-size: cover;
-  background-position: center center;
-  height: 100vh;
-  text-align: center;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--dark-gradient);
-  z-index: 0;
-}
-.hero-text {
-   color: var(--neutral-white);
-  text-shadow: 0px 0px 20px rgba(0,0,0,.4), 2px 2px 2px rgba(0,0,0,.4);
-  z-index: 1;
-}
-.hero h1 {
-  font-size: 5rem;
-}
-.hero-arrow {
-  position: absolute;
-  bottom: 10px;
-  font-size: 5rem;
-  color: var(--neutral-white);
-  z-index: 1;
-}
-.hero-arrow:active, .hero-arrow:visited {
-  opacity: 70%;
-}
-.hero-arrow:hover, .hero-arrow:focus {
-  transition: var(--transition);
-  animation: bounce 1000ms infinite;
-}
-@keyframes bounce {
-  25%, 75% {
-    transform: translateY(-10%) scale(1.2);
-  }
-  0%,50% {
-    transform: translateY(0%) scale(1.2);
-  }
-}
-
-/* SEARCH */
-#search {
-  padding: 20px;
-}
-input {
-  display: block;
-  font-family: inherit;
-  font-size: inherit;
-  width: 100%;
-  max-width: 500px;
-  padding: 5px 10px;
-  border: 1px solid var(--neutral-md);
-  margin: 0 auto;
-}
-input:focus {
+  
+/* input{
+  width: 500px;
+  padding: 15px;
+  border-radius: 4px 0px 0px 4px;
+  border: 0;
   outline: none;
+} */
+
+button{
+  border-radius: 0px 4px 4px 0px;
+  border: 0;
+  padding: 14px;
+  cursor: pointer;
+}
+
+/* button:hover{
+  background: #1565C0;
+  color: #ffffff;
+} */
+
+
+.ant-btn {
+  color: #fff !important;
+  font-weight: 400 !important;
+  height: 35px !important;
+  padding: 0 15px !important;
+  font-size: 14px !important;
+  background: #D24F1D !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 250ms ease !important;
+  border-radius: 4px !important;
+  background: #D24F1D !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 20px !important;
 }
 
 
-/* single profile  */
-.profileheader.panel-mask {
-  overflow: hidden;
+.ant-card {
+  box-shadow: 0 2px 10px 0 rgb(45 60 75 / 10%)  !important;
+  border: 1px solid #e8e8e8  !important;
+  border-radius: 4px  !important;
+  background: #fff  !important;
 }
-
-.border-default-light {
-  border: solid 1px #e6e6e6;
-}
-.panel {
-  margin-bottom: 15px;
-  background-color: #fff;
-  border-radius: 4px;
-}
-.profileheader .coverprofile {
-  height: 300px;
-  margin-bottom: -75px;
-}
-
-.bg-cover,
-.bg-page {
-  background-image: url("https://alumni.iba-suk.edu.pk/alumni/wp-content/uploads/2018/12/slide-1.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-.text-center,
-.strike-center {
-  text-align: center !important;
-}
-.margbot-none {
-  margin-bottom: 0 !important;
-}
-.avatar-150 {
-  width: 150px;
-  height: 150px;
-}
-
-.photo,
-.modal-header .close,
-.modal-body .close,
-.preview-form .close,
-.timeline > li:before,
-.circle-icon,
-.numbering-circle,
-.notif.unread .notif-counter,
-.notif.read:before,
-.notification-counter {
-  border-radius: 50% !important;
-}
-
-.panel-body {
-    padding: 15px;
-}
-
-
-.dropdown, .dropup {
-    position: relative;
-}
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-.btn-capsule {
-    border-radius: 20px;
-    padding: 5px 20px;
-}
-
-.margbot, .polling-result .polling-result-item {
-    margin-bottom: 15px !important;
-}
-
-.btn-primary, .introjs-donebutton, .introjs-nextbutton {
-    color: #fff;
-    background-color: #00A5AF;
-    border-color: #008d96;
-}
-
-
-
-
-
-
-
-
-
-
-
-/* test styles */
-.box {
-  /* clip-path: polygon(50% 0, 100% 0%, 100% 99%, 0 100%); */
-  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0 100%);
-}
-
-
-
-
-
-
-
-/* menu  */
-.ant-menu-horizontal > .ant-menu-item a {
-  color: rgb(255 255 255 / 85%) !important;
-}
-
-/* main slide  */
-.thumbs{
-    display: flex;
-    flex-direction: row;
-    /* align-content: center; */
-    justify-content: center;
-    align-items: stretch;
-}
-
-.carousel-root{
-  margin-top: 5% !important;
-  height: auto;
-}
-

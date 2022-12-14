@@ -12,9 +12,15 @@ import {
   SmileOutlined,
   SyncOutlined,
 } from "@ant-design/icons";
+import { Button } from "antd";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { useState } from "react";
+import axios from "axios";
+import { Spin } from "antd";
+import Link from "next/link";
+
 
 // const styles = {
 //   padding: "13px",
@@ -56,96 +62,87 @@ const displayFlex = {
 };
 
 const Programs = () => {
+  const [Programs, setPrograms] = useState();
+  const getData = async () => {
+    // Get Posts
+    await axios
+      .get("   https://dummyjson.com/products  ", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((result) => setPrograms(result.data.products));
+    // .then((result) => console.log(result));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <>
-      <Carousel
-        autoPlay={true}
-        infiniteLoop={true}
-        interval={2000}
-        transitionTime={500}
-        showArrows={false}
-        showStatus={false}
-        showIndicators={false}
-        showThumbs={false}
-        dynamicHeight={false}
-        axis={"vertical"}
+      <div 
+      style={{marginBottom: "50px"}}
       >
-        <div>
-          <div style={contentStyle}>
-            <Row gutter={0}>
-              <Col span={10}>
-                <h3>MS MPhil</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aenean gravida tempor neque, sed blandit felis. Aenean vel
-                  augue non ligula porttitor viverra. Nulla id dignissim lacus.
-                  Nullam vehicula aliquam{" "}
-                </p>
-                <button className="primary-button">
-                  View Details <ArrowRightOutlined />
-                </button>
-              </Col>
-              <Col span={14}>
-                <Image
-                  width="50%"
-                  height={200}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-            </Row>
-          </div>
-        </div>
-        <div>
-          <div style={contentStyle}>
-            <Row gutter={0}>
-              <Col span={10}>
-                <h3>MS MPhil</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aenean gravida tempor neque, sed blandit felis. Aenean vel
-                  augue non ligula porttitor viverra. Nulla id dignissim lacus.
-                  Nullam vehicula aliquam{" "}
-                </p>
-                <button className="primary-button">
-                  View Details <ArrowRightOutlined />
-                </button>
-              </Col>
-              <Col span={14}>
-                <Image
-                  width="50%"
-                  height={200}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-            </Row>
-          </div>
-        </div>
-        <div>
-          <div style={contentStyle}>
-            <Row gutter={0}>
-              <Col span={10}>
-                <h3>MS MPhil</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aenean gravida tempor neque, sed blandit felis. Aenean vel
-                  augue non ligula porttitor viverra. Nulla id dignissim lacus.
-                  Nullam vehicula aliquam{" "}
-                </p>
-                <button className="primary-button">
-                  View Details <ArrowRightOutlined />
-                </button>
-              </Col>
-              <Col span={14}>
-                <Image
-                  width="50%"
-                  height={200}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-            </Row>
-          </div>
-        </div>
-      </Carousel>
+        <Carousel
+          autoPlay={true}
+          infiniteLoop={true}
+          interval={2000}
+          transitionTime={500}
+          showArrows={false}
+          showStatus={false}
+          showIndicators={false}
+          showThumbs={false}
+          dynamicHeight={false}
+          axis={"vertical"}
+        >
+          {Programs ? (
+            Programs.map((item) => {
+              // console.log(item);
+              return (
+                <div>
+                  <div style={contentStyle}>
+                  <Link href={`program/${item.id}`}>
+
+                    <Row gutter={0}>
+                      <Col
+                        span={10}
+                        style={{
+                          boxShadow: "0 2px 10px 0 rgb(45 60 75 / 10%)",
+                          border: "1px solid #e8e8e8",
+                          borderRadius: "5px",
+                          background: "#fff",
+                          padding: "20px",
+                        }}
+                      >
+                        <h3>MS MPhil</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Aenean gravida tempor neque, sed blandit felis.
+                          Aenean vel augue non ligula porttitor viverra. Nulla
+                          id dignissim lacus. Nullam vehicula aliquam{" "}
+                        </p>
+                        <Button>
+                          View Details <ArrowRightOutlined />
+                        </Button>
+                      </Col>
+                      <Col span={14}>
+                        <Image
+                          width="50%"
+                          height={200}
+                          src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                        />
+                      </Col>
+                    </Row>
+                    </Link>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <Spin />
+          )}
+        </Carousel>
+      </div>
 
       {/* <div
         className="site-card-border-less-wrapper"
