@@ -97,6 +97,20 @@ p {
   background: linear-gradient(to bottom, #0129515c 0%, #ea66455c 90%);
 }
 
+.footer-two {
+  background-image: url(https://images.unsplash.com/photo-1527891751199-7225231a68dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80), linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); 
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: darkgreen;
+  background-origin: revert;
+  background-size: cover;
+  padding: 20px 0px 20px 0px;
+  background-color: #0129515c;
+  /* border-top: none; */
+  /* background: linear-gradient(to bottom, #0129515c 0%, #ea66455c 90%); */
+}
+
   
 /* input{
   width: 500px;

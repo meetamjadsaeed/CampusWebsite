@@ -12,6 +12,11 @@ import {
 } from "@ant-design/icons";
 
 import Marquee from "react-easy-marquee";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { Spin } from "antd";
+import Link from "next/link";
 
 const images = [
   "https://picsum.photos/200",
@@ -23,6 +28,22 @@ const images = [
 ];
 
 const Scholarships = () => {
+  const [Scholarships, setScholarships] = useState();
+  const getData = async () => {
+    // Get Posts
+    await axios
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((result) => setScholarships(result.data));
+    // .then((result) => console.log(result));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <>
       <Card
@@ -45,9 +66,18 @@ const Scholarships = () => {
             pauseOnHover={true}
             reverse={true}
           >
-            {images.map((image) => (
+             {Scholarships ? (
+                Scholarships.map((item) => {
+                  return (
+             <img src="https://picsum.photos/200" alt="picsum" style={{ borderRadius: "10px" }} />
+             );
+            })
+          ) : (
+            <p>loading...</p>
+          )}
+            {/* {images.map((image) => (
               <img src={image} alt="picsum" style={{ borderRadius: "10px" }} />
-            ))}
+            ))} */}
           </Marquee>
         </div>
       </Card>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import Header from "../../layout/Header/Header";
-import Footer from "../../layout/Footer/Footer";
+import FooterTwo from "../../layout/Footer/FooterTwo";
 
 const event = () => {
     const router = useRouter()
@@ -14,7 +14,7 @@ const [Event, setEvent] = useState();
     const getData = async () => {
       // Get Posts
       await axios
-        .get( `https://dummyjson.com/products/${pid}`, {
+        .get( `http://iba-kdk.com/wp-json/wp/v2/campus/${pid}`, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -32,7 +32,7 @@ const [Event, setEvent] = useState();
     <Header/>
        <header className="hero">
         <div className="hero-text">
-          <h1>{Event &&  Event.title}</h1>
+          <h1>Event</h1>
           {/* <p>Details</p> */}
         </div>
         <a href="#blogPost-header" className="hero-arrow">
@@ -42,10 +42,10 @@ const [Event, setEvent] = useState();
 
       <div className="container">
         <p className='hero-description'>
-        {Event &&  Event.description}
+        description description
         </p>
       </div>
-      <Footer/>
+      <FooterTwo/>
 
     </>
     

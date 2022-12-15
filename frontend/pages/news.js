@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../layout/Header/Header";
-import Footer from "../layout/Footer/Footer";
+import FooterTwo from "../layout/Footer/FooterTwo";
 import { Col, Row } from "antd";
 import { Breadcrumb, Button } from "antd";
 import {
@@ -24,12 +24,12 @@ const news = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("   https://dummyjson.com/products  ", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => setDepartments(result.data.products));
+      .then((result) => setDepartments(result.data));
     // .then((result) => console.log(result));
   };
 
@@ -80,7 +80,7 @@ const news = () => {
                         style={{
                           width: 300,
                         }}
-                        cover={<img alt="example" src={item.thumbnail} />}
+                        cover={<img alt="example" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />}
                         // actions={[
                         //   <SettingOutlined key="setting" />,
                         //   <EditOutlined key="edit" />,
@@ -89,9 +89,11 @@ const news = () => {
                         className="news-card"
                       >
                         <Meta
-                          avatar={<Avatar src={item.thumbnail} />}
-                          title={item.title}
-                          description={item.description}
+                          avatar={<Avatar src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>}
+                          title="News"
+                          description="orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                          molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                          numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium"
                         />
                       </Card>
                     </Link>
@@ -105,7 +107,7 @@ const news = () => {
         </div>
       </div>
 
-      <Footer />
+      <FooterTwo />
     </>
   );
 };

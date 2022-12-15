@@ -79,7 +79,7 @@ const items = [
   },
   {
     label: (
-      <Link href="/faculty">Faculties</Link>
+      <Link href="/faculty">Profiles</Link>
     ),
     key: 'Faculties',
     icon: <SettingOutlined />,

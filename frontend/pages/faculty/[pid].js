@@ -7,7 +7,7 @@ import { Card } from "antd";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import Header from "../../layout/Header/Header";
-import Footer from "../../layout/Footer/Footer";
+import FooterTwo from "../../layout/Footer/FooterTwo";
 
 const tabList = [
   {
@@ -82,7 +82,7 @@ const faculty = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`https://dummyjson.com/products/${pid}`, {
+      .get(`http://iba-kdk.com/wp-json/wp/v2/campus/${pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -134,7 +134,7 @@ background: '#fff',
                 </h1>
               </div>
 
-              <h2>{Faculty &&  Faculty.title}</h2>
+              <h2>Professor</h2>
               <p>
                 Dr. Rehman has experience with a wide range of database and
                 semantic web technologies through the academic and research
@@ -168,7 +168,7 @@ background: '#fff',
           </div>
         </div>
       </div>
-      <Footer/>
+      <FooterTwo/>
     </>
   );
 };

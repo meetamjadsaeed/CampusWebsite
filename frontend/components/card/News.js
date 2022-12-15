@@ -28,12 +28,12 @@ const News = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("   https://dummyjson.com/products  ", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => setNews(result.data.products));
+      .then((result) => setNews(result.data));
     // .then((result) => console.log(result));
   };
 
@@ -63,8 +63,8 @@ const News = () => {
                   <Link href={`/event/${item.id}`}>
                     <Card style={{ width: 300, marginTop: 16 }}>
                       <Meta
-                        avatar={<Image width={50} src={item.thumbnail} />}
-                        title={item.title}
+                        avatar={<Image width={50} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />}
+                        title="News title"
                         description="March 12, 2020"
                       />
                     </Card>

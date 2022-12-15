@@ -27,6 +27,11 @@ import React from "react";
 // import {Carousel} from '3d-react-carousal';
 // import dynamic from "next/dynamic";
 
+
+import FootertTwo from "../layout/Footer/FooterTwo";
+import Footer from "../layout/Footer/Footer";
+
+
 const test = () => {
   // const Carousel = dynamic(() => import("3d-react-carousal"), { ssr: false });
 
@@ -51,7 +56,7 @@ const test = () => {
     </div> */}
 
 {/* <Carousel slides={slides} autoplay={true} interval={1000}/> */}
-<div class="hero-container">
+{/* <div class="hero-container">
     <div class="hero-body">
       <h1>Hero Image</h1>
       <span>Efecto hero image</span>
@@ -62,7 +67,9 @@ const test = () => {
       
     </div>
   </div>
-    
+     */}
+
+     <FootertTwo/>
     </>
   )
 }

@@ -66,12 +66,12 @@ const Programs = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("   https://dummyjson.com/products  ", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => setPrograms(result.data.products));
+      .then((result) => setPrograms(result.data));
     // .then((result) => console.log(result));
   };
 

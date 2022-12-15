@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../layout/Header/Header";
-import Footer from "../layout/Footer/Footer";
+import FooterTwo from "../layout/Footer/FooterTwo";
 import { Col, Row } from "antd";
 import { Breadcrumb, Button } from "antd";
 import {
@@ -22,12 +22,12 @@ const Departments = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("   https://dummyjson.com/products  ", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => setDepartments(result.data.products));
+      .then((result) => setDepartments(result.data));
     // .then((result) => console.log(result));
   };
 
@@ -76,7 +76,7 @@ const Departments = () => {
                         style={{
                           width: 300,
                         }}
-                        cover={<img alt="example" src={item.thumbnail} />}
+                        cover={<img alt="example" src="https://images.unsplash.com/photo-1544256718-3bcf237f3974?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"/>}
                         // actions={[
                         //   <SettingOutlined key="setting" />,
                         //   <EditOutlined key="edit" />,
@@ -86,8 +86,9 @@ const Departments = () => {
                       >
                         <Meta
                           // avatar={<Avatar src={item.thumbnail} />}
-                          title={item.title}
-                          description={item.description}
+                          title="Department"
+                          description="orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                          molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum"
                         />
                       </Card>
                     </Link>
@@ -153,7 +154,7 @@ const Departments = () => {
         </div>
       </div>
 
-      <Footer />
+      <FooterTwo />
     </>
   );
 };

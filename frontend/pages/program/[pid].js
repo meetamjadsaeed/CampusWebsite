@@ -7,7 +7,7 @@ import ProgramHeader from "../../components/program/ProgramHeader";
 import ProgramBody from "../../components/program/ProgramBody";
 import Gallery from "../../components/card/Gallery";
 import Header from "../../layout/Header/Header";
-import Footer from "../../layout/Footer/Footer";
+import FooterTwo from "../../layout/Footer/FooterTwo";
 
 
 const programSingle = () => {
@@ -17,7 +17,7 @@ const programSingle = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`https://dummyjson.com/products/${pid}`, {
+      .get(`http://iba-kdk.com/wp-json/wp/v2/campus/${pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -31,18 +31,25 @@ const programSingle = () => {
   }, []);
 
   const header = {
-    title: Department && Department.title,
-    description: Department && Department.description,
-    process: Department && Department.title,
-    feeStructure: Department && Department.title,
-    courseSchemata: Department && Department.title,
-    apply: Department && Department.title,
+    // title: Department && Department.title,
+    // description: Department && Department.description,
+    // process: Department && Department.title,
+    // feeStructure: Department && Department.title,
+    // courseSchemata: Department && Department.title,
+    // apply: Department && Department.title,
+    title: "Department && Department.title",
+    description: "Department && Department.description",
+    process: "Department && Department.title",
+    feeStructure: "Department && Department.title",
+    courseSchemata: "Department && Department.title",
+    apply: "Department && Department.title",
+    
   };
 
   const body = {
-    mission: Department && Department.title,
-    eligibility: Department && Department.description,
-    outcomes: Department && Department.description,
+    mission: "Department && Department.title",
+    eligibility: "Department && Department.description",
+    outcomes: "Department && Department.description",
   };
 
   return (
@@ -55,7 +62,7 @@ const programSingle = () => {
         <ProgramBody props={body} />
         <Gallery />
       </div>
-      <Footer />
+      <FooterTwo />
     </>
   );
 };

@@ -10,112 +10,51 @@ import {
   SyncOutlined,
 } from "@ant-design/icons";
 import { Player } from "video-react";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { Spin } from "antd";
+import Link from "next/link";
 
 const Gallery = () => {
+  const [Gallery, setGallery] = useState();
+  const getData = async () => {
+    // Get Posts
+    await axios
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((result) => setGallery(result.data));
+    // .then((result) => console.log(result));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
       <Row gutter={100} style={{ marginTop: "16px" }}>
         <Col span={14}>
           <Card title="Gallery" bordered={true} style={{ width: "auto" }}>
             <Row gutter={90} style={{ padding: "10px" }}>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
-              <Col span={3}>
-                <Image
-                  width={80}
-                  height={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </Col>
+              {Gallery ? (
+                Gallery.map((item) => {
+                  return (
+                    <Col span={3}>
+                      <Image
+                        width={80}
+                        height={80}
+                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                      />
+                    </Col>
+                  );
+                })
+              ) : (
+                <p>loading...</p>
+              )}
             </Row>
           </Card>
           {/* <div>

@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../layout/Header/Header";
-import Footer from "../layout/Footer/Footer";
+import FooterTwo from "../layout/Footer/FooterTwo";
 import { Card, Col, Row } from "antd";
 import { HomeOutlined, UserOutlined } from "@ant-design/icons";
 import { Breadcrumb } from "antd";
@@ -20,12 +20,12 @@ const faculty = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("   https://dummyjson.com/products  ", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => setFaculty(result.data.products));
+      .then((result) => setFaculty(result.data));
     // .then((result) => console.log(result));
   };
 
@@ -50,15 +50,19 @@ const faculty = () => {
           <Breadcrumb.Item>Application</Breadcrumb.Item>
         </Breadcrumb>
 
-        <h1>Computer Science</h1>
+        <h1>All</h1>
 
         <Select
-      defaultValue="BSCS"
+      defaultValue="All"
       style={{
         width: 120,
       }}
       onChange={handleChange}
       options={[
+        {
+          value: 'All',
+          label: 'All',
+        },
         {
           value: 'BSCS',
           label: 'BSCS',
@@ -107,7 +111,7 @@ const faculty = () => {
         </Row>
       </div>
 
-      <Footer />
+      <FooterTwo />
     </>
   );
 };

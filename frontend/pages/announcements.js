@@ -4,7 +4,7 @@ import { Col, Row } from "antd";
 import { Breadcrumb, Button } from "antd";
 import { Image } from 'antd';
 import Header from "../layout/Header/Header";
-import Footer from "../layout/Footer/Footer";
+import FooterTwo from "../layout/Footer/FooterTwo";
 import { Space, Table, Tag } from 'antd';
 import { useEffect, useState } from 'react';
 
@@ -121,7 +121,7 @@ const getRandomuserParams = (params) => ({
 
     </div>
     
-    <Footer/>
+    <FooterTwo/>
     </>
   )
 }
