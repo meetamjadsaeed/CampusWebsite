@@ -313,3 +313,13 @@ div.department-card > .ant-card-cover img{
 .slider-wrapper{
   height: 300px !important;
 }
+
+/* animated content  */
+.hero-body > .animated-paragraph {
+  color: #ffffff !important;
+  font-size: 40px;
+    font-weight: 900;
+    text-align: center;
+    padding: 100px 100px 20px 100px;
+
+}

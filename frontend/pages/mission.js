@@ -11,7 +11,7 @@ import Gallery from "../components/card/Gallery";
 import Scholarships from "../components/card/Scholarships";
 import Footer from "../layout/Footer/Footer";
 
-const Home = () => {
+const mission = () => {
   return (
     <>
       <Head>
@@ -21,23 +21,14 @@ const Home = () => {
       </Head>
 
       <Header />
-
       <MainHero
       data={{
-        content:"MERIT QUALITY EXCELLENCE"
+        content:"The mission of Sukkur IBA is to contribute and serve community by imparting knowledge through innovative teaching and applied research at the global levels of excellence. We aim to establish and sustain a competitive meritorious environment by strengthening faculty and using state-of-the-art technology to produce graduates with analytical & creative thinking, leadership skills and entrepreneurial spirit, who possess global outlook and are conscious of ethical values."
       }}
       />
-      <div className="container">
-        {/* <Slider /> */}
-        <Main />
-        <Group />
-        <Programs />
-        <Gallery />
-        <Scholarships />
-      </div>
       <Footer />
     </>
   );
 };
 
-export default Home;
+export default mission;

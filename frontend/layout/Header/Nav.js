@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import Link from "next/link"; 
+import { Spin } from "antd";
 
 const items = [
  {
@@ -16,15 +17,21 @@ const items = [
         label: 'About',
         children: [
           {
-            label: 'Vision',
+            label: (
+              <Link href="/vision">Vision</Link>
+            ),
             key: 'setting:1',
           },
           {
-            label: 'Mission',
+            label: (
+              <Link href="/mission">Mission</Link>
+            ),
             key: 'setting:2',
           },
           {
-            label: 'History',
+            label: (
+              <Link href="/history">History</Link>
+            ),
             key: 'setting:3',
           },
         ],

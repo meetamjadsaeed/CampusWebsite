@@ -11,7 +11,7 @@ import Gallery from "../components/card/Gallery";
 import Scholarships from "../components/card/Scholarships";
 import Footer from "../layout/Footer/Footer";
 
-const Home = () => {
+const history = () => {
   return (
     <>
       <Head>
@@ -21,23 +21,14 @@ const Home = () => {
       </Head>
 
       <Header />
-
       <MainHero
       data={{
-        content:"MERIT QUALITY EXCELLENCE"
+        content:"The Sukkur Institute of Business Administration is a public sector degree awarding Institute approved by Higher Education Commission and chartered by the Government of Sindh. In 1994, the Sukkur Institute of Business Administration was established for business education, initially in the hired building of Public School, Sukkur. The Senate is the governing body of the Institute. Governor of Sindh is the chancellor. Initially, Sukkur IBA was affiliated to IBA Karachi."
       }}
       />
-      <div className="container">
-        {/* <Slider /> */}
-        <Main />
-        <Group />
-        <Programs />
-        <Gallery />
-        <Scholarships />
-      </div>
       <Footer />
     </>
   );
 };
 
-export default Home;
+export default history;

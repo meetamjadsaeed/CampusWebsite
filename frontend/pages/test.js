@@ -30,6 +30,7 @@ import React from "react";
 
 import FootertTwo from "../layout/Footer/FooterTwo";
 import Footer from "../layout/Footer/Footer";
+import AnimatedContent from "../components/animations/AnimatedContent";
 
 
 const test = () => {
@@ -69,7 +70,9 @@ const test = () => {
   </div>
      */}
 
-     <FootertTwo/>
+     {/* <FootertTwo/> */}
+
+     {/* <AnimatedContent/> */}
     </>
   )
 }

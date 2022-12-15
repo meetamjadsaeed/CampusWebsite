@@ -87,6 +87,10 @@ const Slider = () => {
             <img src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg" />
             <p className="legend">Legend 3</p>
           </div>
+          <div>
+            <img src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg" />
+            <p className="legend">Legend 3</p>
+          </div>
         </Carousel>
       </div>
     </>

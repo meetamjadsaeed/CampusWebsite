@@ -11,7 +11,7 @@ import Gallery from "../components/card/Gallery";
 import Scholarships from "../components/card/Scholarships";
 import Footer from "../layout/Footer/Footer";
 
-const Home = () => {
+const vision = () => {
   return (
     <>
       <Head>
@@ -21,23 +21,14 @@ const Home = () => {
       </Head>
 
       <Header />
-
       <MainHero
       data={{
-        content:"MERIT QUALITY EXCELLENCE"
+        content:"“To become a world class university in the fields of Management Sciences, Information Technology, Engineering, Education and Mathematics”"
       }}
       />
-      <div className="container">
-        {/* <Slider /> */}
-        <Main />
-        <Group />
-        <Programs />
-        <Gallery />
-        <Scholarships />
-      </div>
       <Footer />
     </>
   );
 };
 
-export default Home;
+export default vision;

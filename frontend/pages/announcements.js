@@ -1,127 +1,176 @@
 import React from "react";
-import "antd/dist/antd.css";
-import { Col, Row } from "antd";
-import { Breadcrumb, Button } from "antd";
-import { Image } from 'antd';
+import { Space, Table, Tag } from "antd";
 import Header from "../layout/Header/Header";
 import FooterTwo from "../layout/Footer/FooterTwo";
-import { Space, Table, Tag } from 'antd';
-import { useEffect, useState } from 'react';
-
-
-// import qs from 'qs';
-var qs = require('qs');
+import { Breadcrumb, Button } from "antd";
+import { Col, Row } from "antd";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { Spin } from "antd";
 
 const columns = [
   {
-    title: 'Project Title',
-    dataIndex: 'name',
-    sorter: true,
-    render: (name) => `${name.first} ${name.last}`,
-    width: '70%',
+    title: "Project",
+    dataIndex: "Project",
+    key: "Project",
   },
   {
-    title: 'Documents( PDF )',
-    dataIndex: 'gender',
-    filters: [
-      {
-        text: 'Male',
-        value: 'male',
-      },
-      {
-        text: 'Female',
-        value: 'female',
-      },
-    ],
-    width: '20%',
+    title: "Documents",
+    dataIndex: "Documents",
+    key: "Documents",
+    render: (text) =><Link href="https://example.com">{text}</Link> ,
   },
   {
-    title: 'Last Date',
-    dataIndex: 'email',
+    title: "Last Date",
+    dataIndex: "Lastdate",
+    key: "Lastdate",
   },
   {
-    title: 'Publish Date',
-    dataIndex: 'email',
+    title: "Publish Date",
+    dataIndex: "Publishdate",
+    key: "Publishdate",
   },
 ];
-const getRandomuserParams = (params) => ({
-  results: params.pagination?.pageSize,
-  page: params.pagination?.current,
-  ...params,
-});
 
+export default function Announcements() {
+  const [announcements, setannouncements] = useState();
+  const getData = async () => {
+    // Get Posts
+    await axios
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((result) => setannouncements(result.data));
+    // .then((result) => console.log(result));
+  };
 
+  useEffect(() => {
+    getData();
+  }, []);
 
-  export default function Announcements(){
+  // var data = [];
 
-    const [data, setData] = useState();
-    const [loading, setLoading] = useState(false);
-    const [tableParams, setTableParams] = useState({
-      pagination: {
-        current: 1,
-        pageSize: 10,
-      },
-    });
-    const fetchData = () => {
-      setLoading(true);
-      fetch(`https://randomuser.me/api?${qs.stringify(getRandomuserParams(tableParams))}`)
-        .then((res) => res.json())
-        .then(({ results }) => {
-          setData(results);
-          setLoading(false);
-          setTableParams({
-            ...tableParams,
-            pagination: {
-              ...tableParams.pagination,
-              total: 200,
-              // 200 is mock data, you should read it from server
-              // total: data.totalCount,
-            },
-          });
-        });
-    };
+  // posts.map((post) => 
   
-    useEffect(() => {
-      fetchData();
-    }, [JSON.stringify(tableParams)]);
-    const handleTableChange = (pagination, filters, sorter) => {
-      setTableParams({
-        pagination,
-        filters,
-        ...sorter,
-      });
-    };
+  // data = [
+  //   {
+
+  //   }
+  // ]
+  
+  // )
+
+  // announcements.map(
+  //   (item) =>
+  //     (data = [
+  //       {
+  //         key: item.id,
+  //         Project: "ABC",
+  //         Documents: "Documents",
+  //         Lastdate: "Lastdate",
+  //         Publishdate: "Publishdate",
+  //       },
+
+  //     ])
+  // );
+  
+
+  // const data = [
+  //   {
+  //     key: '1',
+  //     Project: 'ABC',
+  //     Documents: "Documents",
+  //     Lastdate: "Lastdate",
+  //     Publishdate: "Publishdate"
+  //   },
+  //   {
+  //     key: '2',
+  //     Project: 'ABC',
+  //     Documents: "Documents",
+  //     Lastdate: "Lastdate",
+  //     Publishdate: "Publishdate"
+  //   },
+  //   {
+  //     key: '3',
+  //     Project: 'ABC',
+  //     Documents: "Documents",
+  //     Lastdate: "Lastdate",
+  //     Publishdate: "Publishdate"
+  //   },
+  //   {
+  //     key: '4',
+  //     Project: 'ABC',
+  //     Documents: "Documents",
+  //     Lastdate: "Lastdate",
+  //     Publishdate: "Publishdate"
+  //   },
+  // ];
 
   return (
     <>
-    <Header/>
-    <div className="container">
+      <Header />
+      <div className="container">
+        <Breadcrumb style={{ marginTop: 16 }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="">Announcements</a>
+          </Breadcrumb.Item>
+        </Breadcrumb>
 
-    <Breadcrumb style={{ marginTop: 16 }}>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href="">Announcements</a>
-        </Breadcrumb.Item>
-      </Breadcrumb>
+        <Row>
+          <Col span={16}>
+            <h2>Announcements</h2>
+          </Col>
+          {/* <Col span={8}><Button type="">Apply Online</Button></Col> */}
+        </Row>
 
-      
-      <Row>
-      <Col span={16}><h2>Announcements</h2></Col>
-      {/* <Col span={8}><Button type="">Apply Online</Button></Col> */}
-    </Row>
+        <Table columns={columns} dataSource={
+          [
+            {
+              key: "1",
+              Project: "ABC",
+              Documents: "View Doc",
+              Lastdate: "30-12-2022",
+              Publishdate: "30-12-2022",
+            },
+            {
+              key: "2",
+              Project: "ABC",
+              Documents: "View Doc",
+              Lastdate: "30-12-2022",
+              Publishdate: "30-12-2022",
+            },
+            {
+              key: "3",
+              Project: "ABC",
+              Documents: "View Doc",
+              Lastdate: "30-12-2022",
+              Publishdate: "30-12-2022",
+            },
+            {
+              key: "2",
+              Project: "ABC",
+              Documents: "View Doc",
+              Lastdate: "30-12-2022",
+              Publishdate: "30-12-2022",
+            },
+            {
+              key: "3",
+              Project: "ABC",
+              Documents: "View Doc",
+              Lastdate: "30-12-2022",
+              Publishdate: "30-12-2022",
+            }
+          ]
+        } />
+      </div>
 
-      <Table
-      columns={columns}
-      rowKey={(record) => record.login.uuid}
-      dataSource={data}
-      pagination={tableParams.pagination}
-      loading={loading}
-      onChange={handleTableChange}
-    />
-
-    </div>
-    
-    <FooterTwo/>
+      <FooterTwo />
     </>
-  )
+  );
 }

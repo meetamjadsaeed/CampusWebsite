@@ -15,16 +15,31 @@ import {
 export const Footer = () => {
   const data = [
     {
-      title: "Ant Design Title 1",
+      title: "Employee Handbook 20-21",
     },
     {
-      title: "Ant Design Title 2",
+      title: "Fab Lab",
     },
     {
-      title: "Ant Design Title 3",
+      title: "Virtual University (Lectures)",
     },
     {
-      title: "Ant Design Title 4",
+      title: "LMS (eLearning)",
+    },
+  ];
+
+  const social = [
+    {
+      title: "Facebook",
+    },
+    {
+      title: "Twitter",
+    },
+    {
+      title: "Linkidin",
+    },
+    {
+      title: "Youtube",
     },
   ];
   return (
@@ -36,7 +51,7 @@ export const Footer = () => {
               <Image
                 width={80}
                 height={80}
-                src="https://www.freelogoservices.com/blog/wp-content/uploads/transparent-logo.jpg"
+                src="https://i0.wp.com/jaamiah.com/wp-content/uploads/2020/04/Sukkur-IBA-University-Kandhkot-Campus-logo.jpg?resize=179%2C170&ssl=1"
               />
             </Col>
             <Col span={6}>
@@ -56,39 +71,26 @@ export const Footer = () => {
                 renderItem={(item) => (
                   <List.Item>
                     <List.Item.Meta
-                      title={<a href="https://ant.design">{item.title}</a>}
+                      title={<a href="#">{item.title}</a>}
                     />
                   </List.Item>
                 )}
               />
             </Col>
             <Col span={6}>
-              <List
-                grid={{ gutter: 0, column: 4 }}
-                dataSource={data}
+            <h3 className="white">Social Presence</h3>
+            <List style={{color: '#fff'}}
+                itemLayout="horizontal"
+                dataSource={social}
                 renderItem={(item) => (
                   <List.Item>
-                    <Image
-                      width={50}
-                      height={50}
-                      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    <List.Item.Meta
+                      title={<a href="#">{item.title}</a>}
                     />
                   </List.Item>
                 )}
               />
-              <List
-                grid={{ gutter: 0, column: 4 }}
-                dataSource={data}
-                renderItem={(item) => (
-                  <List.Item>
-                    <Image
-                      width={50}
-                      height={50}
-                      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                    />
-                  </List.Item>
-                )}
-              />
+             
             </Col>
           </Row>
           <Row>
