@@ -2,7 +2,8 @@ import React from "react";
 import { Card, Col, Row } from "antd";
 import News  from "./News";
 import Events from "./Events";
-import Query from "./Query";
+// import Query from "./Query";
+import Announcements from "./Announcements";
 
 const Group = () => {
   return (
@@ -16,7 +17,7 @@ const Group = () => {
             <Events />
           </Col>
           <Col span={8}>
-            <Query />
+            <Announcements />
           </Col>
         </Row>
       </div>

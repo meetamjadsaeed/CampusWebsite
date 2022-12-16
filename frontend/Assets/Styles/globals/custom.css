@@ -323,3 +323,8 @@ div.department-card > .ant-card-cover img{
     padding: 100px 100px 20px 100px;
 
 }
+
+.video-react.video-react-fluid{
+margin-top: 100px !important;
+opacity: 0.6;
+}

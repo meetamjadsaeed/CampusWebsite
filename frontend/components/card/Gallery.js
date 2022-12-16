@@ -37,8 +37,8 @@ const Gallery = () => {
   return (
     <>
       <Row gutter={100} style={{ marginTop: "16px" }}>
-        <Col span={14}>
-          <Card title="Gallery" bordered={true} style={{ width: "auto" }}>
+        <Col span={24}>
+          <Card title="Campus Life" bordered={true} style={{ width: "auto" }}>
             <Row gutter={90} style={{ padding: "10px" }}>
               {Gallery ? (
                 Gallery.map((item) => {
@@ -63,7 +63,7 @@ const Gallery = () => {
           </div>
           <button className="">View all</button> */}
         </Col>
-        <Col span={10}>
+        {/* <Col span={10}>
           <Card title="Campus tour" bordered={true} style={{ width: "auto" }}>
             <Player
               playsInline
@@ -71,7 +71,7 @@ const Gallery = () => {
               src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
             />
           </Card>
-        </Col>
+        </Col> */}
       </Row>
     </>
   );

@@ -1,8 +1,8 @@
 import Head from "next/head";
 // import Image from "next/image";
 // import cardStyles from "../Assets/Styles/Card/Card.module.css";
-import Header  from "../layout/Header/Header";
-import MainHero  from "../layout/MainHero";
+import Header from "../layout/Header/Header";
+import MainHero from "../layout/MainHero";
 import Slider from "../components/slider/MainSlider";
 import Main from "../components/card/Main";
 import Group from "../components/card/Group";
@@ -23,9 +23,10 @@ const Home = () => {
       <Header />
 
       <MainHero
-      data={{
-        content:"MERIT QUALITY EXCELLENCE"
-      }}
+        data={{
+          content: "",
+          videoUrl: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+        }}
       />
       <div className="container">
         {/* <Slider /> */}

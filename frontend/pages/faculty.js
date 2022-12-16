@@ -3,7 +3,7 @@ import Header from "../layout/Header/Header";
 import FooterTwo from "../layout/Footer/FooterTwo";
 import { Card, Col, Row } from "antd";
 import { HomeOutlined, UserOutlined } from "@ant-design/icons";
-import { Breadcrumb } from "antd";
+import { Breadcrumb ,Button} from "antd";
 import { Spin } from "antd";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -16,17 +16,30 @@ const handleChange = (value) => {
 
 const { Meta } = Card;
 const faculty = () => {
-  const [Faculty, setFaculty] = useState();
+  const [AllProfiles, setAllProfiles] = useState();
+  const [ProfilebyCat, setProfilebyCat] = useState();
+
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/profiles", {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => setFaculty(result.data));
+      .then((result) => setAllProfiles(result.data));
     // .then((result) => console.log(result));
+
+    await axios
+    .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((result) => setProfilebyCat(result.data));
+  // .then((result) => console.log(result));
+
+    
   };
 
   useEffect(() => {
@@ -49,7 +62,21 @@ const faculty = () => {
           </Breadcrumb.Item>
           <Breadcrumb.Item>Application</Breadcrumb.Item>
         </Breadcrumb>
+        {AllProfiles ? (
+              AllProfiles.map((item) => {
+                // console.log(item);
+                return (
+                  <Link href={`faculty/${item.id}`}>  
+        <Button type="">{item.name}</Button>
+                  </Link>
+        
 
+        );
+      })
+    ) : (
+      <Spin />
+    )}
+        
         <h1>All</h1>
 
         <Select
@@ -73,15 +100,15 @@ const faculty = () => {
         },
        
         {
-          value: 'managment',
-          label: 'managment',
+          value: 'Management',
+          label: 'Management',
         },
       ]}
     />
 
         <Row gutter={40} style={{ marginTop: "2%", marginBottom: "2%" }}>
-        {Faculty ? (
-              Faculty.map((item) => {
+        {AllProfiles ? (
+              AllProfiles.map((item) => {
                 // console.log(item);
                 return (
           <Col style={{ marginTop: "2%", marginBottom: "2%" }}>

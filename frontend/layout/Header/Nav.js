@@ -86,7 +86,7 @@ const items = [
   },
   {
     label: (
-      <Link href="/faculty">Profiles</Link>
+      <Link href="/allprofiles">Profiles</Link>
     ),
     key: 'Faculties',
     icon: <SettingOutlined />,
