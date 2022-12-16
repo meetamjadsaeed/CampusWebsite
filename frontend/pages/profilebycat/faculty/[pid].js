@@ -72,6 +72,9 @@ import FooterTwo from "../../../layout/Footer/FooterTwo";
 //   },
 // ];
 
+// regex for removing the html tags 
+const regex = /(<([^>]+)>)/ig;
+
 const faculty = () => {
   const [Faculty, setFaculty] = useState();
   // const [activeTabKey1, setActiveTabKey1] = useState("tab1");
@@ -138,7 +141,7 @@ background: '#fff',
 
               <h2>Professor</h2>
               <p>
-              {Faculty && Faculty[0]["content"]["rendered"]}
+              {Faculty && Faculty[0]["content"]["rendered"].replace(regex, '')}
               </p>
               <p>Contact Member: </p>
               <p>E-mail : rehman@iba-suk.edu.pk</p>

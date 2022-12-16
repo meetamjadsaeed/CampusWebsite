@@ -14,28 +14,21 @@ const Main = (props) => {
         style={{ marginTop: "5%" }}
       >
         <Card
-          title="Descriptive Content about Sukkur IBA KKOT Campus"
+          title="About Sukkur IBA KKOT Campus"
           bordered={true}
           style={{ width: "auto" }}
         >
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            gravida tempor neque, sed blandit felis. Aenean vel augue non ligula
-            porttitor viverra. Nulla id dignissim lacus. Nullam vehicula aliquam
-            ipsum, et feugiat tellus iaculis et. Sed tincidunt ipsum ante, ut
-            vestibulum massa iaculis sed. Aenean tempor sodales pellentesque.
-            Aenean lacinia, est ac rhoncus mollis, libero purus commodo sapien,
-            a lacinia enim ex id tortor. Fusce feugiat quam ut ligula dictum, at
-            consectetur ante viverra. Aenean bibendum massa varius vulputate
-            volutpat. Aliquam egestas augue sit amet porttitor laoreet. Morbi
-            dolor leo, sollicitudin at nisi a, varius euismod libero. In
-            pellentesque libero vel turpis eleifend ultricies. mollis, libero
-            purus commodo sapien, a lacinia enim ex id tortor. Fusce feugiat
-            quam ut ligula dictum, at consectetur ante viverra. Aenean bibendum
-            massa varius vulputate volutpat. Aliquam egestas augue sit amet
-            porttitor laoreet. Morbi dolor leo, sollicitudin at nisi a, varius
-            euismod libero. In pellentesque libero vel turpis eleifend
-            ultricies.
+            Sukkur IBA University – Kandhkot Campus has been established with a
+            goal to offer access to quality education to the people of
+            underprivileged areas of Pakistan. With its geographical importance
+            in Kandhkot city, the campus provides easy access to the students
+            hailing from south Punjab, northern Sindh, and south-east
+            Balochistan. The campus offers admission in various programs
+            including undergraduate, foundation semester, summer program, and
+            short courses. Undergraduate programs offered in three important
+            disciplines: Bachelor of Business Administration Bachelor of
+            Computer Science Bachelor of Education
           </p>
         </Card>
       </div>

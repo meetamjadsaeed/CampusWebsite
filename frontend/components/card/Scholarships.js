@@ -32,13 +32,14 @@ const Scholarships = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=20", {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((result) => setScholarships(result.data));
-    // .then((result) => console.log(result));
+    // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
+    // Faculty[0]["content"]["rendered"]
   };
 
   useEffect(() => {
@@ -69,7 +70,12 @@ const Scholarships = () => {
              {Scholarships ? (
                 Scholarships.map((item) => {
                   return (
-             <img src="https://picsum.photos/200" alt="picsum" style={{ borderRadius: "10px" }} />
+             <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/OGDCL_logo.svg/1200px-OGDCL_logo.svg.png" 
+             
+             alt="picsum" style={{ borderRadius: "10px", margin:"20px", width: "100px", height: "100px" }} 
+             
+
+             />
              );
             })
           ) : (

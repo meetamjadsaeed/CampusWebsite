@@ -93,7 +93,7 @@ const items = [
   },
   {
     label: (
-      <Link href="/">Resources</Link>
+      <Link href="https://www.iba-suk.edu.pk/student-resources">Resources</Link>
     ),
     key: 'Resources',
     icon: <SettingOutlined />,

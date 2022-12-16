@@ -61,12 +61,17 @@ const displayFlex = {
   alignItems: "flex-start",
 };
 
+// regex for removing the html tags 
+const regex = /(<([^>]+)>)/ig;
+
+
 const Programs = () => {
   const [Programs, setPrograms] = useState();
   const getData = async () => {
+   
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=16", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -114,16 +119,15 @@ const Programs = () => {
                           padding: "20px",
                         }}
                       >
-                        <h3>MS MPhil</h3>
+                        <h3>{item["title"]["rendered"]}</h3>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Aenean gravida tempor neque, sed blandit felis.
-                          Aenean vel augue non ligula porttitor viverra. Nulla
-                          id dignissim lacus. Nullam vehicula aliquam{" "}
+                        {item["content"]["rendered"].replace(regex, '')}
                         </p>
+                        {/* <Link href=`/program/{Programs.id}`> */}
                         <Button>
                           View Details <ArrowRightOutlined />
                         </Button>
+                        {/* </Link> */}
                       </Col>
                       <Col span={14}>
                         <Image

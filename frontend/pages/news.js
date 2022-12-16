@@ -19,12 +19,16 @@ import { Spin } from "antd";
 
 import qs from "qs";
 
+// regex for removing the html tags 
+const regex = /(<([^>]+)>)/ig;
+
+
 const news = () => {
   const [Departments, setDepartments] = useState();
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=14", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -90,10 +94,8 @@ const news = () => {
                       >
                         <Meta
                           avatar={<Avatar src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>}
-                          title="News"
-                          description="orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                          molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                          numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium"
+                          title={item["title"]["rendered"]}
+                          description= {item["content"]["rendered"].replace(regex, '')}
                         />
                       </Card>
                     </Link>

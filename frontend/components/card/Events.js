@@ -28,7 +28,7 @@ const Events = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=13", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -66,8 +66,8 @@ const Events = () => {
                     <Card style={{ width: 300, marginTop: 16 }}>
                       <Meta
                         avatar={<Image width={50} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />}
-                        title="Event title"
-                        description="March 12, 2020"
+                        title={item["title"]["rendered"]}
+                        description={item["date"]}
                       />
                     </Card>
                   </Link>

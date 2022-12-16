@@ -28,13 +28,14 @@ const News = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=14", {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((result) => setNews(result.data));
-    // .then((result) => console.log(result));
+      // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
+      // .then((result) => console.log(result.data[0]["date"]));
   };
 
   useEffect(() => {
@@ -64,8 +65,8 @@ const News = () => {
                     <Card style={{ width: 300, marginTop: 16 }}>
                       <Meta
                         avatar={<Image width={50} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />}
-                        title="News title"
-                        description="March 12, 2020"
+                        title={item["title"]["rendered"]}
+                        description={item["date"]}
                       />
                     </Card>
                   </Link>

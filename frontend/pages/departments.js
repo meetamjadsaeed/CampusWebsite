@@ -17,12 +17,16 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Spin } from "antd";
 
+// regex for removing the html tags 
+const regex = /(<([^>]+)>)/ig;
+
+
 const Departments = () => {
   const [Departments, setDepartments] = useState();
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15", {
+      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=16", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -86,9 +90,8 @@ const Departments = () => {
                       >
                         <Meta
                           // avatar={<Avatar src={item.thumbnail} />}
-                          title="Department"
-                          description="orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                          molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum"
+                          title={item["title"]["rendered"]}
+                          description= {item["content"]["rendered"].replace(regex, '')}
                         />
                       </Card>
                     </Link>

@@ -6,6 +6,8 @@ import { Image } from "antd";
 import { Nav } from "./Nav";
 import { Slider } from "../../components/slider/MainSlider";
 import styles from "./Header.module.css";
+import Link from "next/link"; 
+
 
 const Header = () => {
   return (
@@ -31,6 +33,7 @@ const Header = () => {
                   width: "700px",
                 }}
               >
+                <Link href="/">
                 <h2
                 style={{
                   color: '#ffffff',
@@ -42,7 +45,7 @@ const Header = () => {
                 >
                 SIBA KDK Campus
                 </h2>
-               
+                </Link>
                 
                 </div>
             </Col>

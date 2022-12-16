@@ -64,8 +64,8 @@ const Announcements = () => {
                     <Card style={{ width: 300, marginTop: 16 }}>
                       <Meta
                         // avatar={<Image width={50} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />}
-                        title="Announcements title"
-                        description="March 12, 2020"
+                        title={item["title"]["rendered"]}
+                        description={item["date"]}
                       />
                     </Card>
                   </Link>
