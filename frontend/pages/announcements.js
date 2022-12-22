@@ -21,7 +21,7 @@ const columns = [
     title: "Documents",
     dataIndex: "Documents",
     key: "Documents",
-    render: (text) =><Link href="https://example.com">{text}</Link> ,
+    render: (text) => <Link href="https://example.com">{text}</Link>,
   },
   {
     title: "Last Date",
@@ -55,14 +55,14 @@ export default function Announcements() {
 
   // var data = [];
 
-  // posts.map((post) => 
-  
+  // posts.map((post) =>
+
   // data = [
   //   {
 
   //   }
   // ]
-  
+
   // )
 
   // announcements.map(
@@ -78,7 +78,6 @@ export default function Announcements() {
 
   //     ])
   // );
-  
 
   // const data = [
   //   {
@@ -114,6 +113,7 @@ export default function Announcements() {
   return (
     <>
       <Header />
+
       <div className="container">
         <Breadcrumb style={{ marginTop: 16 }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -121,53 +121,66 @@ export default function Announcements() {
             <a href="">Announcements</a>
           </Breadcrumb.Item>
         </Breadcrumb>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignContent: "space-around",
+            flexWrap: "nowrap",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "2%",
+          }}
+        >
+          {/* <Button type="">Admission process</Button> */}
+          {/* <Button type="">Fee Structure</Button> */}
+          {/* <Button type="">Apply Online</Button> */}
+        </div>
 
-        <Row>
-          <Col span={16}>
-            <h2>Announcements</h2>
-          </Col>
-          {/* <Col span={8}><Button type="">Apply Online</Button></Col> */}
-        </Row>
+        <div className="site-card-wrapper">
+          <h1 className="page-title">Announcements</h1>
 
-        <Table columns={columns} dataSource={
-          [
-            {
-              key: "1",
-              Project: "ABC",
-              Documents: "View Doc",
-              Lastdate: "30-12-2022",
-              Publishdate: "30-12-2022",
-            },
-            {
-              key: "2",
-              Project: "ABC",
-              Documents: "View Doc",
-              Lastdate: "30-12-2022",
-              Publishdate: "30-12-2022",
-            },
-            {
-              key: "3",
-              Project: "ABC",
-              Documents: "View Doc",
-              Lastdate: "30-12-2022",
-              Publishdate: "30-12-2022",
-            },
-            {
-              key: "2",
-              Project: "ABC",
-              Documents: "View Doc",
-              Lastdate: "30-12-2022",
-              Publishdate: "30-12-2022",
-            },
-            {
-              key: "3",
-              Project: "ABC",
-              Documents: "View Doc",
-              Lastdate: "30-12-2022",
-              Publishdate: "30-12-2022",
-            }
-          ]
-        } />
+          <Table
+            columns={columns}
+            dataSource={[
+              {
+                key: "1",
+                Project: "ABC",
+                Documents: "View Doc",
+                Lastdate: "30-12-2022",
+                Publishdate: "30-12-2022",
+              },
+              {
+                key: "2",
+                Project: "ABC",
+                Documents: "View Doc",
+                Lastdate: "30-12-2022",
+                Publishdate: "30-12-2022",
+              },
+              {
+                key: "3",
+                Project: "ABC",
+                Documents: "View Doc",
+                Lastdate: "30-12-2022",
+                Publishdate: "30-12-2022",
+              },
+              {
+                key: "2",
+                Project: "ABC",
+                Documents: "View Doc",
+                Lastdate: "30-12-2022",
+                Publishdate: "30-12-2022",
+              },
+              {
+                key: "3",
+                Project: "ABC",
+                Documents: "View Doc",
+                Lastdate: "30-12-2022",
+                Publishdate: "30-12-2022",
+              },
+            ]}
+          />
+        </div>
       </div>
 
       <FooterTwo />

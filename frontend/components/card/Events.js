@@ -43,7 +43,7 @@ const Events = () => {
 
   return (
     <>
-      <Card title="Events title" bordered={true}
+      <Card title="Events" bordered={true}
       className="event-slide"
       >
         <Carousel

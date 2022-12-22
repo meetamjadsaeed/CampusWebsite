@@ -11,7 +11,6 @@ import axios from "axios";
 import Link from "next/link";
 import { Select } from "antd";
 
-
 const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
@@ -32,7 +31,6 @@ const allprofiles = () => {
       })
       .then((result) => setAllProfiles(result.data));
     // .then((result) => console.log(result));
-
   };
 
   useEffect(() => {
@@ -43,75 +41,62 @@ const allprofiles = () => {
       <Header />
 
       <div className="container">
-        <Breadcrumb style={{ marginTop: "50px" }}>
-          <Breadcrumb.Item href="">
-            <HomeOutlined />
+        <Breadcrumb style={{ marginTop: 16 }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="">All Profiles</a>
           </Breadcrumb.Item>
-          <Breadcrumb.Item href="">
-            <UserOutlined />
-            <span>Application List</span>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>Application</Breadcrumb.Item>
         </Breadcrumb>
-        <h1>All Profiles</h1>
-
-        {/* <Select
-          defaultValue="All"
+        <div
           style={{
-            width: 120,
+            display: "flex",
+            flexDirection: "row",
+            alignContent: "space-around",
+            flexWrap: "nowrap",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "2%",
           }}
-          onChange={handleChange}
-          options={[
-            {
-              value: "All",
-              label: "All",
-            },
-            {
-              value: "BSCS",
-              label: "BSCS",
-            },
-            {
-              value: "BBA",
-              label: "BBA",
-            },
+        >
+          {/* <Button type="">Admission process</Button> */}
+          {/* <Button type="">Fee Structure</Button> */}
+          {/* <Button type="">Apply Online</Button> */}
+        </div>
 
-            {
-              value: "Management",
-              label: "Management",
-            },
-          ]}
-        /> */}
+        <div className="site-card-wrapper">
+          <h1 className="page-title">All Profiles</h1>
 
-        <Row gutter={40} style={{ marginTop: "2%", marginBottom: "2%" }}>
-          {AllProfiles ? (
-            AllProfiles.map((item) => {
-              // console.log(item);
-              return (
-                <Col style={{ marginTop: "2%", marginBottom: "2%" }}>
-                  <Link href={`profilebycat/${item.id}`}>
-                    <Card
-                      hoverable
-                      style={{ width: 240 }}
-                      cover={
-                        <img
-                          alt="example"
-                          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          <Row gutter={40} style={{ marginTop: "2%", marginBottom: "2%" }}>
+            {AllProfiles ? (
+              AllProfiles.map((item) => {
+                // console.log(item);
+                return (
+                  <Col style={{ marginTop: "2%", marginBottom: "2%" }}>
+                    <Link href={`profilebycat/${item.id}`}>
+                      <Card
+                        hoverable
+                        style={{ width: 240 }}
+                        cover={
+                          <img
+                            alt="example"
+                            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                          />
+                        }
+                      >
+                        <Meta
+                          title={item.name}
+                          // description="www.instagram.com"
                         />
-                      }
-                    >
-                      <Meta
-                        title={item.name}
-                        // description="www.instagram.com"
-                      />
-                    </Card>
-                  </Link>
-                </Col>
-              );
-            })
-          ) : (
-            <Spin />
-          )}
-        </Row>
+                      </Card>
+                    </Link>
+                  </Col>
+                );
+              })
+            ) : (
+              <Spin />
+            )}
+          </Row>
+        </div>
       </div>
 
       <FooterTwo />

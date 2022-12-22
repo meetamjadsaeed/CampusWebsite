@@ -47,7 +47,7 @@ const Departments = () => {
         <Breadcrumb style={{ marginTop: 16 }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a href="">Application Center</a>
+            <a href="">Departments</a>
           </Breadcrumb.Item>
         </Breadcrumb>
         <div
@@ -67,6 +67,8 @@ const Departments = () => {
         </div>
 
         <div className="site-card-wrapper">
+        <h1 className="page-title">Departments</h1>
+
           <Row gutter={16} style={{ marginTop: "50px", marginBottom: "50px" }}>
             {Departments ? (
               Departments.map((item) => {

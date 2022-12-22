@@ -41,15 +41,21 @@ const items = [
         label: 'Founders',
         children: [
           {
-            label: 'Vice Chancellor',
+            label: (
+              <Link href="http://localhost:3000/profilebycat/faculty/vice-chancellor">Vice Chancellor</Link>
+            ),
             key: 'setting:4',
           },
           {
-            label: 'Registrar',
+            label: (
+              <Link href="http://localhost:3000/profilebycat/faculty/registrar">Registrar</Link>
+            ),
             key: 'setting:5',
           },
           {
-            label: 'Director',
+            label: (
+              <Link href="http://localhost:3000/profilebycat/faculty/director">Director</Link>
+            ),
             key: 'setting:6',
           },
         ],
@@ -58,37 +64,24 @@ const items = [
   },
   {
     label: (
-      <Link href="/events">Events</Link>
+      <Link href="/pinboard">Pin Board</Link>
     ),
-    key: 'Events',
+    key: 'pinboard',
     icon: <SettingOutlined />,
   },
+
   {
     label: (
-      <Link href="/news">News</Link>
+      <Link href="/admissions">Admissions</Link>
     ),
-    key: 'News',
-    icon: <SettingOutlined />,
-  },
-  {
-    label: (
-      <Link href="/announcements">Annoucements</Link>
-    ),
-    key: 'Annoucements',
-    icon: <SettingOutlined />,
-  },
-  {
-    label: (
-      <Link href="/departments">Departments</Link>
-    ),
-    key: 'Departments',
+    key: 'admissions',
     icon: <SettingOutlined />,
   },
   {
     label: (
       <Link href="/allprofiles">Profiles</Link>
     ),
-    key: 'Faculties',
+    key: 'allprofiles',
     icon: <SettingOutlined />,
   },
   {
@@ -96,6 +89,13 @@ const items = [
       <Link href="https://www.iba-suk.edu.pk/student-resources">Resources</Link>
     ),
     key: 'Resources',
+    icon: <SettingOutlined />,
+  },
+  {
+    label: (
+      <Link href="/campustour">Campus</Link>
+    ),
+    key: 'campus',
     icon: <SettingOutlined />,
   },
 

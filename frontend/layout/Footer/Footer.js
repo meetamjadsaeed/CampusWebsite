@@ -49,9 +49,9 @@ export const Footer = () => {
           <Row gutter={100} style={{ marginTop: 16 }}>
             <Col span={6}>
               <Image
-                width={80}
-                height={80}
-                src="https://i0.wp.com/jaamiah.com/wp-content/uploads/2020/04/Sukkur-IBA-University-Kandhkot-Campus-logo.jpg?resize=179%2C170&ssl=1"
+                width={150}
+                height={150}
+                src="http://iba-kdk.com/wp-content/uploads/2022/12/Full-White-PNG.png"
               />
             </Col>
             <Col span={6}>

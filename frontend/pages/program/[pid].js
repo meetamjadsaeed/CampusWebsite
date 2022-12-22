@@ -9,7 +9,6 @@ import Gallery from "../../components/card/Gallery";
 import Header from "../../layout/Header/Header";
 import FooterTwo from "../../layout/Footer/FooterTwo";
 
-
 const programSingle = () => {
   const router = useRouter();
   const { pid } = router.query;
@@ -23,32 +22,28 @@ const programSingle = () => {
         },
       })
       .then((result) => setDepartment(result.data));
-    //   .then((result) => console.log(result.data.title));
+      // .then((result) => console.log(result.data));
+      // .then((result) => console.log(result.data["title"]["rendered"]));
+
   };
 
   useEffect(() => {
     getData();
+    // console.log(Department);
   }, []);
 
   const header = {
-    // title: Department && Department.title,
-    // description: Department && Department.description,
-    // process: Department && Department.title,
-    // feeStructure: Department && Department.title,
-    // courseSchemata: Department && Department.title,
-    // apply: Department && Department.title,
-    title: "Department && Department.title",
-    description: "Department && Department.description",
+    title: "Department Name",
+    description: "Department Description",
     process: "Department && Department.title",
     feeStructure: "Department && Department.title",
     courseSchemata: "Department && Department.title",
     apply: "Department && Department.title",
-    
   };
 
   const body = {
-    mission: "Department && Department.title",
-    eligibility: "Department && Department.description",
+    mission: "Department Mission Statement",
+    eligibility: "Department (PLO)",
     outcomes: "Department && Department.description",
   };
 

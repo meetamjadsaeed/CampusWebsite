@@ -13,7 +13,7 @@ const ProgramHeader = ({props}) => {
       <Breadcrumb style={{ marginTop: 16 }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>
-          <a href="">Application Center</a>
+          <a href="">Program</a>
         </Breadcrumb.Item>
       </Breadcrumb>
       <Row gutter={100} style={{ marginTop: 16 }}>
@@ -41,9 +41,13 @@ const ProgramHeader = ({props}) => {
               <Button type="">Apply Online</Button>
             </Link>
           </div>
-          <h1 style={{ marginTop: "2%" }}>{props.title}</h1>
-          <p>Lorem ipsum</p>
+          <h1 className="page-title" style={{ marginTop: "2%" }}>{props.title}</h1>
+          {/* <p>Lorem ipsum</p> */}
           <p>{props.description}</p>
+                <Image
+    width="80%"
+    src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Artificial_Intelligence_Human_Intelligence.jpg"
+  />
         </Col>
         <Col span={8}>
           {/* <Image

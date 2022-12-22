@@ -14,15 +14,15 @@ const ProgramBody = ({props}) => {
      
       <Row gutter={100} style={{ marginTop: '2%' }}>
         <Col span={16}>
-        <h2>BBA Program Mission Statement:</h2>
+        <h2 className="page-title">Program Mission Statement:</h2>
         <p>
         {props.mission}
         </p>
-        <h2>BBA Program Learning Outcomes (PLO)</h2>
+        <h2 className="page-title">Program Learning Outcomes (PLO)</h2>
         <p>
         {props.outcomes}
         </p>
-        <h2>Eligibility Criteria for Admission:</h2>
+        <h2 className="page-title">Eligibility Criteria for Admission:</h2>
         <p>
         {props.eligibility}
         </p>

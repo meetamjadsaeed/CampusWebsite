@@ -60,10 +60,20 @@ h3,
 h4,
 h5,
 h6 {
-  color: #000000;
   /* font-family: 'Playfair Display', serif; */
   font-family: "Roboto", sans-serif;
-  font-weight: normal;
+}
+
+h1.page-title{
+  color: #3b3b3b;
+font-size: 24px;
+font-weight: 700;
+}
+
+h2.page-title{
+  color: #3b3b3b;
+font-size: 24px;
+font-weight: 700;
 }
 
 p {
@@ -157,4 +167,10 @@ button{
   border: 1px solid #e8e8e8  !important;
   border-radius: 4px  !important;
   background: #fff  !important;
+}
+
+.ant-card-head-title{
+  font-size: 24px !important;
+font-weight: 600 !important;
+color: #191919 !important;
 }

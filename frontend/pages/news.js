@@ -19,9 +19,8 @@ import { Spin } from "antd";
 
 import qs from "qs";
 
-// regex for removing the html tags 
-const regex = /(<([^>]+)>)/ig;
-
+// regex for removing the html tags
+const regex = /(<([^>]+)>)/gi;
 
 const news = () => {
   const [Departments, setDepartments] = useState();
@@ -69,22 +68,25 @@ const news = () => {
         </div>
 
         <div className="site-card-wrapper">
-    <h1>News</h1>
+          <h1 className="page-title">News</h1>
 
           <Row gutter={16} style={{ marginTop: "50px", marginBottom: "50px" }}>
             {Departments ? (
               Departments.map((item) => {
                 // console.log(item);
                 return (
-                  <Col span={8}
-                  style={{marginBottom: '50px'}}
-                  >
+                  <Col span={8} style={{ marginBottom: "50px" }}>
                     <Link href={`event/${item.id}`}>
                       <Card
                         style={{
                           width: 300,
                         }}
-                        cover={<img alt="example" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />}
+                        cover={
+                          <img
+                            alt="example"
+                            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                          />
+                        }
                         // actions={[
                         //   <SettingOutlined key="setting" />,
                         //   <EditOutlined key="edit" />,
@@ -93,9 +95,14 @@ const news = () => {
                         className="news-card"
                       >
                         <Meta
-                          avatar={<Avatar src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>}
+                          avatar={
+                            <Avatar src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
+                          }
                           title={item["title"]["rendered"]}
-                          description= {item["content"]["rendered"].replace(regex, '')}
+                          description={item["content"]["rendered"].replace(
+                            regex,
+                            ""
+                          )}
                         />
                       </Card>
                     </Link>

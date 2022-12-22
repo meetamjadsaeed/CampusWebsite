@@ -16,8 +16,6 @@ import Header from "../../layout/Header/Header";
 import FooterTwo from "../../layout/Footer/FooterTwo";
 import { useRouter } from "next/router";
 
-
-
 const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
@@ -25,8 +23,8 @@ const handleChange = (value) => {
 const { Meta } = Card;
 
 const profileByCat = () => {
-    const router = useRouter();
-    const { pid } = router.query;
+  const router = useRouter();
+  const { pid } = router.query;
   const [ProfilebyCat, setProfilebyCat] = useState();
 
   const getData = async () => {
@@ -39,63 +37,51 @@ const profileByCat = () => {
       })
       .then((result) => setProfilebyCat(result.data));
     // .then((result) => console.log(result));
-
   };
 
   useEffect(() => {
     getData();
   }, []);
   return (
-    <>
-      <Header />
+<>
+<Header />
 
-      <div className="container">
-        <Breadcrumb style={{ marginTop: "50px" }}>
-          <Breadcrumb.Item href="">
-            <HomeOutlined />
-          </Breadcrumb.Item>
-          <Breadcrumb.Item href="">
-            <UserOutlined />
-            <span>Application List</span>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>Application</Breadcrumb.Item>
-        </Breadcrumb>
-        {/* <h1>Profiles Of: {pid}</h1> */}
+<div className="container">
+  <Breadcrumb style={{ marginTop: 16 }}>
+    <Breadcrumb.Item>Home</Breadcrumb.Item>
+    <Breadcrumb.Item>
+      <a href="">All Profiles</a>
+    </Breadcrumb.Item>
+    <Breadcrumb.Item>
+      <a href="">Profiles By Department</a>
+    </Breadcrumb.Item>
+  </Breadcrumb>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "row",
+      alignContent: "space-around",
+      flexWrap: "nowrap",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginTop: "2%",
+    }}
+  >
+    {/* <Button type="">Admission process</Button> */}
+    {/* <Button type="">Fee Structure</Button> */}
+    {/* <Button type="">Apply Online</Button> */}
+  </div>
 
-        {/* <Select
-          defaultValue="All"
-          style={{
-            width: 120,
-          }}
-          onChange={handleChange}
-          options={[
-            {
-              value: "All",
-              label: "All",
-            },
-            {
-              value: "BSCS",
-              label: "BSCS",
-            },
-            {
-              value: "BBA",
-              label: "BBA",
-            },
+  <div className="site-card-wrapper">
+    <h1 className="page-title">Profiles By Department</h1>
 
-            {
-              value: "Management",
-              label: "Management",
-            },
-          ]}
-        /> */}
-
-        <Row gutter={40} style={{ marginTop: "2%", marginBottom: "2%" }}>
+    <Row gutter={40} style={{ marginTop: "2%", marginBottom: "2%" }}>
           {ProfilebyCat ? (
             ProfilebyCat.map((item) => {
               // console.log(item);
               return (
                 <Col style={{ marginTop: "2%", marginBottom: "2%" }}>
-                  <Link href={`faculty/${item.slug}`}>
+                  <Link href={`profile/${item.slug}`}>
                     <Card
                       hoverable
                       style={{ width: 240 }}
@@ -106,15 +92,14 @@ const profileByCat = () => {
                         />
                       }
                     >
-                        {/* <h1>{item.slug}</h1> */}
-                  {/* <h1>dsdsd</h1> */}
+                      {/* <h1>{item.slug}</h1> */}
+                      {/* <h1>dsdsd</h1> */}
                       <Meta
                         title={item.title.rendered}
                         // description={item._links.self["href"]}
                       />
                     </Card>
                   </Link>
-                  
                 </Col>
               );
             })
@@ -122,10 +107,11 @@ const profileByCat = () => {
             <Spin />
           )}
         </Row>
-      </div>
+  </div>
+</div>
 
-      <FooterTwo />
-    </>
+<FooterTwo />
+</>
   );
 };
 

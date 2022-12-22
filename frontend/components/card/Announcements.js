@@ -43,7 +43,7 @@ const Announcements = () => {
 
   return (
     <>
-      <Card title="Announcements title" bordered={true}>
+      <Card title="Announcements" bordered={true}>
         <Carousel
           autoPlay={true}
           infiniteLoop={true}

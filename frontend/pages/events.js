@@ -67,7 +67,7 @@ const events = () => {
   </div>
 
   <div className="site-card-wrapper">
-  <h1>Events</h1>
+  <h1 className="page-title">Events</h1>
     <Row gutter={16} style={{ marginTop: "30px"}}>
       {Departments ? (
         Departments.map((item) => {
