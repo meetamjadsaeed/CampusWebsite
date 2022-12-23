@@ -70,12 +70,16 @@ const Scholarships = () => {
              {Scholarships ? (
                 Scholarships.map((item) => {
                   return (
+                    
              <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/OGDCL_logo.svg/1200px-OGDCL_logo.svg.png" 
              
              alt="picsum" style={{ borderRadius: "10px", margin:"20px", width: "100px", height: "100px" }} 
              
 
              />
+            // <p>
+            //   {item._links['wp:featuredmedia']}
+            // </p>
              );
             })
           ) : (

@@ -26,6 +26,8 @@ const profileByCat = () => {
   const router = useRouter();
   const { pid } = router.query;
   const [ProfilebyCat, setProfilebyCat] = useState();
+  const [imagebyCat, setimageCat] = useState();
+  // const [isLoading, setIsLoading] = useState(true)
 
   const getData = async () => {
     // Get Posts
@@ -36,82 +38,113 @@ const profileByCat = () => {
         },
       })
       .then((result) => setProfilebyCat(result.data));
-    // .then((result) => console.log(result));
+    // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
+    // .then((result) => console.log(result.data[0]["featured_media"]));   // get id of featured image
+
+    fetch(`http://iba-kdk.com/wp-json/wp/v2/campus?profiles=${pid}`)
+      .then((response) => response.json())
+      // .then((result) => console.log(result.json()));
+      .then((images) => {
+        const respones = images.map(
+          (image) =>
+            fetch(
+              `http://iba-kdk.com/wp-json/wp/v2/media/${image.featured_media}`
+            ).then((res) => res.json())
+          // .then((res) => console.log(res.json())),
+        );
+        Promise.all(respones).then((fetchedImgaes) => {
+          setimageCat(fetchedImgaes);
+          // setIsLoading(false)
+        });
+      });
   };
 
   useEffect(() => {
     getData();
   }, []);
   return (
-<>
-<Header />
+    <>
+      <Header />
 
-<div className="container">
-  <Breadcrumb style={{ marginTop: 16 }}>
-    <Breadcrumb.Item>Home</Breadcrumb.Item>
-    <Breadcrumb.Item>
-      <a href="">All Profiles</a>
-    </Breadcrumb.Item>
-    <Breadcrumb.Item>
-      <a href="">Profiles By Department</a>
-    </Breadcrumb.Item>
-  </Breadcrumb>
-  <div
-    style={{
-      display: "flex",
-      flexDirection: "row",
-      alignContent: "space-around",
-      flexWrap: "nowrap",
-      justifyContent: "space-between",
-      alignItems: "center",
-      marginTop: "2%",
-    }}
-  >
-    {/* <Button type="">Admission process</Button> */}
-    {/* <Button type="">Fee Structure</Button> */}
-    {/* <Button type="">Apply Online</Button> */}
-  </div>
+      <div className="container">
+        <Breadcrumb style={{ marginTop: 16 }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="">All Profiles</a>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="">Profiles By Department</a>
+          </Breadcrumb.Item>
+        </Breadcrumb>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignContent: "space-around",
+            flexWrap: "nowrap",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "2%",
+          }}
+        >
+          {/* <Button type="">Admission process</Button> */}
+          {/* <Button type="">Fee Structure</Button> */}
+          {/* <Button type="">Apply Online</Button> */}
+        </div>
 
-  <div className="site-card-wrapper">
-    <h1 className="page-title">Profiles By Department</h1>
+        <div className="site-card-wrapper">
+          <h1 className="page-title">Profiles By Department</h1>
 
-    <Row gutter={40} style={{ marginTop: "2%", marginBottom: "2%" }}>
-          {ProfilebyCat ? (
-            ProfilebyCat.map((item) => {
-              // console.log(item);
-              return (
-                <Col style={{ marginTop: "2%", marginBottom: "2%" }}>
-                  <Link href={`profile/${item.slug}`}>
-                    <Card
-                      hoverable
-                      style={{ width: 240 }}
-                      cover={
-                        <img
-                          alt="example"
-                          src="https://conandaily.files.wordpress.com/2020/03/omar-borkan-al-gala.jpg"
+          <Row gutter={40} style={{ marginTop: "2%", marginBottom: "2%" }}>
+            {ProfilebyCat ? (
+              ProfilebyCat.map((item) => {
+                // console.log(item);
+                return (
+                  <Col style={{ marginTop: "2%", marginBottom: "2%" }}>
+                    <Link href={`profile/${item.slug}`}>
+                      <Card
+                        hoverable
+                        style={{ width: 240 }}
+                        cover={
+                          imagebyCat ? (
+                            imagebyCat.map((featuredImage) => {
+                              // console.log(item);
+                              return (
+                                <img
+                                  alt="example"
+                                  src={
+                                    featuredImage
+                                      ? featuredImage.guid.rendered
+                                      : null
+                                  }
+                                />
+                              );
+                            })
+                          ) : (
+                            <Spin />
+                          )
+                        }
+                      >
+                      
+                        <Meta
+                          title={item.title.rendered}
+                          // description={item._links.self["href"]}
+                          // description="sdssd"
                         />
-                      }
-                    >
-                      {/* <h1>{item.slug}</h1> */}
-                      {/* <h1>dsdsd</h1> */}
-                      <Meta
-                        title={item.title.rendered}
-                        // description={item._links.self["href"]}
-                      />
-                    </Card>
-                  </Link>
-                </Col>
-              );
-            })
-          ) : (
-            <Spin />
-          )}
-        </Row>
-  </div>
-</div>
+                      </Card>
+                    </Link>
+                  </Col>
+                );
+              })
+            ) : (
+              <Spin />
+            )}
+          </Row>
+        </div>
+      </div>
 
-<FooterTwo />
-</>
+      <FooterTwo />
+    </>
   );
 };
 

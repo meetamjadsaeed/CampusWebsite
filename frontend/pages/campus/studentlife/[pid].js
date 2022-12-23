@@ -10,11 +10,8 @@ import Link from "next/link";
 import { Select } from "antd";
 import { Avatar } from "antd";
 
-import ProgramHeader from "../../components/program/ProgramHeader";
-import ProgramBody from "../../components/program/ProgramBody";
-import Gallery from "../../components/card/Gallery";
-import Header from "../../layout/Header/Header";
-import FooterTwo from "../../layout/Footer/FooterTwo";
+import Header from "../../../layout/Header/Header";
+import FooterTwo from "../../../layout/Footer/FooterTwo";
 import { useRouter } from "next/router";
 import qs from "qs";
 
@@ -27,42 +24,21 @@ const handleChange = (value) => {
 
 const { Meta } = Card;
 
-const boardbypin = () => {
+const studentLife = () => {
   const router = useRouter();
   const { pid } = router.query;
-  const [boardbypin, setboardbypin] = useState();
-  const [imagebypin, setimagebypin] = useState();
+  const [studentLife, setstudentLife] = useState();
 
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`http://iba-kdk.com/wp-json/wp/v2/campus?pin_board=${pid}`, {
+      .get(`http://iba-kdk.com/wp-json/wp/v2/campus?atcampus=${pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => setboardbypin(result.data));
+      .then((result) => setstudentLife(result.data));
     // .then((result) => console.log(result));
-
-
-    
-    fetch(`http://iba-kdk.com/wp-json/wp/v2/campus?pin_board=${pid}`)
-      .then((response) => response.json())
-      // .then((result) => console.log(result.json()));
-      .then((images) => {
-        const respones = images.map(
-          (image) =>
-            fetch(
-              `http://iba-kdk.com/wp-json/wp/v2/media/${image.featured_media}`
-            ).then((res) => res.json())
-          // .then((res) => console.log(res.json())),
-        );
-        Promise.all(respones).then((fetchedImgaes) => {
-          setimagebypin(fetchedImgaes);
-          // setIsLoading(false)
-        });
-      });
-
   };
 
   useEffect(() => {
@@ -76,7 +52,7 @@ const boardbypin = () => {
         <Breadcrumb style={{ marginTop: 16 }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a href="">Events</a>
+            <a href="">Achievments</a>
           </Breadcrumb.Item>
         </Breadcrumb>
         <div
@@ -98,34 +74,21 @@ const boardbypin = () => {
         <div className="site-card-wrapper">
           <h1 className="page-title">Events</h1>
           <Row gutter={16} style={{ marginTop: "30px" }}>
-            {boardbypin ? (
-              boardbypin.map((item) => {
+            {studentLife ? (
+              studentLife.map((item) => {
                 // console.log(item);
                 return (
                   <Col span={8} style={{ marginBottom: "50px" }}>
-                    <Link href={`pin/${item.slug}`}>
+                    <Link href={`singlelife/${item.slug}`}>
                       <Card
                         style={{
                           width: 300,
                         }}
                         cover={
-                          imagebypin ? (
-                            imagebypin.map((featuredImage) => {
-                              // console.log(item);
-                              return (
-                                <img
-                                  alt="example"
-                                  src={
-                                    featuredImage
-                                      ? featuredImage.guid.rendered
-                                      : null
-                                  }
-                                />
-                              );
-                            })
-                          ) : (
-                            <Spin />
-                          )
+                          <img
+                            alt="example"
+                            src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                          />
                         }
                         // actions={[
                         //   <SettingOutlined key="setting" />,
@@ -135,11 +98,9 @@ const boardbypin = () => {
                         className="event-card"
                       >
                         <Meta
-                          avatar={
-                            <Avatar src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
-                          }
+                          //   avatar={<Avatar src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />}
                           title={item["title"]["rendered"]}
-                          description={item["content"]["rendered"].replace(
+                          description={item["excerpt"]["rendered"].replace(
                             regex,
                             ""
                           )}
@@ -213,4 +174,4 @@ const boardbypin = () => {
   );
 };
 
-export default boardbypin;
+export default studentLife;

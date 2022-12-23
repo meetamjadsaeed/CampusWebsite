@@ -93,7 +93,7 @@ const items = [
   },
   {
     label: (
-      <Link href="/campustour">Campus</Link>
+      <Link href="/campus">Campus</Link>
     ),
     key: 'campus',
     icon: <SettingOutlined />,

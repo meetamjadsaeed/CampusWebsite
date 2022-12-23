@@ -72,7 +72,7 @@ const campustour = () => {
                 // console.log(item);
                 return (
                   <Col style={{ marginTop: "2%", marginBottom: "2%" }}>
-                    <Link href={`profilebycat/${item.id}`}>
+                    <Link href={`campus/achievements/${item.id}`}>
                       <Card
                         hoverable
                         style={{ width: 240 }}
