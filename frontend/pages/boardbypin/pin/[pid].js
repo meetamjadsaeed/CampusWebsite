@@ -8,6 +8,7 @@ import { Table } from "antd";
 import "antd/dist/antd.css";
 import Header from "../../../layout/Header/Header";
 import FooterTwo from "../../../layout/Footer/FooterTwo";
+import Link from "next/link";
 
 // const tabList = [
 //   {
@@ -72,8 +73,8 @@ import FooterTwo from "../../../layout/Footer/FooterTwo";
 //   },
 // ];
 
-// regex for removing the html tags 
-const regex = /(<([^>]+)>)/ig;
+// regex for removing the html tags
+const regex = /(<([^>]+)>)/gi;
 
 const pin = () => {
   const [pin, setpin] = useState();
@@ -91,7 +92,7 @@ const pin = () => {
         },
       })
       .then((result) => setpin(result.data));
-      // .then((result) => console.log(result.data[0]["title"]["rendered"]));
+    // .then((result) => console.log(result.data[0]["title"]["rendered"]));
   };
 
   useEffect(() => {
@@ -108,8 +109,8 @@ const pin = () => {
 
   return (
     <>
-    <Header/>
-       <header className="hero">
+      <Header />
+      <header className="hero">
         <div className="hero-text">
           <h1>Event</h1>
           {/* <p>Details</p> */}
@@ -120,14 +121,41 @@ const pin = () => {
       </header>
 
       <div className="container">
-        <p className='hero-description'>
-        description description
+        <Link href="/">
+          <p style={{ color: "#ea6645" }} className="hero-description">
+            Download Here
+          </p>
+        </Link>
+        <p className="hero-description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing Lorem Lorem ipsum
+          dolor sit amet, consectetur adipiscing Lorem Lorem ipsum dolor sit
+          amet, consectetur adipiscing Lorem Lorem ipsum dolor sit amet,
+          consectetur adipiscing Lorem Lorem ipsum dolor sit amet, consectetur
+          adipiscing Lorem Lorem ipsum dolor sit amet, consectetur adipiscing
+          Lorem Lorem ipsum dolor sit amet, consectetur adipiscing Lorem Lorem
+          ipsum dolor sit amet, consectetur adipiscing Lorem Lorem ipsum dolor
+          sit amet, consectetur adipiscing Lorem Lorem ipsum dolor sit amet,
+          consectetur adipiscing Lorem Lorem ipsum dolor sit amet, consectetur
+          adipiscing Lorem Lorem ipsum dolor sit amet, consectetur adipiscing
+          Lorem Lorem ipsum dolor sit amet, consectetur adipiscing Lorem Lorem
+          ipsum dolor sit amet, consectetur adipiscing Lorem
+          Lorem ipsum dolor sit amet, consectetur adipiscing Lorem Lorem ipsum
+          dolor sit amet, consectetur adipiscing Lorem Lorem ipsum dolor sit
+          amet, consectetur adipiscing Lorem Lorem ipsum dolor sit amet,
+          consectetur adipiscing Lorem Lorem ipsum dolor sit amet, consectetur
+          adipiscing Lorem Lorem ipsum dolor sit amet, consectetur adipiscing
+          Lorem Lorem ipsum dolor sit amet, consectetur adipiscing Lorem Lorem
+          ipsum dolor sit amet, consectetur adipiscing Lorem Lorem ipsum dolor
+          sit amet, consectetur adipiscing Lorem Lorem ipsum dolor sit amet,
+          consectetur adipiscing Lorem Lorem ipsum dolor sit amet, consectetur
+          adipiscing Lorem Lorem ipsum dolor sit amet, consectetur adipiscing
+          Lorem Lorem ipsum dolor sit amet, consectetur adipiscing Lorem Lorem
+          ipsum dolor sit amet, consectetur adipiscing Lorem
         </p>
-        <Button>Download</Button>
+        {/* <Button>Download</Button> */}
       </div>
-      
-      <FooterTwo/>
 
+      <FooterTwo />
     </>
   );
 };

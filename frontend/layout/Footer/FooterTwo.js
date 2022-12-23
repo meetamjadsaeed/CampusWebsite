@@ -45,15 +45,15 @@ const FooterTwo = () => {
     <>
       <div className="footer-two" style={{marginTop:'5%'}}>
         <div className="container">
-          <Row gutter={100} style={{ marginTop: 16 }}>
-            <Col span={6}>
+          <Row  gutter={[32, 40]} style={{ marginTop: 16 }}>
+            <Col xs={24} sm={24} md={24} lg={6} xl={6}>
               <Image
                 width={150}
                 height={150}
                 src="http://iba-kdk.com/wp-content/uploads/2022/12/Full-White-PNG.png"
               />
             </Col>
-            <Col span={6}>
+            <Col xs={24} sm={24} md={24} lg={6} xl={6}>
               <h3 className="white">Contact us</h3>
               <p className="white">
                 Sukkur IBA University Kandhkot Campus, Opposite to Passport
@@ -61,7 +61,7 @@ const FooterTwo = () => {
                 info@ibakdk-suk.edu.pk
               </p>
             </Col>
-            <Col span={6}>
+            <Col xs={24} sm={24} md={24} lg={6} xl={6}>
               <h3 className="white">Important Links</h3>
 
               <List style={{color: '#fff'}}
@@ -76,7 +76,7 @@ const FooterTwo = () => {
                 )}
               />
             </Col>
-            <Col span={6}>
+            <Col xs={24} sm={24} md={24} lg={6} xl={6}>
             <h3 className="white">Social Presence</h3>
             <List style={{color: '#fff'}}
                 itemLayout="horizontal"

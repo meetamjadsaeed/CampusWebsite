@@ -36,16 +36,16 @@ const Gallery = () => {
 
   return (
     <>
-      <Row gutter={100} style={{ marginTop: "16px",  }}>
+      <Row gutter={100} style={{ marginTop: "16px" }}>
         <Col span={24}>
           <Card title="Campus Life" bordered={true} style={{ width: "auto" }}>
-            <Row gutter={90} style={{ padding: "10px"}}>
+            <Row gutter={[16, 40]} style={{ padding: "10px" }}>
               {Gallery ? (
                 Gallery.map((item) => {
                   return (
-                    <Col span={6}
-                    style={{marginBottom: "16px" }}
-                    >
+                    <Col 
+                    xs={12} sm={8} md={6} lg={4} xl={4}
+                    style={{ marginBottom: "16px" }}>
                       <Image
                         // width={80}
                         // height={80}

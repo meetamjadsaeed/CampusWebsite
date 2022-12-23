@@ -6,8 +6,7 @@ import { Image } from "antd";
 import { Nav } from "./Nav";
 import { Slider } from "../../components/slider/MainSlider";
 import styles from "./Header.module.css";
-import Link from "next/link"; 
-
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -34,7 +33,7 @@ const Header = () => {
                 }}
               >
                 <Link href="/">
-                <h2
+                  {/* <h2
                 style={{
                   color: '#ffffff',
                   padding: '30px 0 0 0',
@@ -44,10 +43,16 @@ const Header = () => {
                 }}
                 >
                 SIBA KDK Campus
-                </h2>
+                </h2> */}
+                  <Image
+                    className="logo"
+                    // width={100}
+                    height={120}
+                    src="http://iba-kdk.com/wp-content/uploads/2022/12/Full-White-PNG.png"
+                    // style={{marginLeft:"200%"}}
+                  />
                 </Link>
-                
-                </div>
+              </div>
             </Col>
           </Row>
         </Col>

@@ -9,14 +9,14 @@ const Group = () => {
   return (
     <>
       <div className="site-card-wrapper" style={{ marginTop: "5%" }}>
-        <Row gutter={70}>
-          <Col span={8}>
+        <Row gutter={[40, 40]}>
+          <Col xs={24} sm={24} md={12} lg={8} xl={8}>
             <News />
           </Col>
-          <Col span={8}>
+          <Col xs={24} sm={24} md={12} lg={8} xl={8}>
             <Events />
           </Col>
-          <Col span={8}>
+          <Col xs={24} sm={24} md={12} lg={8} xl={8}>
             <Announcements />
           </Col>
         </Row>

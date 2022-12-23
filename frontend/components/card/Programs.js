@@ -21,7 +21,6 @@ import axios from "axios";
 import { Spin } from "antd";
 import Link from "next/link";
 
-
 // const styles = {
 //   padding: "13px",
 // };
@@ -61,14 +60,12 @@ const displayFlex = {
   alignItems: "flex-start",
 };
 
-// regex for removing the html tags 
-const regex = /(<([^>]+)>)/ig;
-
+// regex for removing the html tags
+const regex = /(<([^>]+)>)/gi;
 
 const Programs = () => {
   const [Programs, setPrograms] = useState();
   const getData = async () => {
-   
     // Get Posts
     await axios
       .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=16", {
@@ -85,9 +82,7 @@ const Programs = () => {
   }, []);
   return (
     <>
-      <div 
-      style={{marginBottom: "50px"}}
-      >
+      <div style={{ marginBottom: "50px" }}>
         <Carousel
           autoPlay={true}
           infiniteLoop={true}
@@ -106,37 +101,36 @@ const Programs = () => {
               return (
                 <div>
                   <div style={contentStyle}>
-                  <Link href={`program/${item.id}`}>
-
-                    <Row gutter={0}>
-                      <Col
-                        span={10}
-                        style={{
-                          boxShadow: "0 2px 10px 0 rgb(45 60 75 / 10%)",
-                          border: "1px solid #e8e8e8",
-                          borderRadius: "5px",
-                          background: "#fff",
-                          padding: "20px",
-                        }}
-                      >
-                        <h3>{item["title"]["rendered"]}</h3>
-                        <p>
-                        {item["content"]["rendered"].replace(regex, '')}
-                        </p>
-                        {/* <Link href=`/program/{Programs.id}`> */}
-                        <Button>
-                          View Details <ArrowRightOutlined />
-                        </Button>
-                        {/* </Link> */}
-                      </Col>
-                      <Col span={14}>
-                        <Image
-                          width="50%"
-                          height={200}
-                          src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                        />
-                      </Col>
-                    </Row>
+                    <Link href={`program/${item.id}`}>
+                      <Row gutter={0}>
+                        <Col
+                          xs={24} sm={24} md={12} lg={12} xl={12}
+                          style={{
+                            boxShadow: "0 2px 10px 0 rgb(45 60 75 / 10%)",
+                            border: "1px solid #e8e8e8",
+                            borderRadius: "5px",
+                            background: "#fff",
+                            padding: "20px",
+                          }}
+                        >
+                          <h3>{item["title"]["rendered"]}</h3>
+                          <p>
+                            {item["content"]["rendered"].replace(regex, "")}
+                          </p>
+                          {/* <Link href=`/program/{Programs.id}`> */}
+                          <Button>
+                            View Details <ArrowRightOutlined />
+                          </Button>
+                          {/* </Link> */}
+                        </Col>
+                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                          <Image
+                            width="50%"
+                            height={200}
+                            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                          />
+                        </Col>
+                      </Row>
                     </Link>
                   </div>
                 </div>

@@ -125,7 +125,6 @@ const profileByCat = () => {
                           )
                         }
                       >
-                      
                         <Meta
                           title={item.title.rendered}
                           // description={item._links.self["href"]}

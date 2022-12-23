@@ -12,8 +12,11 @@ const ProgramBody = ({props}) => {
   return (
     <>
      
-      <Row gutter={100} style={{ marginTop: '2%' }}>
-        <Col span={16}>
+      <Row gutter={[40, 40]} 
+      style={{ marginTop: '2%' }}>
+        <Col
+        xs={24} sm={24} md={24} lg={24} xl={24}
+        >
         <h2 className="page-title">Program Mission Statement:</h2>
         <p>
         {props.mission}
@@ -26,13 +29,6 @@ const ProgramBody = ({props}) => {
         <p>
         {props.eligibility}
         </p>
-        </Col>
-        <Col span={8}>
-          {/* <Image
-            width={200}
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-          /> */}
-          <News/>
         </Col>
       </Row>
     </>

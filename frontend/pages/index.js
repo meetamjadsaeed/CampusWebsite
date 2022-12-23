@@ -22,12 +22,17 @@ const Home = () => {
 
       <Header />
 
-      <MainHero
+      {/* <MainHero
         data={{
           content: "",
           videoUrl: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
         }}
-      />
+      /> */}
+      <MainHero
+      data={{
+        content:"“To become a world class university in the fields of Management Sciences, Information Technology, Engineering, Education and Mathematics”"
+      }}
+    />
       <div className="container">
         {/* <Slider /> */}
         <Main />

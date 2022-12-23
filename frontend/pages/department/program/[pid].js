@@ -75,8 +75,8 @@ import Gallery from "../../../components/card/Gallery";
 //   },
 // ];
 
-// regex for removing the html tags 
-const regex = /(<([^>]+)>)/ig;
+// regex for removing the html tags
+const regex = /(<([^>]+)>)/gi;
 
 const program = () => {
   const [program, setprogram] = useState();
@@ -94,7 +94,7 @@ const program = () => {
         },
       })
       .then((result) => setprogram(result.data));
-      // .then((result) => console.log(result.data[0]["title"]["rendered"]));
+    // .then((result) => console.log(result.data[0]["title"]["rendered"]));
   };
 
   useEffect(() => {
@@ -119,16 +119,16 @@ const program = () => {
 
   return (
     <>
-    {/* <p>Post: {pid}</p>
+      {/* <p>Post: {pid}</p>
     <p>{ Department ? Department.title : ""}</p> */}
-    <Header />
-    <div className="container">
-      <ProgramHeader props={header} />
-      <ProgramBody props={body} />
-      <Gallery />
-    </div>
-    <FooterTwo />
-  </>
+      <Header />
+      <div className="container">
+        <ProgramHeader props={header} />
+        <ProgramBody props={body} />
+        <Gallery />
+      </div>
+      <FooterTwo />
+    </>
   );
 };
 
