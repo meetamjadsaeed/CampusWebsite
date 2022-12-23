@@ -22,6 +22,18 @@ import {
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from "react-responsive-carousel";
+import Marquee from "react-easy-marquee";
+
+
+const images = [
+  "https://picsum.photos/200",
+  "https://picsum.photos/100",
+  "https://picsum.photos/100",
+  "https://picsum.photos/100",
+  "https://picsum.photos/100",
+  "https://picsum.photos/100",
+];
+
 
 const News = () => {
   const [News, setNews] = useState();
@@ -45,7 +57,38 @@ const News = () => {
   return (
     <>
       <Card title="News" bordered={true}>
-        <Carousel
+      <Marquee
+            duration={15000}
+            background="#ffffff"
+            height="100px"
+            width="100%"
+            axis="Y"
+            align="center"
+            pauseOnHover={true}
+            reverse={true}
+          >
+            {News ? (
+              News.map((item) => {
+                return (
+                  <Link href={`/event/${item.id}`}>
+                  <Card style={{ width: 300, marginTop: 16 }}>
+                    <Meta
+                      avatar={<Image width={50} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />}
+                      title={item["title"]["rendered"]}
+                      description={item["date"]}
+                    />
+                  </Card>
+                </Link>
+                );
+              })
+            ) : (
+              <p>loading...</p>
+            )}
+            {/* {images.map((image) => (
+              <img src={image} alt="picsum" style={{ borderRadius: "10px" }} />
+            ))} */}
+          </Marquee>
+        {/* <Carousel
           autoPlay={true}
           infiniteLoop={true}
           interval={2000}
@@ -76,7 +119,7 @@ const News = () => {
           ) : (
             <p>loading...</p>
           )}
-        </Carousel>
+        </Carousel> */}
       </Card>
     </>
   );

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Spin } from "antd";
 import Link from "next/link";
+import Marquee from "react-easy-marquee";
 
 const { Meta } = Card;
 // import { Image } from "antd";
@@ -43,41 +44,72 @@ const Announcements = () => {
 
   return (
     <>
-      <Card title="Announcements" bordered={true}>
-        <Carousel
-          autoPlay={true}
-          infiniteLoop={true}
-          interval={2000}
-          transitionTime={500}
-          showArrows={false}
-          showStatus={false}
-          showIndicators={false}
-          showThumbs={false}
-          dynamicHeight={false}
-          axis={"vertical"}
+    <Card title="Annoucements" bordered={true}>
+    <Marquee
+          duration={15000}
+          background="#ffffff"
+          height="100px"
+          width="100%"
+          axis="Y"
+          align="center"
+          pauseOnHover={true}
+          reverse={true}
         >
           {Announcements ? (
             Announcements.map((item) => {
               return (
-                <div>
-                  <Link href="#">
-                    <Card style={{ width: 300, marginTop: 16 }}>
-                      <Meta
-                        // avatar={<Image width={50} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />}
-                        title={item["title"]["rendered"]}
-                        description={item["date"]}
-                      />
-                    </Card>
-                  </Link>
-                </div>
+                <Link href={`/event/${item.id}`}>
+                <Card style={{ width: 300, marginTop: 16 }}>
+                  <Meta
+                    avatar={<Image width={50} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />}
+                    title={item["title"]["rendered"]}
+                    description={item["date"]}
+                  />
+                </Card>
+              </Link>
               );
             })
           ) : (
             <p>loading...</p>
           )}
-        </Carousel>
-      </Card>
-    </>
+          {/* {images.map((image) => (
+            <img src={image} alt="picsum" style={{ borderRadius: "10px" }} />
+          ))} */}
+        </Marquee>
+      {/* <Carousel
+        autoPlay={true}
+        infiniteLoop={true}
+        interval={2000}
+        transitionTime={500}
+        showArrows={false}
+        showStatus={false}
+        showIndicators={false}
+        showThumbs={false}
+        dynamicHeight={false}
+        axis={"vertical"}
+      >
+        {News ? (
+          News.map((item) => {
+            return (
+              <div>
+                <Link href={`/event/${item.id}`}>
+                  <Card style={{ width: 300, marginTop: 16 }}>
+                    <Meta
+                      avatar={<Image width={50} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />}
+                      title={item["title"]["rendered"]}
+                      description={item["date"]}
+                    />
+                  </Card>
+                </Link>
+              </div>
+            );
+          })
+        ) : (
+          <p>loading...</p>
+        )}
+      </Carousel> */}
+    </Card>
+  </>
   );
 };
 

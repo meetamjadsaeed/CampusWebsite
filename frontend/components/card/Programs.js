@@ -20,6 +20,8 @@ import { useState } from "react";
 import axios from "axios";
 import { Spin } from "antd";
 import Link from "next/link";
+import Marquee from "react-easy-marquee";
+const { Meta } = Card;
 
 // const styles = {
 //   padding: "13px",
@@ -82,81 +84,99 @@ const Programs = () => {
   }, []);
   return (
     <>
-      <div style={{ marginBottom: "50px" }}>
-        <Carousel
-          autoPlay={true}
-          infiniteLoop={true}
-          interval={2000}
-          transitionTime={500}
-          showArrows={false}
-          showStatus={false}
-          showIndicators={false}
-          showThumbs={false}
-          dynamicHeight={false}
-          axis={"vertical"}
+      <Row style={{ marginTop: "5%"}}>
+        <Marquee
+          duration={15000}
+          background="#ffffff"
+          height="300px"
+          width="100%"
+          axis="X"
+          align="center"
+          pauseOnHover={true}
+          reverse={true}
         >
           {Programs ? (
             Programs.map((item) => {
-              // console.log(item);
               return (
-                <div>
-                  <div style={contentStyle}>
-                    <Link href={`program/${item.id}`}>
-                      <Row gutter={0}>
-                        <Col
-                          xs={24} sm={24} md={12} lg={12} xl={12}
-                          style={{
-                            boxShadow: "0 2px 10px 0 rgb(45 60 75 / 10%)",
-                            border: "1px solid #e8e8e8",
-                            borderRadius: "5px",
-                            background: "#fff",
-                            padding: "20px",
-                          }}
-                        >
-                          <h3>{item["title"]["rendered"]}</h3>
-                          <p>
-                            {item["content"]["rendered"].replace(regex, "")}
-                          </p>
-                          {/* <Link href=`/program/{Programs.id}`> */}
-                          <Button>
-                            View Details <ArrowRightOutlined />
-                          </Button>
-                          {/* </Link> */}
-                        </Col>
-                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                          <Image
-                            width="50%"
-                            height={200}
-                            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                          />
-                        </Col>
-                      </Row>
-                    </Link>
-                  </div>
-                </div>
+                <Link href={`/event/${item.id}`}>
+                  <Col>
+                    <p>Heading</p>
+                  </Col>
+                  <Col>
+                    <p>Image</p>
+                  </Col>
+                </Link>
               );
             })
           ) : (
-            <Spin />
+            <p>loading...</p>
           )}
-        </Carousel>
-      </div>
-
-      {/* <div
-        className="site-card-border-less-wrapper"
-        style={{ marginTop: "5%" }}
-      >
-        <Card
-          // styles={styles.tittle}
-          className={styles.tittle}
-          title="Offered Programs"
-          bordered={true}
-          style={{ width: "auto" }}
-        >
-          <ProgramsSlider />
-        </Card>
-      </div> */}
+        </Marquee>
+      </Row>
     </>
+
+    // <>
+    //   <div style={{ marginBottom: "50px" }}>
+    //     <Carousel
+    //       autoPlay={true}
+    //       infiniteLoop={true}
+    //       interval={2000}
+    //       transitionTime={500}
+    //       showArrows={false}
+    //       showStatus={false}
+    //       showIndicators={false}
+    //       showThumbs={false}
+    //       dynamicHeight={false}
+    //       axis={"vertical"}
+    //     >
+    //       {Programs ? (
+    //         Programs.map((item) => {
+    //           return (
+    //             <div>
+    //               <div style={contentStyle}>
+    //                 <Link href={`program/${item.id}`}>
+    //                   <Row gutter={0}>
+    //                     <Col
+    //                       xs={24}
+    //                       sm={24}
+    //                       md={12}
+    //                       lg={12}
+    //                       xl={12}
+    //                       style={{
+    //                         boxShadow: "0 2px 10px 0 rgb(45 60 75 / 10%)",
+    //                         border: "1px solid #e8e8e8",
+    //                         borderRadius: "5px",
+    //                         background: "#fff",
+    //                         padding: "20px",
+    //                       }}
+    //                     >
+    //                       <h3>{item["title"]["rendered"]}</h3>
+    //                       <p>
+    //                         {item["content"]["rendered"].replace(regex, "")}
+    //                       </p>
+    //                       <Button>
+    //                         View Details <ArrowRightOutlined />
+    //                       </Button>
+    //                     </Col>
+    //                     <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+    //                       <Image
+    //                         width="50%"
+    //                         height={200}
+    //                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+    //                       />
+    //                     </Col>
+    //                   </Row>
+    //                 </Link>
+    //               </div>
+    //             </div>
+    //           );
+    //         })
+    //       ) : (
+    //         <Spin />
+    //       )}
+    //     </Carousel>
+    //   </div>
+    // </>
   );
 };
 
