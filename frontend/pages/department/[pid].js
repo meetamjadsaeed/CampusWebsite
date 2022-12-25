@@ -26,17 +26,36 @@ const department = () => {
   const router = useRouter();
   const { pid } = router.query;
   const [department, setdepartment] = useState();
+  const [imagebydepartment, setimagebydepartment] = useState();
+
 
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`http://iba-kdk.com/wp-json/wp/v2/campus?admissions=${pid}`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?admissions=${pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((result) => setdepartment(result.data));
     // .then((result) => console.log(result));
+
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?admissions=${pid}`)
+    .then((response) => response.json())
+    // .then((result) => console.log(result.json()));
+    .then((images) => {
+      const respones = images.map(
+        (image) =>
+          fetch(
+            `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
+          ).then((res) => res.json())
+        // .then((res) => console.log(res.json())),
+      );
+      Promise.all(respones).then((fetchedImgaes) => {
+        setimagebydepartment(fetchedImgaes);
+        // setIsLoading(false)
+      });
+    });
   };
 
   useEffect(() => {
@@ -86,10 +105,25 @@ const department = () => {
                       hoverable
                       style={{ width: 240 }}
                       cover={
-                        <img
-                          alt="example"
-                          src="https://conandaily.files.wordpress.com/2020/03/omar-borkan-al-gala.jpg"
-                        />
+                        imagebydepartment ? (
+                          imagebydepartment.map((featuredImage) => {
+                            // console.log(item);
+                            if (item.featured_media === featuredImage.id) {
+                              return (
+                                <img
+                                  alt="example"
+                                  src={
+                                    featuredImage
+                                      ? featuredImage.guid.rendered
+                                      : null
+                                  }
+                                />
+                              );
+                            }
+                          })
+                        ) : (
+                          <Spin />
+                        )
                       }
                     >
                       {/* <h1>{item.slug}</h1> */}

@@ -28,17 +28,37 @@ const studentLife = () => {
   const router = useRouter();
   const { pid } = router.query;
   const [studentLife, setstudentLife] = useState();
+  const [imagebystudentLife, setimagebystudentLife] = useState();
+
 
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`http://iba-kdk.com/wp-json/wp/v2/campus?atcampus=${pid}`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=${pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((result) => setstudentLife(result.data));
     // .then((result) => console.log(result));
+
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=${pid}`)
+    .then((response) => response.json())
+    // .then((result) => console.log(result.json()));
+    .then((images) => {
+      const respones = images.map(
+        (image) =>
+          fetch(
+            `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
+          ).then((res) => res.json())
+        // .then((res) => console.log(res.json())),
+      );
+      Promise.all(respones).then((fetchedImgaes) => {
+        setimagebystudentLife(fetchedImgaes);
+        // setIsLoading(false)
+      });
+    });
+
   };
 
   useEffect(() => {
@@ -85,10 +105,25 @@ const studentLife = () => {
                           width: 300,
                         }}
                         cover={
-                          <img
-                            alt="example"
-                            src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                          />
+                          imagebystudentLife ? (
+                            imagebystudentLife.map((featuredImage) => {
+                              // console.log(item);
+                              if (item.featured_media === featuredImage.id) {
+                                return (
+                                  <img
+                                    alt="example"
+                                    src={
+                                      featuredImage
+                                        ? featuredImage.guid.rendered
+                                        : null
+                                    }
+                                  />
+                                );
+                              }
+                            })
+                          ) : (
+                            <Spin />
+                          )
                         }
                         // actions={[
                         //   <SettingOutlined key="setting" />,

@@ -24,16 +24,18 @@ const fullGallery = () => {
   const router = useRouter();
   const { pid } = router.query;
   const [fullGallery, setfullGallery] = useState();
+  const [imagebyGallery, setimagebyGallery] = useState();
+
 
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`http://iba-kdk.com/wp-json/wp/v2/campus?atcampus=${pid}`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=${pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => setfullGallery(result.data));
+      .then((result) => setimagebyGallery(result.data));
     // .then((result) => console.log(result));
   };
 
@@ -61,11 +63,30 @@ const fullGallery = () => {
               return (
                 
                 <Col span={6} style={{ marginBottom: "16px" }}>
-                  <Image
-                    // width={80}
-                    // height={80}
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                  />
+                  {
+                          imagebyGallery ? (
+                            imagebyGallery.map((featuredImage) => {
+                              // console.log(item);
+                              if (item.featured_media === featuredImage.id) {
+                                return (
+                                  <Image
+                                  // width={80}
+                                  // height={80}
+                                  src=
+                                  {
+                                    featuredImage
+                                      ? featuredImage.guid.rendered
+                                      : null
+                                  }
+                                />
+                                );
+                              }
+                            })
+                          ) : (
+                            <Spin />
+                          )
+                        }
+               
                   {/* <Link href={`gallerysingle/${item.slug}`}>
                   <Button>Veiw</Button>
                   </Link> */}

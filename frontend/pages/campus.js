@@ -24,7 +24,7 @@ const campustour = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/atcampus", {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}atcampus`, {
         headers: {
           "Content-Type": "application/json",
         },

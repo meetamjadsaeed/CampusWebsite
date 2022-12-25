@@ -12,6 +12,7 @@ import ProgramHeader from "../../../components/program/ProgramHeader";
 import ProgramBody from "../../../components/program/ProgramBody";
 import Gallery from "../../../components/card/Gallery";
 
+
 // const tabList = [
 //   {
 //     key: "tab1",
@@ -80,6 +81,8 @@ const regex = /(<([^>]+)>)/gi;
 
 const program = () => {
   const [program, setprogram] = useState();
+  const [imagebyCat, setimageCat] = useState();
+
   // const [activeTabKey1, setActiveTabKey1] = useState("tab1");
   // const [activeTabKey2, setActiveTabKey2] = useState("app");
   const router = useRouter();
@@ -88,13 +91,24 @@ const program = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`http://iba-kdk.com/wp-json/wp/v2/campus?slug=${pid}`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?slug=${pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((result) => setprogram(result.data));
     // .then((result) => console.log(result.data[0]["title"]["rendered"]));
+
+    const data = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_API}campus?slug=${pid}`
+    );
+    const featuredImage = data.data[0].featured_media;
+
+    await axios
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}media/${featuredImage}`)
+      // .then((result) => console.log(result.data));
+      .then((result) => setimageCat(result.data));
+
   };
 
   useEffect(() => {
@@ -103,18 +117,19 @@ const program = () => {
   }, []);
 
   const header = {
-    title: "Department Name",
-    description: "Department Description",
-    process: "Department && Department.title",
-    feeStructure: "Department && Department.title",
-    courseSchemata: "Department && Department.title",
-    apply: "Department && Department.title",
+    title: program && program[0]["title"]["rendered"].replace(regex, ""),
+    description: program && program[0]["content"]["rendered"].replace(regex, ""),
+    process: program && program[0]["acf"]["process"].replace(regex, ""),
+    feeStructure: program && program[0]["acf"]["Fee Structure"].replace(regex, ""),
+    courseSchemata: program && program[0]["acf"]["Course Schema"].replace(regex, ""),
+    apply: program && program[0]["acf"]["Apply"].replace(regex, ""),
+    imageUrl:imagebyCat && imagebyCat.guid.rendered,
   };
 
   const body = {
-    mission: "Department Mission Statement",
-    eligibility: "Department (PLO)",
-    outcomes: "Department && Department.description",
+    mission: program && program[0]["acf"]["Mission"].replace(regex, ""),
+    eligibility: program && program[0]["acf"]["PLO"].replace(regex, ""),
+    outcomes: program && program[0]["acf"]["Eligibility Criteria"].replace(regex, ""),
   };
 
   return (

@@ -24,7 +24,7 @@ const allprofiles = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/profiles", {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}profiles`, {
         headers: {
           "Content-Type": "application/json",
         },

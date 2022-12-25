@@ -36,7 +36,7 @@ const boardbypin = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`http://iba-kdk.com/wp-json/wp/v2/campus?pin_board=${pid}`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=${pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -46,14 +46,14 @@ const boardbypin = () => {
 
 
     
-    fetch(`http://iba-kdk.com/wp-json/wp/v2/campus?pin_board=${pid}`)
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=${pid}`)
       .then((response) => response.json())
       // .then((result) => console.log(result.json()));
       .then((images) => {
         const respones = images.map(
           (image) =>
             fetch(
-              `http://iba-kdk.com/wp-json/wp/v2/media/${image.featured_media}`
+              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
             ).then((res) => res.json())
           // .then((res) => console.log(res.json())),
         );
@@ -112,16 +112,18 @@ const boardbypin = () => {
                           imagebypin ? (
                             imagebypin.map((featuredImage) => {
                               // console.log(item);
-                              return (
-                                <img
-                                  alt="example"
-                                  src={
-                                    featuredImage
-                                      ? featuredImage.guid.rendered
-                                      : null
-                                  }
-                                />
-                              );
+                              if (item.featured_media === featuredImage.id) {
+                                return (
+                                  <img
+                                    alt="example"
+                                    src={
+                                      featuredImage
+                                        ? featuredImage.guid.rendered
+                                        : null
+                                    }
+                                  />
+                                );
+                              }
                             })
                           ) : (
                             <Spin />

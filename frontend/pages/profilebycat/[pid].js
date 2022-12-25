@@ -32,7 +32,7 @@ const profileByCat = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`http://iba-kdk.com/wp-json/wp/v2/campus?profiles=${pid}`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?profiles=${pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -41,14 +41,14 @@ const profileByCat = () => {
     // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
     // .then((result) => console.log(result.data[0]["featured_media"]));   // get id of featured image
 
-    fetch(`http://iba-kdk.com/wp-json/wp/v2/campus?profiles=${pid}`)
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?profiles=${pid}`)
       .then((response) => response.json())
       // .then((result) => console.log(result.json()));
       .then((images) => {
         const respones = images.map(
           (image) =>
             fetch(
-              `http://iba-kdk.com/wp-json/wp/v2/media/${image.featured_media}`
+              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
             ).then((res) => res.json())
           // .then((res) => console.log(res.json())),
         );
@@ -109,16 +109,18 @@ const profileByCat = () => {
                           imagebyCat ? (
                             imagebyCat.map((featuredImage) => {
                               // console.log(item);
-                              return (
-                                <img
-                                  alt="example"
-                                  src={
-                                    featuredImage
-                                      ? featuredImage.guid.rendered
-                                      : null
-                                  }
-                                />
-                              );
+                              if (item.featured_media === featuredImage.id) {
+                                return (
+                                  <img
+                                    alt="example"
+                                    src={
+                                      featuredImage
+                                        ? featuredImage.guid.rendered
+                                        : null
+                                    }
+                                  />
+                                );
+                              }
                             })
                           ) : (
                             <Spin />

@@ -30,18 +30,18 @@ const ProgramHeader = ({ props }) => {
               alignItems: "center",
             }}
           >
-            <Link href="#">
-              <Button type="">Admission process</Button>
-            </Link>
-            <Link href="#">
+            <a href={process && props.process}>
+              <Button type="">Admission Process</Button>
+            </a>
+            <a href={process && props.feeStructure}>
               <Button type="">Fee Structure</Button>
-            </Link>
-            <Link href="#">
+            </a>
+            <a href={process && props.courseSchemata}>
               <Button type="">Course Schema</Button>
-            </Link>
-            <Link href="#">
+            </a>
+            <a href={process && props.apply}>
               <Button type="">Apply Online</Button>
-            </Link>
+            </a>
           </div>
           <h1 className="page-title" style={{ marginTop: "2%" }}>
             {props.title}
@@ -50,7 +50,7 @@ const ProgramHeader = ({ props }) => {
           <p>{props.description}</p>
           <Image
             width="80%"
-            src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Artificial_Intelligence_Human_Intelligence.jpg"
+            src={props.imageUrl}
           />
         </Col>
 

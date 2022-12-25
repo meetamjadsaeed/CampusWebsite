@@ -23,7 +23,7 @@ const admissions = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/admissions", {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}admissions`, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -23,7 +23,7 @@ const pinboard = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/pin_board", {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}pin_board`, {
         headers: {
           "Content-Type": "application/json",
         },

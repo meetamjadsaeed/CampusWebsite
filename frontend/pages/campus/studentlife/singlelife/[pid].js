@@ -78,6 +78,8 @@ const regex = /(<([^>]+)>)/ig;
 
 const singleLife = () => {
   const [singleLife, setsingleLife] = useState();
+  const [imagebyCat, setimageCat] = useState();
+
   // const [activeTabKey1, setActiveTabKey1] = useState("tab1");
   // const [activeTabKey2, setActiveTabKey2] = useState("app");
   const router = useRouter();
@@ -93,6 +95,16 @@ const singleLife = () => {
       })
       .then((result) => setsingleLife(result.data));
       // .then((result) => console.log(result.data[0]["title"]["rendered"]));
+
+      const data = await axios.get(
+        `http://iba-kdk.com/wp-json/wp/v2/campus?slug=${pid}`
+      );
+      const featuredImage = data.data[0].featured_media;
+  
+      await axios
+        .get(`http://iba-kdk.com/wp-json/wp/v2/media/${featuredImage}`)
+        // .then((result) => console.log(result.data));
+        .then((result) => setimageCat(result.data));
   };
 
   useEffect(() => {
@@ -110,9 +122,15 @@ const singleLife = () => {
   return (
     <>
     <Header/>
-       <header className="hero">
+    <header className="hero"
+      style={{
+  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86)), url(${imagebyCat && imagebyCat.guid.rendered})`,
+
+      }}
+
+      >
         <div className="hero-text">
-          <h1>Event</h1>
+        <h1>{singleLife && singleLife[0]["title"]["rendered"].replace(regex, "")}</h1>
           {/* <p>Details</p> */}
         </div>
         <a href="#blogPost-header" className="hero-arrow">
@@ -121,10 +139,14 @@ const singleLife = () => {
       </header>
 
       <div className="container">
-        <p className='hero-description'>
-        description description
+      <p style={{ color: "#ea6645" }} className="hero-description">
+          {singleLife && singleLife[0]["acf"]["Attachment"] ? (
+            <a href={singleLife[0]["acf"]["Attachment"]}>Download Here</a>
+          ) : null}
         </p>
-        <Button>Download</Button>
+        <p className='hero-description'>
+        {singleLife && singleLife[0]["content"]["rendered"].replace(regex, "")}
+        </p>
       </div>
       
       <FooterTwo/>
