@@ -18,16 +18,34 @@ import Link from "next/link";
 
 const Gallery = () => {
   const [Gallery, setGallery] = useState();
+  const [imagebyCat, setimageCat] = useState();
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=21", {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=36`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((result) => setGallery(result.data));
     // .then((result) => console.log(result));
+
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=36`)
+      .then((response) => response.json())
+      // .then((result) => console.log(result.json()));
+      .then((images) => {
+        const respones = images.map(
+          (image) =>
+            fetch(
+              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
+            ).then((res) => res.json())
+          // .then((res) => console.log(res.json())),
+        );
+        Promise.all(respones).then((fetchedImgaes) => {
+          setimageCat(fetchedImgaes);
+          // setIsLoading(false)
+        });
+      });
   };
 
   useEffect(() => {
@@ -46,11 +64,30 @@ const Gallery = () => {
                     <Col 
                     xs={12} sm={8} md={6} lg={4} xl={4}
                     style={{ marginBottom: "16px" }}>
-                      <Image
-                        // width={80}
-                        // height={80}
-                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                      />
+                        {
+                          imagebyCat ? (
+                            imagebyCat.map((featuredImage) => {
+                              // console.log(item);
+                              if (item.featured_media === featuredImage.id) {
+                                return (
+                                  <Image
+                                  // width={80}
+                                  // height={80}
+                                  src={
+                                    featuredImage
+                                      ? featuredImage.guid.rendered
+                                      : null
+                                  }
+                                />
+                                );
+                              }
+                            })
+                          ) : (
+                            <Spin />
+                          )
+                        }
+                     
+
                     </Col>
                   );
                 })

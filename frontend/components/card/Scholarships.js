@@ -29,17 +29,35 @@ const images = [
 
 const Scholarships = () => {
   const [Scholarships, setScholarships] = useState();
+  const [imagebyCat, setimageCat] = useState();
+
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=20", {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?scholarships=29`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((result) => setScholarships(result.data));
-    // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
-    // Faculty[0]["content"]["rendered"]
+    // .then((result) => console.log(result));
+
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?scholarships=29`)
+      .then((response) => response.json())
+      // .then((result) => console.log(result.json()));
+      .then((images) => {
+        const respones = images.map(
+          (image) =>
+            fetch(
+              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
+            ).then((res) => res.json())
+          // .then((res) => console.log(res.json())),
+        );
+        Promise.all(respones).then((fetchedImgaes) => {
+          setimageCat(fetchedImgaes);
+          // setIsLoading(false)
+        });
+      });
   };
 
   useEffect(() => {
@@ -71,7 +89,23 @@ const Scholarships = () => {
               Scholarships.map((item) => {
                 return (
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/OGDCL_logo.svg/1200px-OGDCL_logo.svg.png"
+                    src={
+                      imagebyCat ? (
+                        imagebyCat.map((featuredImage) => {
+                          // console.log(item);
+                          if (item.featured_media === featuredImage.id) {
+                            return (
+                              // width={80}
+                              // height={80}
+
+                              featuredImage ? featuredImage.guid.rendered : null
+                            );
+                          }
+                        })
+                      ) : (
+                        <Spin />
+                      )
+                    }
                     alt="picsum"
                     style={{
                       borderRadius: "10px",

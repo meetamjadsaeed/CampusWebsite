@@ -15,12 +15,33 @@ import {
 import { Button } from "antd";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+
 import { useState } from "react";
 import axios from "axios";
 import { Spin } from "antd";
 import Link from "next/link";
 import Marquee from "react-easy-marquee";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3 // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2 // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  }
+};
+
+
 const { Meta } = Card;
 
 // const styles = {
@@ -65,18 +86,39 @@ const displayFlex = {
 // regex for removing the html tags
 const regex = /(<([^>]+)>)/gi;
 
+
 const Programs = () => {
   const [Programs, setPrograms] = useState();
+  const [imagebyCat, setimageCat] = useState();
+
+
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=16", {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?admissions=38`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((result) => setPrograms(result.data));
     // .then((result) => console.log(result));
+
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?admissions=38`)
+      .then((response) => response.json())
+      // .then((result) => console.log(result.json()));
+      .then((images) => {
+        const respones = images.map(
+          (image) =>
+            fetch(
+              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
+            ).then((res) => res.json())
+          // .then((res) => console.log(res.json())),
+        );
+        Promise.all(respones).then((fetchedImgaes) => {
+          setimageCat(fetchedImgaes);
+          // setIsLoading(false)
+        });
+      });
   };
 
   useEffect(() => {
@@ -84,35 +126,55 @@ const Programs = () => {
   }, []);
   return (
     <>
-      <Row style={{ marginTop: "5%"}}>
-        <Marquee
-          duration={15000}
-          background="#ffffff"
-          height="300px"
-          width="100%"
-          axis="X"
-          align="center"
-          pauseOnHover={true}
-          reverse={true}
-        >
+      <div style={{marginTop:"5%",marginBottom:"5%"}}>
+      <Carousel
+  swipeable={false}
+  draggable={false}
+  showDots={false}
+  responsive={responsive}
+  ssr={true} // means to render carousel on server-side.
+  infinite={true}
+  autoPlay={true}
+  autoPlaySpeed={3000}
+  keyBoardControl={true}
+  customTransition="all .5"
+  transitionDuration={500}
+  containerClass="carousel-container"
+  removeArrowOnDeviceType={["tablet", "mobile"]}
+  // deviceType={this.props.deviceType}
+  dotListClass="custom-dot-list-style"
+  itemClass="carousel-item-padding-40-px"
+>
           {Programs ? (
             Programs.map((item) => {
               return (
-                <Link href={`/event/${item.id}`}>
-                  <Col>
-                    <p>Heading</p>
-                  </Col>
-                  <Col>
-                    <p>Image</p>
-                  </Col>
-                </Link>
+                <div style={{marginLeft:"2%",marginRight:"2%"}}>
+                  <div class="flip_card">
+                    <div class="flip_content">
+                      <div class="flip_front"
+                      style={{
+                        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86)),url(https://picsum.photos/300/300/?random=${item.id})`,
+                      }}
+                      >
+                        <h2 className="white">{item["title"]["rendered"].replace(regex,"")}</h2>
+                      </div>
+                      <div class="flip_back">
+                      <p className="white">{item["content"]["rendered"].replace(regex,"")}</p>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                // </p>
               );
             })
           ) : (
             <p>loading...</p>
           )}
-        </Marquee>
-      </Row>
+        </Carousel>
+      </div>
+    
+   
     </>
 
     // <>

@@ -21,11 +21,13 @@ import {
   SyncOutlined,
 } from "@ant-design/icons";
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
 const Announcements = () => {
   const [Announcements, setAnnouncements] = useState();
+  const [imagebyCat, setimageCat] = useState();
+
   const getData = async () => {
     // Get Posts
     await axios
@@ -36,6 +38,23 @@ const Announcements = () => {
       })
       .then((result) => setAnnouncements(result.data));
     // .then((result) => console.log(result));
+
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=35`)
+      .then((response) => response.json())
+      // .then((result) => console.log(result.json()));
+      .then((images) => {
+        const respones = images.map(
+          (image) =>
+            fetch(
+              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
+            ).then((res) => res.json())
+          // .then((res) => console.log(res.json())),
+        );
+        Promise.all(respones).then((fetchedImgaes) => {
+          setimageCat(fetchedImgaes);
+          // setIsLoading(false)
+        });
+      });
   };
 
   useEffect(() => {
@@ -44,8 +63,8 @@ const Announcements = () => {
 
   return (
     <>
-    <Card title="Annoucements" bordered={true}>
-    <Marquee
+      <Card title="Annoucements" bordered={true}>
+        <Marquee
           duration={15000}
           background="#ffffff"
           height="100px"
@@ -58,15 +77,35 @@ const Announcements = () => {
           {Announcements ? (
             Announcements.map((item) => {
               return (
-                <Link href={`/event/${item.id}`}>
-                <Card style={{ width: 300, marginTop: 16 }}>
-                  <Meta
-                    avatar={<Image width={50} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />}
-                    title={item["title"]["rendered"]}
-                    description={item["date"]}
-                  />
-                </Card>
-              </Link>
+                <Link href={`/boardbypin/pin/${item.id}`}>
+                  <Card style={{ width: 300, marginTop: 16 }}>
+                    <Meta
+                     avatar={
+                      imagebyCat ? (
+                        imagebyCat.map((featuredImage) => {
+                          // console.log(item);
+                          if (item.featured_media === featuredImage.id) {
+                            return (
+                              <Image
+                                width={50}
+                                src={
+                                  featuredImage
+                                    ? featuredImage.guid.rendered
+                                    : null
+                                }
+                              />
+                            );
+                          }
+                        })
+                      ) : (
+                        <Spin />
+                      )
+                    }
+                      title={item["title"]["rendered"]}
+                      description={item["date"]}
+                    />
+                  </Card>
+                </Link>
               );
             })
           ) : (
@@ -76,7 +115,7 @@ const Announcements = () => {
             <img src={image} alt="picsum" style={{ borderRadius: "10px" }} />
           ))} */}
         </Marquee>
-      {/* <Carousel
+        {/* <Carousel
         autoPlay={true}
         infiniteLoop={true}
         interval={2000}
@@ -108,8 +147,8 @@ const Announcements = () => {
           <p>loading...</p>
         )}
       </Carousel> */}
-    </Card>
-  </>
+      </Card>
+    </>
   );
 };
 

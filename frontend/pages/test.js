@@ -1,7 +1,7 @@
 // import React from 'react'
 // import Announcement from '../testcomponents/single/Announcement'
 // import Profile from '../components/single/Profile'
-// import {Scholarships}  from '../components/card/Scholarships'
+// import {Scholarships}  from '../components/flip_card/Scholarships'
 import React from "react";
 // JSX
 // import HeroSlider, { Slide, MenuNav, OverlayContainer } from "hero-slider";
@@ -27,11 +27,28 @@ import React from "react";
 // import {Carousel} from '3d-react-carousal';
 // import dynamic from "next/dynamic";
 
-
 import FootertTwo from "../layout/Footer/FooterTwo";
 import Footer from "../layout/Footer/Footer";
 import AnimatedContent from "../components/animations/AnimatedContent";
-
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3 // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2 // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  }
+};
 
 const test = () => {
   // const Carousel = dynamic(() => import("3d-react-carousal"), { ssr: false });
@@ -44,11 +61,11 @@ const test = () => {
   //   <img src="https://picsum.photos/800/304/?random" alt="5" />   ];
   return (
     <>
-   {/* <Profile/> */}
-   {/* <Scholarships/> */}
+      {/* <Profile/> */}
+      {/* <Scholarships/> */}
 
-   {/* <Profile/> */}
-   {/* <div
+      {/* <Profile/> */}
+      {/* <div
       style={{
         color: "#FFF"
       }}
@@ -56,8 +73,8 @@ const test = () => {
       <NavbarSlider />
     </div> */}
 
-{/* <Carousel slides={slides} autoplay={true} interval={1000}/> */}
-{/* <div class="hero-container">
+      {/* <Carousel slides={slides} autoplay={true} interval={1000}/> */}
+      {/* <div class="hero-container">
     <div class="hero-body">
       <h1>Hero Image</h1>
       <span>Efecto hero image</span>
@@ -70,21 +87,98 @@ const test = () => {
   </div>
      */}
 
-     {/* <FootertTwo/> */}
+      {/* <FootertTwo/> */}
 
-     {/* <AnimatedContent/> */}
+      {/* <AnimatedContent/> */}
+
+      {/* <div class="flip_card">
+        <div class="flip_content">
+          <div class="flip_front">Front</div>
+          <div class="flip_back">Back!</div>
+        </div>
+      </div> */}
+
+<Carousel
+  swipeable={false}
+  draggable={false}
+  showDots={true}
+  responsive={responsive}
+  ssr={true} // means to render carousel on server-side.
+  infinite={true}
+  autoPlay={true}
+  autoPlaySpeed={1000}
+  keyBoardControl={true}
+  customTransition="all .5"
+  transitionDuration={500}
+  containerClass="carousel-container"
+  removeArrowOnDeviceType={["tablet", "mobile"]}
+  // deviceType={this.props.deviceType}
+  dotListClass="custom-dot-list-style"
+  itemClass="carousel-item-padding-40-px"
+>
+  <div style={{marginLeft:"2%",marginRight:"2%"}}>
+        <div class="flip_card">
+        <div class="flip_content">
+          <div class="flip_front">Front</div>
+          <div class="flip_back">Back!</div>
+        </div>
+      </div>
+  </div>
+  <div style={{marginLeft:"2%",marginRight:"2%"}}>
+        <div class="flip_card">
+        <div class="flip_content">
+          <div class="flip_front">sds</div>
+          <div class="flip_back">Back!</div>
+        </div>
+      </div>
+  </div>
+  <div style={{marginLeft:"2%",marginRight:"2%"}}>
+        <div class="flip_card">
+        <div class="flip_content">
+          <div class="flip_front">Fasaront</div>
+          <div class="flip_back">Back!</div>
+        </div>
+      </div>
+  </div>
+  <div style={{marginLeft:"2%",marginRight:"2%"}}>
+        <div class="flip_card">
+        <div class="flip_content">
+          <div class="flip_front">Fsddront</div>
+          <div class="flip_back">Back!</div>
+        </div>
+      </div>
+  </div>
+  <div style={{marginLeft:"2%",marginRight:"2%"}}>
+        <div class="flip_card">
+        <div class="flip_content">
+          <div class="flip_front">Frsdsont</div>
+          <div class="flip_back">Back!</div>
+        </div>
+      </div>
+  </div>
+  <div style={{marginLeft:"2%",marginRight:"2%"}}>
+        <div class="flip_card">
+        <div class="flip_content">
+          <div class="flip_front">Frsdsont</div>
+          <div class="flip_back">Back!</div>
+        </div>
+      </div>
+  </div>
+  <div style={{marginLeft:"2%",marginRight:"2%"}}>
+        <div class="flip_card">
+        <div class="flip_content">
+          <div class="flip_front">sdsd</div>
+          <div class="flip_back">Back!</div>
+        </div>
+      </div>
+  </div>
+</Carousel>;
+
     </>
-  )
-}
+  );
+};
 
-export default test
-
-
-
-
-
-
-
+export default test;
 
 // import React from "react";
 // // JSX

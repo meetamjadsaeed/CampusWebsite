@@ -20,10 +20,9 @@ import {
   SyncOutlined,
 } from "@ant-design/icons";
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Marquee from "react-easy-marquee";
-
 
 const images = [
   "https://picsum.photos/200",
@@ -34,20 +33,38 @@ const images = [
   "https://picsum.photos/100",
 ];
 
-
 const News = () => {
   const [News, setNews] = useState();
+  const [imagebyCat, setimageCat] = useState();
+
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=14", {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=33`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((result) => setNews(result.data));
-      // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
-      // .then((result) => console.log(result.data[0]["date"]));
+    // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
+    // .then((result) => console.log(result.data[0]["date"]));
+
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=33`)
+      .then((response) => response.json())
+      // .then((result) => console.log(result.json()));
+      .then((images) => {
+        const respones = images.map(
+          (image) =>
+            fetch(
+              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
+            ).then((res) => res.json())
+          // .then((res) => console.log(res.json())),
+        );
+        Promise.all(respones).then((fetchedImgaes) => {
+          setimageCat(fetchedImgaes);
+          // setIsLoading(false)
+        });
+      });
   };
 
   useEffect(() => {
@@ -57,37 +74,57 @@ const News = () => {
   return (
     <>
       <Card title="News" bordered={true}>
-      <Marquee
-            duration={15000}
-            background="#ffffff"
-            height="100px"
-            width="100%"
-            axis="Y"
-            align="center"
-            pauseOnHover={true}
-            reverse={true}
-          >
-            {News ? (
-              News.map((item) => {
-                return (
-                  <Link href={`/event/${item.id}`}>
-                  <Card style={{ width: 300, marginTop: 16 }}>
-                    <Meta
-                      avatar={<Image width={50} src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />}
-                      title={item["title"]["rendered"]}
-                      description={item["date"]}
-                    />
-                  </Card>
+        <Marquee
+          duration={15000}
+          background="#ffffff"
+          height="100px"
+          width="100%"
+          axis="Y"
+          align="center"
+          pauseOnHover={true}
+          reverse={true}
+        >
+          {News ? (
+            News.map((item) => {
+              return (
+                <Link href={`/boardbypin/pin/${item.id}`}>
+                <Card style={{ width: 300, marginTop: 16 }}>
+                  <Meta
+                    avatar={
+                      imagebyCat ? (
+                        imagebyCat.map((featuredImage) => {
+                          // console.log(item);
+                          if (item.featured_media === featuredImage.id) {
+                            return (
+                              <Image
+                                width={50}
+                                src={
+                                  featuredImage
+                                    ? featuredImage.guid.rendered
+                                    : null
+                                }
+                              />
+                            );
+                          }
+                        })
+                      ) : (
+                        <Spin />
+                      )
+                    }
+                    title={item["title"]["rendered"]}
+                    description={item["date"]}
+                  />
+                </Card>
                 </Link>
-                );
-              })
-            ) : (
-              <p>loading...</p>
-            )}
-            {/* {images.map((image) => (
+              );
+            })
+          ) : (
+            <p>loading...</p>
+          )}
+          {/* {images.map((image) => (
               <img src={image} alt="picsum" style={{ borderRadius: "10px" }} />
             ))} */}
-          </Marquee>
+        </Marquee>
         {/* <Carousel
           autoPlay={true}
           infiniteLoop={true}
