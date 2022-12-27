@@ -32,23 +32,26 @@ import Footer from "../layout/Footer/Footer";
 import AnimatedContent from "../components/animations/AnimatedContent";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 3 // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 2 // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1 // optional, default to 1.
-  }
-};
+import Programs from "../components/card/Programs";
+
+
+// const responsive = {
+//   desktop: {
+//     breakpoint: { max: 3000, min: 1024 },
+//     items: 3,
+//     slidesToSlide: 3 // optional, default to 1.
+//   },
+//   tablet: {
+//     breakpoint: { max: 1024, min: 464 },
+//     items: 2,
+//     slidesToSlide: 2 // optional, default to 1.
+//   },
+//   mobile: {
+//     breakpoint: { max: 464, min: 0 },
+//     items: 1,
+//     slidesToSlide: 1 // optional, default to 1.
+//   }
+// };
 
 const test = () => {
   // const Carousel = dynamic(() => import("3d-react-carousal"), { ssr: false });
@@ -98,7 +101,7 @@ const test = () => {
         </div>
       </div> */}
 
-<Carousel
+{/* <Carousel
   swipeable={false}
   draggable={false}
   showDots={true}
@@ -172,7 +175,9 @@ const test = () => {
         </div>
       </div>
   </div>
-</Carousel>;
+</Carousel>; */}
+
+<Programs/>
 
     </>
   );

@@ -3,30 +3,40 @@ import Slider from "../components/slider/MainSlider";
 import AnimatedContent from "../components/animations/AnimatedContent";
 import { Button, Form, Radio, TreeSelect } from "antd";
 import { Player } from "video-react";
+import Programs from "../components/card/Programs";
 
 const MainHero = ({ data }) => {
   return (
     <>
+     <div class="container" 
+     style={{paddingTop:"10%"}}
+     >
+     <Programs/>
+     </div>
+     
       <div class="hero-container">
         <div class="hero-body">
           {/* <h1 style={{ color: "#ffffff" }}>SIBA KDK Campus</h1> */}
 
-          {data.content ? (
-            <AnimatedContent
-              data={{
-                name: data.content,
-              }}
-            />
-          ) : null}
+          {
+            data.content ? (
+              <AnimatedContent
+                data={{
+                  name: data.content,
+                }}
+              />
+            ) : null
+            // <Programs/>
+            // <p>asas</p>
+          }
 
-    <div className="hero-video">
-
-    </div>
-    {data.videoUrl ? (
+          {/* <div className="hero-video"> */}
+          {data.videoUrl ? (
             <Player
               // playsInline
               // fluid={true}
-              // height={100}
+              // height={"100vh"}
+              // style={{height:"100vh"}}
               autoPlay={true}
               // muted={true}
               // aspectRatio="16:9"
@@ -35,7 +45,8 @@ const MainHero = ({ data }) => {
               src={data.videoUrl}
             />
           ) : null}
-      
+
+          {/* <p>sasa</p> */}
 
           {/* <Button>Details</Button> */}
           {/* <span className="hero-span">Find, What You Want</span> */}
@@ -47,7 +58,12 @@ const MainHero = ({ data }) => {
         </div>
       </div>
 
-      <div class="fixed-bg"></div>
+      {/* </div> */}
+
+      <div class="fixed-bg">
+        
+      </div>
+      
     </>
   );
 };

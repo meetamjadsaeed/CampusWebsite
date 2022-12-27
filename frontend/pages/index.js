@@ -21,16 +21,16 @@ const Home = () => {
       </Head>
 
       <Header />
-
-      {/* <MainHero
+{/* 
+      <MainHero
         data={{
-          content: "",
-          videoUrl: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+          // content: "",
+          videoUrl: "https://www.youtube.com/watch?v=a6R32cP23N0&ab_channel=GreenTimelapse",
         }}
       /> */}
       <MainHero
       data={{
-        content:"“To become a world class university in the fields of Management Sciences, Information Technology, Engineering, Education and Mathematics”"
+        content:null
       }}
     />
       <div className="container">
