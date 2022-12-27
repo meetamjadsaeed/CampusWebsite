@@ -8,12 +8,12 @@ import Programs from "../components/card/Programs";
 const MainHero = ({ data }) => {
   return (
     <>
-     <div class="container" 
-     style={{paddingTop:"10%"}}
-     >
-     <Programs/>
-     </div>
-     
+      {!data.content ? (
+        <div class="container" style={{ paddingTop: "10%" }}>
+          <Programs />
+        </div>
+      ) : null}
+
       <div class="hero-container">
         <div class="hero-body">
           {/* <h1 style={{ color: "#ffffff" }}>SIBA KDK Campus</h1> */}
@@ -60,10 +60,7 @@ const MainHero = ({ data }) => {
 
       {/* </div> */}
 
-      <div class="fixed-bg">
-        
-      </div>
-      
+      <div class="fixed-bg"></div>
     </>
   );
 };

@@ -30,7 +30,8 @@ const Home = () => {
       /> */}
       <MainHero
       data={{
-        content:null
+        content:null,
+        videoUrl: null,
       }}
     />
       <div className="container">
