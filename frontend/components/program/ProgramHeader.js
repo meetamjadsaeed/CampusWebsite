@@ -10,12 +10,17 @@ import Link from "next/link";
 const ProgramHeader = ({ props }) => {
   return (
     <>
-      <Breadcrumb style={{ marginTop: 16 }}>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href="">Program</a>
-        </Breadcrumb.Item>
-      </Breadcrumb>
+     	 <Breadcrumb style={{ marginTop: 16 }}>
+          <Breadcrumb.Item>
+            <Link href="/">Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+          <Link href="/admissions">Admissions</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+          <Link href="">{props && props.Id}</Link>
+          </Breadcrumb.Item>
+        </Breadcrumb>
       <Row gutter={[40, 40]} style={{ marginTop: 16 }}>
         <Col 
         xs={24} sm={24} md={24} lg={24} xl={24}
@@ -30,16 +35,16 @@ const ProgramHeader = ({ props }) => {
               alignItems: "center",
             }}
           >
-            <a href={process && props.process}>
+            <a href={props && props.process}>
               <Button type="">Admission Process</Button>
             </a>
-            <a href={process && props.feeStructure}>
+            <a href={props && props.feeStructure}>
               <Button type="">Fee Structure</Button>
             </a>
-            <a href={process && props.courseSchemata}>
+            <a href={props && props.courseSchemata}>
               <Button type="">Course Schema</Button>
             </a>
-            <a href={process && props.apply}>
+            <a href={props && props.apply}>
               <Button type="">Apply Online</Button>
             </a>
           </div>

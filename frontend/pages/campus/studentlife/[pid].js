@@ -69,10 +69,15 @@ const studentLife = () => {
       <Header />
 
       <div className="container">
-        <Breadcrumb style={{ marginTop: 16 }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
+      <Breadcrumb style={{ marginTop: 16 }}>
           <Breadcrumb.Item>
-            <a href="">Achievments</a>
+            <Link href="/">Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+          <Link href="/campus">Life At Campus</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link href="">{pid}</Link>
           </Breadcrumb.Item>
         </Breadcrumb>
         <div
@@ -92,7 +97,7 @@ const studentLife = () => {
         </div>
 
         <div className="site-card-wrapper">
-          <h1 className="page-title">Events</h1>
+          {/* <h1 className="page-title">Events</h1> */}
           <Row gutter={16} style={{ marginTop: "30px" }}>
             {studentLife ? (
               studentLife.map((item) => {

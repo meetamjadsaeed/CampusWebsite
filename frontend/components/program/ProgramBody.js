@@ -19,15 +19,15 @@ const ProgramBody = ({props}) => {
         >
         <h2 className="page-title">Program Mission Statement:</h2>
         <p>
-        {props.mission}
+        {props && props.mission}
         </p>
         <h2 className="page-title">Program Learning Outcomes (PLO)</h2>
         <p>
-        {props.outcomes}
+        {props && props.outcomes}
         </p>
         <h2 className="page-title">Eligibility Criteria for Admission:</h2>
         <p>
-        {props.eligibility}
+        {props && props.eligibility}
         </p>
         </Col>
       </Row>

@@ -66,15 +66,17 @@ const department = () => {
 <Header />
 
 <div className="container">
-  <Breadcrumb style={{ marginTop: 16 }}>
-    <Breadcrumb.Item>Home</Breadcrumb.Item>
-    <Breadcrumb.Item>
-      <a href="">All Profiles</a>
-    </Breadcrumb.Item>
-    <Breadcrumb.Item>
-      <a href="">Profiles By Department</a>
-    </Breadcrumb.Item>
-  </Breadcrumb>
+<Breadcrumb style={{ marginTop: 16 }}>
+          <Breadcrumb.Item>
+            <Link href="/">Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+          <Link href="/admissions">Admissions</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link href="">{pid}</Link>
+          </Breadcrumb.Item>
+        </Breadcrumb>
   <div
     style={{
       display: "flex",
@@ -92,7 +94,7 @@ const department = () => {
   </div>
 
   <div className="site-card-wrapper">
-    <h1 className="page-title">Profiles By Department</h1>
+    {/* <h1 className="page-title">Profiles By Department</h1> */}
 
     <Row gutter={40} style={{ marginTop: "2%", marginBottom: "2%" }}>
           {department ? (

@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { Select } from "antd";
+import { useRouter } from "next/router";
 
 const handleChange = (value) => {
   console.log(`selected ${value}`);
@@ -41,9 +42,11 @@ const pinboard = () => {
 
       <div className="container">
         <Breadcrumb style={{ marginTop: 16 }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a href="">Pin Board</a>
+            <Link href="/">Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link href="/pinboard">All Pin Board</Link>
           </Breadcrumb.Item>
         </Breadcrumb>
         <div
@@ -63,7 +66,7 @@ const pinboard = () => {
         </div>
 
         <div className="site-card-wrapper">
-          <h1 className="page-title">Pin Board</h1>
+          {/* <h1 className="page-title">Pin Board</h1> */}
 
           <Row gutter={40} style={{ marginTop: "2%", marginBottom: "2%" }}>
             {pinboard ? (

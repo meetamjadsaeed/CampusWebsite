@@ -47,13 +47,15 @@ const fullGallery = () => {
       <Header />
 
       <div className="container">
-        <Breadcrumb style={{ marginTop: 16 }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
+      <Breadcrumb style={{ marginTop: 16 }}>
           <Breadcrumb.Item>
-            <a href="">All Profiles</a>
+            <Link href="/">Home</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a href="">Profiles By Department</a>
+          <Link href="/campus">Life At Campus</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link href="">{pid}</Link>
           </Breadcrumb.Item>
         </Breadcrumb>
 
