@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { Card } from "antd";
-import { ProgramsSlider } from "../slider/ProgramsSlider";
-import styles from "./Programs.module.css";
 import ReactDOM from "react-dom";
 import { Col, Row } from "antd";
 import { Image } from "antd";
@@ -23,8 +21,6 @@ import Link from "next/link";
 import Marquee from "react-easy-marquee";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import GlobalSlider from "../../Assets/Styles/slider/GlobalSlider";
-
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -89,20 +85,20 @@ const displayFlex = {
 const regex = /(<([^>]+)>)/gi;
 
 
-const Programs = () => {
-  const [Programs, setPrograms] = useState();
+const GlobalSlider = ({globalSlider}) => {
+  const [GlobalSlider, setGlobalSlider] = useState();
   const [imagebyCat, setimageCat] = useState();
 
 
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?admissions=38`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}${globalSlider.endpoints? globalSlider.endpoints:null}`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => setPrograms(result.data));
+      .then((result) => setGlobalSlider(result.data));
     // .then((result) => console.log(result));
 
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?admissions=38`)
@@ -129,20 +125,65 @@ const Programs = () => {
   return (
     <>
       <div style={{marginTop:"5%",marginBottom:"5%"}}>
-      <GlobalSlider
-          globalSlider={
-            {
-              endpoints:"campus?admissions=38",
-              rgba1:"rgba(0, 0, 0, 0.86)",
-              rgba2:"rgba(0, 0, 0, 0.86)",
-              imageUrl:"https://picsum.photos/300/300/?random=",
-              flip_back_bg:"#012447",
-              flip_back_color:"#ffffff",
-              titleDisplay:true,
-              contentDisplay:true,
-            }
+      <Carousel
+  swipeable={false}
+  draggable={false}
+  showDots={false}
+  responsive={responsive}
+  ssr={true} // means to render carousel on server-side.
+  infinite={true}
+  autoPlay={true}
+  autoPlaySpeed={3000}
+  keyBoardControl={true}
+  customTransition="all .5"
+  transitionDuration={500}
+  containerClass="carousel-container"
+  removeArrowOnDeviceType={["tablet", "mobile"]}
+  // deviceType={this.props.deviceType}
+  dotListClass="custom-dot-list-style"
+  itemClass="carousel-item-padding-40-px"
+>
+          {GlobalSlider ? (
+            GlobalSlider.map((item) => {
+              return (
+                <div style={{marginLeft:"2%",marginRight:"2%"}}>
+                  <div class="flip_card">
+                    <div class="flip_content">
+                      <div class="flip_front"
+                      style={{
+                        backgroundImage: `linear-gradient(0deg, ${globalSlider.rgba1? globalSlider.rgba1:"rgba(0, 0, 0, 0.86)"}, ${globalSlider.rgba2? globalSlider.rgba2:"rgba(0, 0, 0, 0.86)"}),url(${globalSlider.imageUrl? globalSlider.imageUrl:"https://picsum.photos/300/300/?random"}${item.id})`,
+                      }}
+                      >
+           {
+                         (globalSlider.titleDisplay === true)? 
+                        <h2 className="white">{item["title"]["rendered"].replace(regex,"")}</h2>
+                        : null
           }
-          />
+                      </div>
+                      <div class="flip_back"
+                      style={{
+                        background:globalSlider.flip_back_bg? globalSlider.flip_back_bg:"#012447",
+                        color:globalSlider.flip_back_color? globalSlider.flip_back_color:"#ffffff"
+                      }}
+                      >{
+
+                        (globalSlider.contentDisplay === true)? 
+                        <p className="white">{item["content"]["rendered"].replace(regex,"")}</p>
+                        : null
+                      }
+                     
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                // </p>
+              );
+            })
+          ) : (
+            <p>loading...</p>
+          )}
+        </Carousel>
       </div>
     
    
@@ -213,4 +254,4 @@ const Programs = () => {
   );
 };
 
-export default Programs;
+export default GlobalSlider;

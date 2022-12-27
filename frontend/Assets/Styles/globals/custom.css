@@ -397,7 +397,5 @@ opacity: 0.6;
 }
 
 .flip_back {
-  background: #012447;
-  color: white;
   transform: rotateY( 180deg );
 }
