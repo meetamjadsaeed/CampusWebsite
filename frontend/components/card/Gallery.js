@@ -22,29 +22,25 @@ const Gallery = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=36`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((result) => setGallery(result.data))
-      // .then((result) => console.log(result));
-      .catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log("Error", error.message);
-        }
-      });
+    .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?scholarships=29`)
+    .then((result) => setGallery(result.data))
+    // .then((result) => console.log(result));
+    .catch(function (error) {
+      if (error.response) {
+        // Request made and server responded
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log("Error", error.message);
+      }
+    });
 
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=36`)
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=43`)
       .then((response) => response.json())
       // .then((result) => console.log(result.json()));
       .catch(function (error) {
@@ -111,7 +107,7 @@ const Gallery = () => {
                       xl={4}
                       style={{ marginBottom: "16px" }}
                     >
-                      {imagebyCat ? (
+                      {/* {imagebyCat ? (
                         imagebyCat.map((featuredImage) => {
                           // console.log(item);
                           if (item.featured_media === featuredImage.id) {
@@ -130,12 +126,17 @@ const Gallery = () => {
                         })
                       ) : (
                         <Spin />
-                      )}
+                      )} */}
+                      <Image
+                        // width={80}
+                        // height={80}
+                        src="http://iba-kdk.com/wp-content/uploads/2022/12/294517709_2884433441864646_587713335291766174_n.jpg"
+                      />
                     </Col>
                   );
                 })
               ) : (
-                <p>loading...</p>
+                <Spin />
               )}
             </Row>
           </Card>

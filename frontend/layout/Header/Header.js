@@ -7,6 +7,7 @@ import { Nav } from "./Nav";
 import { Slider } from "../../components/slider/MainSlider";
 import styles from "./Header.module.css";
 import Link from "next/link";
+import { Spin } from "antd";
 
 const Header = () => {
   return (
@@ -33,7 +34,7 @@ const Header = () => {
                 }}
               >
                 <Link href="/">
-                  {/* <h2
+                  <h2
                 style={{
                   color: '#ffffff',
                   padding: '30px 0 0 0',
@@ -43,14 +44,14 @@ const Header = () => {
                 }}
                 >
                 SIBA KDK Campus
-                </h2> */}
-                  <Image
+                </h2>
+                  {/* <Image
                     className="logo"
                     // width={100}
                     height={120}
                     src="http://iba-kdk.com/wp-content/uploads/2022/12/Full-White-PNG.png"
                     // style={{marginLeft:"200%"}}
-                  />
+                  /> */}
                 </Link>
               </div>
             </Col>
@@ -62,7 +63,7 @@ const Header = () => {
           className="box"
           style={{ height: "100px", backgroundColor: "#012447" }}
         >
-          <Nav />
+          <Nav /> ? <Nav /> : <Spin /> 
         </Col>
       </Row>
 

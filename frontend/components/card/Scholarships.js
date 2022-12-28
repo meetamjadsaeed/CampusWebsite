@@ -110,9 +110,9 @@ const Scholarships = () => {
       <Card
         title="Scholarships /Financial Ad"
         extra={
-          <a href="#">
+          <Link href="http://donations.iba-suk.edu.pk/">
             <Button type="">Make a Donation</Button>
-          </a>
+          </Link>
         }
         style={{ marginTop: "5%" }}
       >
@@ -130,25 +130,36 @@ const Scholarships = () => {
             {Scholarships ? (
               Scholarships.map((item) => {
                 return (
-                  <img
-                    src={
-                      imagebyCat ? (
-                        imagebyCat.map((featuredImage) => {
-                          // console.log(item);
-                          if (item.featured_media === featuredImage.id) {
-                            return (
-                              // width={80}
-                              // height={80}
+                  // <img
+                  //   src={
+                  //     imagebyCat ? (
+                  //       imagebyCat.map((featuredImage) => {
+                  //         // console.log(item);
+                  //         if (item.featured_media === featuredImage.id) {
+                  //           return (
+                  //             // width={80}
+                  //             // height={80}
 
-                              featuredImage ? featuredImage.guid.rendered : null
-                            );
-                          }
-                        })
-                      ) : (
-                        <Spin />
-                      )
-                    }
-                    alt="picsum"
+                  //             featuredImage ? featuredImage.guid.rendered : null
+                  //           );
+                  //         }
+                  //       })
+                  //     ) : (
+                  //       <Spin />
+                  //     )
+                  //   }
+                  //   alt="picsum"
+                  //   style={{
+                  //     borderRadius: "10px",
+                  //     margin: "20px",
+                  //     width: "100px",
+                  //     height: "100px",
+                  //   }}
+                  // />
+                  <Image
+                    // width={80}
+                    // height={80}
+                    src="http://iba-kdk.com/wp-content/uploads/2022/12/OGDCL_logo.svg_.png"
                     style={{
                       borderRadius: "10px",
                       margin: "20px",
@@ -162,7 +173,7 @@ const Scholarships = () => {
                 );
               })
             ) : (
-              <p>loading...</p>
+              <Spin />
             )}
             {/* {images.map((image) => (
               <img src={image} alt="picsum" style={{ borderRadius: "10px" }} />

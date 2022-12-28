@@ -12,8 +12,13 @@ import { Spin } from "antd";
 
 const items = [
   {
+    label: <Link href="/">Home</Link> ? <Link href="/">Home</Link> : <Spin/>,
+    key: "home",
+    icon: <SettingOutlined />,
+  },
+  {
     label: "University",
-    key: "SubMenu",
+    key: "submenu",
     icon: <SettingOutlined />,
     children: [
       {
@@ -21,15 +26,15 @@ const items = [
         label: "About",
         children: [
           {
-            label: <Link href="/vision">Vision</Link>,
+            label: <Link href="/vision">Vision</Link> ? <Link href="/vision">Vision</Link> : <Spin/>,
             key: "setting:1",
           },
           {
-            label: <Link href="/mission">Mission</Link>,
+            label: <Link href="/mission">Mission</Link> ? <Link href="/mission">Mission</Link> : <Spin/>,
             key: "setting:2",
           },
           {
-            label: <Link href="/history">History</Link>,
+            label: <Link href="/history">History</Link> ? <Link href="/history">History</Link> : <Spin/>, 
             key: "setting:3",
           },
         ],
@@ -39,27 +44,15 @@ const items = [
         label: "Founders",
         children: [
           {
-            label: (
-              <Link href="http://localhost:3000/profilebycat/faculty/vice-chancellor">
-                Vice Chancellor
-              </Link>
-            ),
+            label:<Link href="http://localhost:3000/profilebycat/faculty/vice-chancellor">Vice Chancellor</Link> ? <Link href="http://localhost:3000/profilebycat/faculty/vice-chancellor">Vice Chancellor</Link> : <Spin/>,
             key: "setting:4",
           },
           {
-            label: (
-              <Link href="http://localhost:3000/profilebycat/faculty/registrar">
-                Registrar
-              </Link>
-            ),
+            label: <Link href="http://localhost:3000/profilebycat/faculty/registrar">Registrar</Link> ? <Link href="http://localhost:3000/profilebycat/faculty/registrar">Registrar</Link> : <Spin/>,
             key: "setting:5",
           },
           {
-            label: (
-              <Link href="http://localhost:3000/profilebycat/faculty/director">
-                Director
-              </Link>
-            ),
+            label: <Link href="http://localhost:3000/profilebycat/faculty/director">Director</Link> ? <Link href="http://localhost:3000/profilebycat/faculty/director">Director</Link> : <Spin/>,
             key: "setting:6",
           },
         ],
@@ -67,37 +60,35 @@ const items = [
     ],
   },
   {
-    label: <Link href="/pinboard">Pin Board</Link>,
+    label: <Link href="/pinboard">Pin Board</Link> ? <Link href="/pinboard">Pin Board</Link> : <Spin />,
     key: "pinboard",
     icon: <SettingOutlined />,
   },
 
   {
-    label: <Link href="/admissions">Admissions</Link>,
+    label: <Link href="/admissions">Admissions</Link> ? <Link href="/admissions">Admissions</Link> : <Spin />,
     key: "admissions",
     icon: <SettingOutlined />,
   },
   {
-    label: <Link href="/allprofiles">Profiles</Link>,
+    label: <Link href="/allprofiles">Profiles</Link> ? <Link href="/allprofiles">Profiles</Link> : <Spin />,
     key: "allprofiles",
     icon: <SettingOutlined />,
   },
   {
-    label: (
-      <Link href="https://www.iba-suk.edu.pk/student-resources">Resources</Link>
-    ),
-    key: "Resources",
+    label: <Link href="https://www.iba-suk.edu.pk/student-resources">Resources</Link> ? <Link href="https://www.iba-suk.edu.pk/student-resources">Resources</Link> : <Spin/>,
+    key: "resources",
     icon: <SettingOutlined />,
   },
   {
-    label: <Link href="/campus">Life at Campus</Link>,
+    label: <Link href="/campus">Life at Campus</Link> ? <Link href="/campus">Life at Campus</Link> : <Spin/>,
     key: "campus",
     icon: <SettingOutlined />,
   },
 ];
 
 export const Nav = () => {
-  const [current, setCurrent] = useState("mail");
+  const [current, setCurrent] = useState("home");
   const onClick = (e) => {
     console.log("click ", e);
     setCurrent(e.key);
@@ -109,8 +100,8 @@ export const Nav = () => {
       {/* <h1 style={{color:'#fff'}}>Nav</h1> */}
       <div style={{ marginLeft: "30%", marginTop: "2%" }}>
         <Menu
-          onClick={onClick}
-          selectedKeys={[current]}
+          // onClick={onClick}
+          // selectedKeys={[current]}
           mode="horizontal"
           items={items}
           style={{

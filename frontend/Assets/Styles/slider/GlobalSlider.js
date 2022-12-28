@@ -177,7 +177,7 @@ const GlobalSlider = ({globalSlider}) => {
               );
             })
           ) : (
-            <p>loading...</p>
+            <Spin />
           )}
         </Carousel>
       </div>

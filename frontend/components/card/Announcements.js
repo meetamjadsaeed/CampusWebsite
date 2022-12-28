@@ -151,7 +151,7 @@ const Announcements = () => {
               );
             })
           ) : (
-            <p>loading...</p>
+            <Spin />
           )}
           {/* {images.map((image) => (
             <img src={image} alt="picsum" style={{ borderRadius: "10px" }} />
