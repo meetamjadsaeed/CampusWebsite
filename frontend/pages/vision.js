@@ -1,8 +1,8 @@
 import Head from "next/head";
 // import Image from "next/image";
 // import cardStyles from "../Assets/Styles/Card/Card.module.css";
-import Header  from "../layout/Header/Header";
-import MainHero  from "../layout/MainHero";
+import Header from "../layout/Header/Header";
+import MainHero from "../layout/MainHero";
 import Slider from "../components/slider/MainSlider";
 import Main from "../components/card/Main";
 import Group from "../components/card/Group";
@@ -22,9 +22,10 @@ const vision = () => {
 
       <Header />
       <MainHero
-      data={{
-        content:"“To become a world class university in the fields of Management Sciences, Information Technology, Engineering, Education and Mathematics”"
-      }}
+        data={{
+          content:
+            "“To become a world class university in the fields of Management Sciences, Information Technology, Engineering, Education and Mathematics”",
+        }}
       />
       <Footer />
     </>

@@ -17,9 +17,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Spin } from "antd";
 
-// regex for removing the html tags 
-const regex = /(<([^>]+)>)/ig;
-
+// regex for removing the html tags
+const regex = /(<([^>]+)>)/gi;
 
 const Departments = () => {
   const [Departments, setDepartments] = useState();
@@ -28,22 +27,21 @@ const Departments = () => {
     await axios
       .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=16")
       .then((result) => setDepartments(result.data))
-    // .then((result) => console.log(result));
-    .catch(function (error) {
-      if (error.response) {
-        // Request made and server responded
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
-      }
-  
-    });
+      // .then((result) => console.log(result));
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+      });
   };
 
   useEffect(() => {
@@ -78,33 +76,39 @@ const Departments = () => {
         </div>
 
         <div className="site-card-wrapper">
-        <h1 className="page-title">Departments</h1>
+          <h1 className="page-title">Departments</h1>
 
           <Row gutter={16} style={{ marginTop: "50px", marginBottom: "50px" }}>
             {Departments ? (
               Departments.map((item) => {
                 // console.log(item);
                 return (
-                  <Col span={8}
-                  style={{marginBottom: '50px'}}
-                  >
+                  <Col span={8} style={{ marginBottom: "50px" }}>
                     <Link href={`program/${item.id}`}>
                       <Card
                         style={{
                           width: 300,
                         }}
-                        cover={<img alt="example" src="https://images.unsplash.com/photo-1544256718-3bcf237f3974?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"/>}
+                        cover={
+                          <img
+                            alt="example"
+                            src="https://images.unsplash.com/photo-1544256718-3bcf237f3974?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+                          />
+                        }
                         // actions={[
                         //   <SettingOutlined key="setting" />,
                         //   <EditOutlined key="edit" />,
                         //   <EllipsisOutlined key="ellipsis" />,
                         // ]}
-                      className="department-card"
+                        className="department-card"
                       >
                         <Meta
                           // avatar={<Avatar src={item.thumbnail} />}
                           title={item["title"]["rendered"]}
-                          description= {item["content"]["rendered"].replace(regex, '')}
+                          description={item["content"]["rendered"].replace(
+                            regex,
+                            ""
+                          )}
                         />
                       </Card>
                     </Link>

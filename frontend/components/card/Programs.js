@@ -21,28 +21,27 @@ import axios from "axios";
 import { Spin } from "antd";
 import Link from "next/link";
 import Marquee from "react-easy-marquee";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import GlobalSlider from "../../Assets/Styles/slider/GlobalSlider";
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
-    slidesToSlide: 3 // optional, default to 1.
+    slidesToSlide: 3, // optional, default to 1.
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
     items: 2,
-    slidesToSlide: 2 // optional, default to 1.
+    slidesToSlide: 2, // optional, default to 1.
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
-    slidesToSlide: 1 // optional, default to 1.
-  }
+    slidesToSlide: 1, // optional, default to 1.
+  },
 };
-
 
 const { Meta } = Card;
 
@@ -88,33 +87,30 @@ const displayFlex = {
 // regex for removing the html tags
 const regex = /(<([^>]+)>)/gi;
 
-
 const Programs = () => {
   const [Programs, setPrograms] = useState();
   const [imagebyCat, setimageCat] = useState();
-
 
   const getData = async () => {
     // Get Posts
     await axios
       .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?admissions=38`)
       .then((result) => setPrograms(result.data))
-    // .then((result) => console.log(result));
-    .catch(function (error) {
-      if (error.response) {
-        // Request made and server responded
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
-      }
-  
-    });
+      // .then((result) => console.log(result));
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+      });
 
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?admissions=38`)
       .then((response) => response.json())
@@ -130,9 +126,8 @@ const Programs = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
-    
       })
       .then((images) => {
         const respones = images.map(
@@ -158,9 +153,8 @@ const Programs = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
-    
       });
   };
 
@@ -169,24 +163,20 @@ const Programs = () => {
   }, []);
   return (
     <>
-      <div style={{marginTop:"5%",marginBottom:"5%"}}>
-      <GlobalSlider
-          globalSlider={
-            {
-              endpoints:"campus?admissions=38",
-              rgba1:"rgba(0, 0, 0, 0.86)",
-              rgba2:"rgba(0, 0, 0, 0.86)",
-              imageUrl:"https://picsum.photos/300/300/?random=",
-              flip_back_bg:"#012447",
-              flip_back_color:"#ffffff",
-              titleDisplay:true,
-              contentDisplay:true,
-            }
-          }
-          />
+      <div style={{ marginTop: "5%", marginBottom: "5%" }}>
+        <GlobalSlider
+          globalSlider={{
+            endpoints: "campus?admissions=38",
+            rgba1: "rgba(0, 0, 0, 0.86)",
+            rgba2: "rgba(0, 0, 0, 0.86)",
+            imageUrl: "https://picsum.photos/300/300/?random=",
+            flip_back_bg: "#012447",
+            flip_back_color: "#ffffff",
+            titleDisplay: true,
+            contentDisplay: true,
+          }}
+        />
       </div>
-    
-   
     </>
 
     // <>

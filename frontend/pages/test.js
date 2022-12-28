@@ -30,10 +30,9 @@ import React from "react";
 import FootertTwo from "../layout/Footer/FooterTwo";
 import Footer from "../layout/Footer/Footer";
 import AnimatedContent from "../components/animations/AnimatedContent";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import Programs from "../components/card/Programs";
-
 
 // const responsive = {
 //   desktop: {
@@ -101,7 +100,7 @@ const test = () => {
         </div>
       </div> */}
 
-{/* <Carousel
+      {/* <Carousel
   swipeable={false}
   draggable={false}
   showDots={true}
@@ -177,8 +176,7 @@ const test = () => {
   </div>
 </Carousel>; */}
 
-<Programs/>
-
+      <Programs />
     </>
   );
 };

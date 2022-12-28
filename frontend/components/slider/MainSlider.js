@@ -29,7 +29,7 @@ const contentStyle = {
   // justifyContent: "flex-end",
   // display: "flex",
   // alignItems: "flex-start",
-  marginTop: "5%"
+  marginTop: "5%",
 };
 
 const parentStyles = {

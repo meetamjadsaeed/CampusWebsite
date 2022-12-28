@@ -11,7 +11,6 @@ import {
   SyncOutlined,
 } from "@ant-design/icons";
 
-
 export const Footer = () => {
   const data = [
     {
@@ -44,7 +43,7 @@ export const Footer = () => {
   ];
   return (
     <>
-      <div className="footer" style={{marginTop:'5%'}}>
+      <div className="footer" style={{ marginTop: "5%" }}>
         <div className="container">
           <Row gutter={[32, 40]} style={{ marginTop: 16 }}>
             <Col xs={24} sm={24} md={24} lg={6} xl={6}>
@@ -65,37 +64,36 @@ export const Footer = () => {
             <Col xs={24} sm={24} md={24} lg={6} xl={6}>
               <h3 className="white">Important Links</h3>
 
-              <List style={{color: '#fff'}}
+              <List
+                style={{ color: "#fff" }}
                 itemLayout="horizontal"
                 dataSource={data}
                 renderItem={(item) => (
                   <List.Item>
-                    <List.Item.Meta
-                      title={<a href="#">{item.title}</a>}
-                    />
+                    <List.Item.Meta title={<a href="#">{item.title}</a>} />
                   </List.Item>
                 )}
               />
             </Col>
             <Col xs={24} sm={24} md={24} lg={6} xl={6}>
-            <h3 className="white">Social Presence</h3>
-            <List style={{color: '#fff'}}
+              <h3 className="white">Social Presence</h3>
+              <List
+                style={{ color: "#fff" }}
                 itemLayout="horizontal"
                 dataSource={social}
                 renderItem={(item) => (
                   <List.Item>
-                    <List.Item.Meta
-                      title={<a href="#">{item.title}</a>}
-                    />
+                    <List.Item.Meta title={<a href="#">{item.title}</a>} />
                   </List.Item>
                 )}
               />
-             
             </Col>
           </Row>
           <Row>
             <div>
-              <p className="white">Copyright @ 2020 Sukkur IBA University Kandhkot Campus </p>
+              <p className="white">
+                Copyright @ 2020 Sukkur IBA University Kandhkot Campus{" "}
+              </p>
             </div>
           </Row>
         </div>

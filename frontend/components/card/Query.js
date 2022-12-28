@@ -14,9 +14,7 @@ const Query = () => {
 
   return (
     <>
-      <Card title="Visitor's Query" bordered={true}
-      style={{height:"420px"}}
-      >
+      <Card title="Visitor's Query" bordered={true} style={{ height: "420px" }}>
         <Form
           form={form}
           layout="vertical"

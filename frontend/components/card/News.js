@@ -53,9 +53,8 @@ const News = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
-    
       });
     // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
     // .then((result) => console.log(result.data[0]["date"]));
@@ -87,11 +86,9 @@ const News = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
-    
       });
-
   };
 
   useEffect(() => {
@@ -115,33 +112,33 @@ const News = () => {
             News.map((item) => {
               return (
                 <Link href={`/boardbypin/pin/${item.id}`}>
-                <Card style={{ width: 300, marginTop: 16 }}>
-                  <Meta
-                    avatar={
-                      imagebyCat ? (
-                        imagebyCat.map((featuredImage) => {
-                          // console.log(item);
-                          if (item.featured_media === featuredImage.id) {
-                            return (
-                              <Image
-                                width={50}
-                                src={
-                                  featuredImage
-                                    ? featuredImage.guid.rendered
-                                    : null
-                                }
-                              />
-                            );
-                          }
-                        })
-                      ) : (
-                        <Spin />
-                      )
-                    }
-                    title={item["title"]["rendered"]}
-                    description={item["date"]}
-                  />
-                </Card>
+                  <Card style={{ width: 300, marginTop: 16 }}>
+                    <Meta
+                      avatar={
+                        imagebyCat ? (
+                          imagebyCat.map((featuredImage) => {
+                            // console.log(item);
+                            if (item.featured_media === featuredImage.id) {
+                              return (
+                                <Image
+                                  width={50}
+                                  src={
+                                    featuredImage
+                                      ? featuredImage.guid.rendered
+                                      : null
+                                  }
+                                />
+                              );
+                            }
+                          })
+                        ) : (
+                          <Spin />
+                        )
+                      }
+                      title={item["title"]["rendered"]}
+                      description={item["date"]}
+                    />
+                  </Card>
                 </Link>
               );
             })

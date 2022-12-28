@@ -12,19 +12,16 @@ const MainHero = ({ data }) => {
       {!data.content ? (
         <div class="container" style={{ paddingTop: "10%" }}>
           <GlobalSlider
-          globalSlider={
-            {
-              endpoints:"campus?admissions=38",
-              rgba1:"rgb(0 0 0 / 0%)",
-              rgba2:"rgb(0 1 0 / 40%)",
-              imageUrl:"https://picsum.photos/300/300/?random=",
-              flip_back_bg:"#ea6645",
-              flip_back_color:"#ffffff",
-              titleDisplay:false,
-              contentDisplay:true,
-
-            }
-          }
+            globalSlider={{
+              endpoints: "campus?admissions=38",
+              rgba1: "rgb(0 0 0 / 0%)",
+              rgba2: "rgb(0 1 0 / 40%)",
+              imageUrl: "https://picsum.photos/300/300/?random=",
+              flip_back_bg: "#ea6645",
+              flip_back_color: "#ffffff",
+              titleDisplay: false,
+              contentDisplay: true,
+            }}
           />
         </div>
       ) : null}

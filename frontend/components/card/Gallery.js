@@ -28,22 +28,21 @@ const Gallery = () => {
         },
       })
       .then((result) => setGallery(result.data))
-    // .then((result) => console.log(result));
-    .catch(function (error) {
-      if (error.response) {
-        // Request made and server responded
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
-      }
-  
-    });
+      // .then((result) => console.log(result));
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+      });
 
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=36`)
       .then((response) => response.json())
@@ -59,9 +58,8 @@ const Gallery = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
-    
       })
       .then((images) => {
         const respones = images.map(
@@ -87,9 +85,8 @@ const Gallery = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
-    
       });
   };
 
@@ -106,33 +103,34 @@ const Gallery = () => {
               {Gallery ? (
                 Gallery.map((item) => {
                   return (
-                    <Col 
-                    xs={12} sm={8} md={6} lg={4} xl={4}
-                    style={{ marginBottom: "16px" }}>
-                        {
-                          imagebyCat ? (
-                            imagebyCat.map((featuredImage) => {
-                              // console.log(item);
-                              if (item.featured_media === featuredImage.id) {
-                                return (
-                                  <Image
-                                  // width={80}
-                                  // height={80}
-                                  src={
-                                    featuredImage
-                                      ? featuredImage.guid.rendered
-                                      : null
-                                  }
-                                />
-                                );
-                              }
-                            })
-                          ) : (
-                            <Spin />
-                          )
-                        }
-                     
-
+                    <Col
+                      xs={12}
+                      sm={8}
+                      md={6}
+                      lg={4}
+                      xl={4}
+                      style={{ marginBottom: "16px" }}
+                    >
+                      {imagebyCat ? (
+                        imagebyCat.map((featuredImage) => {
+                          // console.log(item);
+                          if (item.featured_media === featuredImage.id) {
+                            return (
+                              <Image
+                                // width={80}
+                                // height={80}
+                                src={
+                                  featuredImage
+                                    ? featuredImage.guid.rendered
+                                    : null
+                                }
+                              />
+                            );
+                          }
+                        })
+                      ) : (
+                        <Spin />
+                      )}
                     </Col>
                   );
                 })

@@ -21,7 +21,7 @@ const Home = () => {
       </Head>
 
       <Header />
-{/* 
+      {/* 
       <MainHero
         data={{
           // content: "",
@@ -29,11 +29,11 @@ const Home = () => {
         }}
       /> */}
       <MainHero
-      data={{
-        content:null,
-        videoUrl: null,
-      }}
-    />
+        data={{
+          content: null,
+          videoUrl: null,
+        }}
+      />
       <div className="container">
         {/* <Slider /> */}
         <Main />

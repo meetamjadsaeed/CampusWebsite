@@ -86,7 +86,7 @@ export const CarouselComponent = () => {
         </div>
 
         <div>
-        <div style={contentStyle}>
+          <div style={contentStyle}>
             <Row gutter={0}>
               <Col span={10}>
                 <h3>MS MPhil</h3>

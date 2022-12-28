@@ -37,22 +37,21 @@ const Announcements = () => {
         },
       })
       .then((result) => setAnnouncements(result.data))
-    // .then((result) => console.log(result));
-    .catch(function (error) {
-      if (error.response) {
-        // Request made and server responded
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
-      }
-  
-    });
+      // .then((result) => console.log(result));
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+      });
 
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=35`)
       .then((response) => response.json())
@@ -68,9 +67,8 @@ const Announcements = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
-    
       })
       .then((images) => {
         const respones = images.map(
@@ -96,9 +94,8 @@ const Announcements = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
-    
       });
   };
 
@@ -125,27 +122,27 @@ const Announcements = () => {
                 <Link href={`/boardbypin/pin/${item.id}`}>
                   <Card style={{ width: 300, marginTop: 16 }}>
                     <Meta
-                     avatar={
-                      imagebyCat ? (
-                        imagebyCat.map((featuredImage) => {
-                          // console.log(item);
-                          if (item.featured_media === featuredImage.id) {
-                            return (
-                              <Image
-                                width={50}
-                                src={
-                                  featuredImage
-                                    ? featuredImage.guid.rendered
-                                    : null
-                                }
-                              />
-                            );
-                          }
-                        })
-                      ) : (
-                        <Spin />
-                      )
-                    }
+                      avatar={
+                        imagebyCat ? (
+                          imagebyCat.map((featuredImage) => {
+                            // console.log(item);
+                            if (item.featured_media === featuredImage.id) {
+                              return (
+                                <Image
+                                  width={50}
+                                  src={
+                                    featuredImage
+                                      ? featuredImage.guid.rendered
+                                      : null
+                                  }
+                                />
+                              );
+                            }
+                          })
+                        ) : (
+                          <Spin />
+                        )
+                      }
                       title={item["title"]["rendered"]}
                       description={item["date"]}
                     />

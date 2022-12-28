@@ -4,8 +4,6 @@ import { Image } from "antd";
 import { CarouselComponent } from "./CarouselComponent";
 import { Card, Col, Row } from "antd";
 
-
-
 export const ProgramsSlider = () => {
   const onChange = (currentSlide) => {
     console.log(currentSlide);
@@ -13,19 +11,16 @@ export const ProgramsSlider = () => {
 
   return (
     <>
-
-<div className="site-card-wrapper" >
+      <div className="site-card-wrapper">
         <Row gutter={0}>
           <Col span={12}>
-          <CarouselComponent/>
+            <CarouselComponent />
           </Col>
           <Col span={12}>
-            <CarouselComponent/>
+            <CarouselComponent />
           </Col>
         </Row>
       </div>
-
-  
     </>
   );
 };

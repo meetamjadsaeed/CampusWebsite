@@ -9,7 +9,6 @@ import { Spin } from "antd";
 import Link from "next/link";
 import Marquee from "react-easy-marquee";
 
-
 const { Meta } = Card;
 // import { Image } from "antd";
 // import { Col, Row } from "antd";
@@ -34,22 +33,21 @@ const Events = () => {
     await axios
       .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=35`)
       .then((result) => setEvents(result.data))
-    // .then((result) => console.log(result));
-    .catch(function (error) {
-      if (error.response) {
-        // Request made and server responded
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
-      }
-  
-    });
+      // .then((result) => console.log(result));
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+      });
 
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=35`)
       .then((response) => response.json())
@@ -65,9 +63,8 @@ const Events = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
-    
       })
       .then((images) => {
         const respones = images.map(
@@ -93,9 +90,8 @@ const Events = () => {
           console.log(error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log("Error", error.message);
         }
-    
       });
   };
 
@@ -105,8 +101,8 @@ const Events = () => {
 
   return (
     <>
-    <Card title="Events" bordered={true}>
-    <Marquee
+      <Card title="Events" bordered={true}>
+        <Marquee
           duration={15000}
           background="#ffffff"
           height="100px"
@@ -120,34 +116,34 @@ const Events = () => {
             Events.map((item) => {
               return (
                 <Link href={`/boardbypin/pin/${item.id}`}>
-                <Card style={{ width: 300, marginTop: 16 }}>
-                  <Meta
-                    avatar={
-                      imagebyCat ? (
-                        imagebyCat.map((featuredImage) => {
-                          // console.log(item);
-                          if (item.featured_media === featuredImage.id) {
-                            return (
-                              <Image
-                                width={50}
-                                src={
-                                  featuredImage
-                                    ? featuredImage.guid.rendered
-                                    : null
-                                }
-                              />
-                            );
-                          }
-                        })
-                      ) : (
-                        <Spin />
-                      )
-                    }
-                    title={item["title"]["rendered"]}
-                    description={item["date"]}
-                  />
-                </Card>
-              </Link>
+                  <Card style={{ width: 300, marginTop: 16 }}>
+                    <Meta
+                      avatar={
+                        imagebyCat ? (
+                          imagebyCat.map((featuredImage) => {
+                            // console.log(item);
+                            if (item.featured_media === featuredImage.id) {
+                              return (
+                                <Image
+                                  width={50}
+                                  src={
+                                    featuredImage
+                                      ? featuredImage.guid.rendered
+                                      : null
+                                  }
+                                />
+                              );
+                            }
+                          })
+                        ) : (
+                          <Spin />
+                        )
+                      }
+                      title={item["title"]["rendered"]}
+                      description={item["date"]}
+                    />
+                  </Card>
+                </Link>
               );
             })
           ) : (
@@ -157,7 +153,7 @@ const Events = () => {
             <img src={image} alt="picsum" style={{ borderRadius: "10px" }} />
           ))} */}
         </Marquee>
-      {/* <Carousel
+        {/* <Carousel
         autoPlay={true}
         infiniteLoop={true}
         interval={2000}
@@ -189,8 +185,8 @@ const Events = () => {
           <p>loading...</p>
         )}
       </Carousel> */}
-    </Card>
-  </>
+      </Card>
+    </>
   );
 };
 
