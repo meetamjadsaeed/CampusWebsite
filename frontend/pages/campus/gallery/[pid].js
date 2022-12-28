@@ -30,13 +30,24 @@ const fullGallery = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=${pid}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((result) => setimagebyGallery(result.data));
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=${pid}`)
+      .then((result) => setimagebyGallery(result.data))
     // .then((result) => console.log(result));
+    .catch(function (error) {
+      if (error.response) {
+        // Request made and server responded
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
+  
+    });
   };
 
   useEffect(() => {

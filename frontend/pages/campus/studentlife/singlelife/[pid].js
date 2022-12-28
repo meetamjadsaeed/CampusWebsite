@@ -93,8 +93,23 @@ const singleLife = () => {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => setsingleLife(result.data));
+      .then((result) => setsingleLife(result.data))
       // .then((result) => console.log(result.data[0]["title"]["rendered"]));
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+    
+      });
 
       const data = await axios.get(
         `http://iba-kdk.com/wp-json/wp/v2/campus?slug=${pid}`
@@ -104,7 +119,22 @@ const singleLife = () => {
       await axios
         .get(`http://iba-kdk.com/wp-json/wp/v2/media/${featuredImage}`)
         // .then((result) => console.log(result.data));
-        .then((result) => setimageCat(result.data));
+        .then((result) => setimageCat(result.data))
+        .catch(function (error) {
+          if (error.response) {
+            // Request made and server responded
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
+          }
+      
+        });
   };
 
   useEffect(() => {

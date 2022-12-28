@@ -93,11 +93,7 @@ const GlobalSlider = ({globalSlider}) => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}${globalSlider.endpoints? globalSlider.endpoints:null}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}${globalSlider.endpoints? globalSlider.endpoints:null}`)
       .then((result) => setGlobalSlider(result.data));
     // .then((result) => console.log(result));
 

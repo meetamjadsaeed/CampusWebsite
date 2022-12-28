@@ -32,17 +32,43 @@ const Events = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=35`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((result) => setEvents(result.data));
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=35`)
+      .then((result) => setEvents(result.data))
     // .then((result) => console.log(result));
+    .catch(function (error) {
+      if (error.response) {
+        // Request made and server responded
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
+  
+    });
 
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=35`)
       .then((response) => response.json())
       // .then((result) => console.log(result.json()));
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+    
+      })
       .then((images) => {
         const respones = images.map(
           (image) =>
@@ -55,6 +81,21 @@ const Events = () => {
           setimageCat(fetchedImgaes);
           // setIsLoading(false)
         });
+      })
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+    
       });
   };
 

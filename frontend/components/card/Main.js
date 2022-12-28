@@ -3,9 +3,9 @@ import { Card } from "antd";
 
 const Main = (props) => {
   // console.log(props);
-  useEffect(() => {
-    console.log(props.content);
-  });
+  // useEffect(() => {
+  //   console.log(props.content);
+  // });
 
   return (
     <>

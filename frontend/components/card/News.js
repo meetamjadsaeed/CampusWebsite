@@ -40,12 +40,23 @@ const News = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=33`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((result) => setNews(result.data));
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=33`)
+      .then((result) => setNews(result.data))
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+    
+      });
     // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
     // .then((result) => console.log(result.data[0]["date"]));
 
@@ -64,7 +75,23 @@ const News = () => {
           setimageCat(fetchedImgaes);
           // setIsLoading(false)
         });
+      })
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+    
       });
+
   };
 
   useEffect(() => {
