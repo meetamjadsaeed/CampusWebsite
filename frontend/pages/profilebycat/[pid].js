@@ -15,6 +15,8 @@ import Gallery from "../../components/card/Gallery";
 import Header from "../../layout/Header/Header";
 import FooterTwo from "../../layout/Footer/FooterTwo";
 import { useRouter } from "next/router";
+import FeaturedImage from "../../components/meta/FeaturedImage";
+
 
 const handleChange = (value) => {
   console.log(`selected ${value}`);
@@ -56,57 +58,11 @@ const profileByCat = () => {
     // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
     // .then((result) => console.log(result.data[0]["featured_media"]));   // get id of featured image
 
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?profiles=${pid}`)
-      .then((response) => response.json())
-      // .then((result) => console.log(result.json()));
-      .catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
-        }
-    
-      })
-      .then((images) => {
-        const respones = images.map(
-          (image) =>
-            fetch(
-              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
-            ).then((res) => res.json())
-          // .then((res) => console.log(res.json())),
-        );
-        Promise.all(respones).then((fetchedImgaes) => {
-          setimageCat(fetchedImgaes);
-          // setIsLoading(false)
-        });
-      })
-      .catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
-        }
-    
-      });
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  });
   return (
     <>
       <Header />
@@ -148,30 +104,17 @@ const profileByCat = () => {
                 // console.log(item);
                 return (
                   <Col style={{ marginTop: "2%", marginBottom: "2%" }}>
-                    <Link href={`profile/${item.slug}`}>
+                    <Link href={`profile/${item.id}`}>
                       <Card
                         hoverable
                         style={{ width: 240 }}
                         cover={
-                          imagebyCat ? (
-                            imagebyCat.map((featuredImage) => {
-                              // console.log(item);
-                              if (item.featured_media === featuredImage.id) {
-                                return (
-                                  <img
-                                    alt="example"
-                                    src={
-                                      featuredImage
-                                        ? featuredImage.guid.rendered
-                                        : null
-                                    }
-                                  />
-                                );
-                              }
-                            })
-                          ) : (
-                            <Spin />
-                          )
+                          <FeaturedImage
+                          PropsData={{
+                            featuredImage: item && item.featured_media,
+                            className: "",
+                          }}
+                        />
                         }
                       >
                         <Meta

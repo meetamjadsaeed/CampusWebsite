@@ -8,6 +8,7 @@ import axios from "axios";
 import { Spin } from "antd";
 import Link from "next/link";
 import Marquee from "react-easy-marquee";
+import GroupMeta from "./GroupMeta";
 
 const { Meta } = Card;
 // import { Image } from "antd";
@@ -117,31 +118,16 @@ const Events = () => {
               return (
                 <Link href={`/boardbypin/pin/${item.id}`}>
                   <Card style={{ width: 300, marginTop: 16 }}>
-                    <Meta
-                      avatar={
-                        imagebyCat ? (
-                          imagebyCat.map((featuredImage) => {
-                            // console.log(item);
-                            if (item.featured_media === featuredImage.id) {
-                              return (
-                                <Image
-                                  width={50}
-                                  src={
-                                    featuredImage
-                                      ? featuredImage.guid.rendered
-                                      : null
-                                  }
-                                />
-                              );
-                            }
-                          })
-                        ) : (
-                          <Spin />
-                        )
+                  <GroupMeta
+                      propsData={
+                        {
+                          title: item["title"]["rendered"],
+                          date: item["date"],
+                          featuredImage: item["featured_media"],
+                        }
                       }
-                      title={item["title"]["rendered"]}
-                      description={item["date"]}
                     />
+
                   </Card>
                 </Link>
               );

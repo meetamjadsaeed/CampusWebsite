@@ -154,7 +154,7 @@ const gallerySingle = () => {
     <Header/>
     <header className="hero"
       style={{
-  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86)), url(${imagebyCat && imagebyCat.guid.rendered})`,
+  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86)), url("https://www.iba-suk.edu.pk/Content/assets/img/authorities.jpg")`,
 
       }}
 
@@ -174,9 +174,11 @@ const gallerySingle = () => {
             <a href={singleLife[0]["acf"]["Attachment"]}>Download Here</a>
           ) : null}
         </p>
-        <p className='hero-description'>
+        <p className="hero-description" dangerouslySetInnerHTML={{ __html: singleLife && singleLife[0]["content"]["rendered"] }}></p>
+
+        {/* <p className='hero-description'>
         {singleLife && singleLife[0]["content"]["rendered"].replace(regex, "")}
-        </p>
+        </p> */}
      
       </div>
       

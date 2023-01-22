@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Spin } from "antd";
 import Link from "next/link";
+import GroupMeta from "./GroupMeta";
+
 
 const { Meta } = Card;
 // import { Image } from "antd";
@@ -59,41 +61,11 @@ const News = () => {
     // .then((result) => console.log(result.data[0]["_links"]["wp:featuredmedia"][0]["href"]));
     // .then((result) => console.log(result.data[0]["date"]));
 
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=33`)
-      .then((response) => response.json())
-      // .then((result) => console.log(result.json()));
-      .then((images) => {
-        const respones = images.map(
-          (image) =>
-            fetch(
-              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
-            ).then((res) => res.json())
-          // .then((res) => console.log(res.json())),
-        );
-        Promise.all(respones).then((fetchedImgaes) => {
-          setimageCat(fetchedImgaes);
-          // setIsLoading(false)
-        });
-      })
-      .catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log("Error", error.message);
-        }
-      });
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  });
 
   return (
     <>
@@ -113,31 +85,17 @@ const News = () => {
               return (
                 <Link href={`/boardbypin/pin/${item.id}`}>
                   <Card style={{ width: 300, marginTop: 16 }}>
-                    <Meta
-                      avatar={
-                        imagebyCat ? (
-                          imagebyCat.map((featuredImage) => {
-                            // console.log(item);
-                            if (item.featured_media === featuredImage.id) {
-                              return (
-                                <Image
-                                  width={50}
-                                  src={
-                                    featuredImage
-                                      ? featuredImage.guid.rendered
-                                      : null
-                                  }
-                                />
-                              );
-                            }
-                          })
-                        ) : (
-                          <Spin />
-                        )
+
+                    <GroupMeta
+                      propsData={
+                        {
+                          title: item["title"]["rendered"],
+                          date: item["date"],
+                          featuredImage: item["featured_media"],
+                        }
                       }
-                      title={item["title"]["rendered"]}
-                      description={item["date"]}
                     />
+
                   </Card>
                 </Link>
               );

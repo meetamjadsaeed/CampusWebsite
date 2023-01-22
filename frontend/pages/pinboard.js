@@ -11,6 +11,8 @@ import axios from "axios";
 import Link from "next/link";
 import { Select } from "antd";
 import { useRouter } from "next/router";
+import FeaturedImage from "../components/meta/FeaturedImage";
+
 
 const handleChange = (value) => {
   console.log(`selected ${value}`);
@@ -93,10 +95,12 @@ const pinboard = () => {
                         hoverable
                         style={{ width: 240 }}
                         cover={
-                          <img
-                            alt="example"
-                            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                          />
+                         <FeaturedImage
+                         PropsData={{
+                          featuredImage:item.featured_media && item.featured_media,
+                          className: "",
+                         }}
+                         />
                         }
                       >
                         <Meta

@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Spin } from "antd";
 import Link from "next/link";
+import GalleryMeta from "../meta/GalleryMeta";
 
 const Gallery = () => {
   const [Gallery, setGallery] = useState();
@@ -22,54 +23,9 @@ const Gallery = () => {
   const getData = async () => {
     // Get Posts
     await axios
-    .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?scholarships=29`)
-    .then((result) => setGallery(result.data))
-    // .then((result) => console.log(result));
-    .catch(function (error) {
-      if (error.response) {
-        // Request made and server responded
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log("Error", error.message);
-      }
-    });
-
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=43`)
-      .then((response) => response.json())
-      // .then((result) => console.log(result.json()));
-      .catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log("Error", error.message);
-        }
-      })
-      .then((images) => {
-        const respones = images.map(
-          (image) =>
-            fetch(
-              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
-            ).then((res) => res.json())
-          // .then((res) => console.log(res.json())),
-        );
-        Promise.all(respones).then((fetchedImgaes) => {
-          setimageCat(fetchedImgaes);
-          // setIsLoading(false)
-        });
-      })
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?atcampus=43`)
+      .then((result) => setGallery(result.data))
+      // .then((result) => console.log(result));
       .catch(function (error) {
         if (error.response) {
           // Request made and server responded
@@ -84,6 +40,7 @@ const Gallery = () => {
           console.log("Error", error.message);
         }
       });
+
   };
 
   useEffect(() => {
@@ -107,30 +64,11 @@ const Gallery = () => {
                       xl={4}
                       style={{ marginBottom: "16px" }}
                     >
-                      {/* {imagebyCat ? (
-                        imagebyCat.map((featuredImage) => {
-                          // console.log(item);
-                          if (item.featured_media === featuredImage.id) {
-                            return (
-                              <Image
-                                // width={80}
-                                // height={80}
-                                src={
-                                  featuredImage
-                                    ? featuredImage.guid.rendered
-                                    : null
-                                }
-                              />
-                            );
-                          }
-                        })
-                      ) : (
-                        <Spin />
-                      )} */}
-                      <Image
-                        // width={80}
-                        // height={80}
-                        src="http://iba-kdk.com/wp-content/uploads/2022/12/294517709_2884433441864646_587713335291766174_n.jpg"
+
+                      <GalleryMeta
+                        propsData={{
+                          featured_image: item.featured_media,
+                        }}
                       />
                     </Col>
                   );

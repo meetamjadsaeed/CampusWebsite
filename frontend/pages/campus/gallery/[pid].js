@@ -9,6 +9,7 @@ import axios from "axios";
 import Link from "next/link";
 import { Select } from "antd";
 import { Image } from "antd";
+import FeaturedImage from "../../../components/meta/FeaturedImage";
 
 import Header from "../../../layout/Header/Header";
 import FooterTwo from "../../../layout/Footer/FooterTwo";
@@ -76,29 +77,12 @@ const fullGallery = () => {
               return (
                 
                 <Col span={6} style={{ marginBottom: "16px" }}>
-                  {
-                          imagebyGallery ? (
-                            imagebyGallery.map((featuredImage) => {
-                              // console.log(item);
-                              if (item.featured_media === featuredImage.id) {
-                                return (
-                                  <Image
-                                  // width={80}
-                                  // height={80}
-                                  src=
-                                  {
-                                    featuredImage
-                                      ? featuredImage.guid.rendered
-                                      : null
-                                  }
-                                />
-                                );
-                              }
-                            })
-                          ) : (
-                            <Spin />
-                          )
-                        }
+                   <FeaturedImage
+                          PropsData={{
+                            featuredImage: item && item.featured_media,
+                            className: "",
+                          }}
+                        />
                
                   {/* <Link href={`gallerysingle/${item.slug}`}>
                   <Button>Veiw</Button>

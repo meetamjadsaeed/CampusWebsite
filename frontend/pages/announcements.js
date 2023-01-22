@@ -40,7 +40,7 @@ export default function Announcements() {
   const getData = async () => {
     // Get Posts
     await axios
-      .get("http://iba-kdk.com/wp-json/wp/v2/campus?categories=15")
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?categories=15`)
       .then((result) => setannouncements(result.data))
       // .then((result) => console.log(result));
       .catch(function (error) {

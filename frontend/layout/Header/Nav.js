@@ -12,7 +12,7 @@ import { Spin } from "antd";
 
 const items = [
   {
-    label: <Link href="/">Home</Link> ? <Link href="/">Home</Link> : <Spin/>,
+    label: <Link href="/">Home</Link> ? <Link href="/">Home</Link> : <Spin />,
     key: "home",
     icon: <SettingOutlined />,
   },
@@ -26,16 +26,16 @@ const items = [
         label: "About",
         children: [
           {
-            label: <Link href="/vision">Vision</Link> ? <Link href="/vision">Vision</Link> : <Spin/>,
-            key: "setting:1",
+            label: <Link href="/vision">Vision</Link> ? <Link href="/vision">Vision</Link> : <Spin />,
+            key: "vision",
           },
           {
-            label: <Link href="/mission">Mission</Link> ? <Link href="/mission">Mission</Link> : <Spin/>,
-            key: "setting:2",
+            label: <Link href="/mission">Mission</Link> ? <Link href="/mission">Mission</Link> : <Spin />,
+            key: "mission",
           },
           {
-            label: <Link href="/history">History</Link> ? <Link href="/history">History</Link> : <Spin/>, 
-            key: "setting:3",
+            label: <Link href="/history">History</Link> ? <Link href="/history">History</Link> : <Spin />,
+            key: "history",
           },
         ],
       },
@@ -44,16 +44,16 @@ const items = [
         label: "Founders",
         children: [
           {
-            label:<Link href="http://localhost:3000/profilebycat/faculty/vice-chancellor">Vice Chancellor</Link> ? <Link href="http://localhost:3000/profilebycat/faculty/vice-chancellor">Vice Chancellor</Link> : <Spin/>,
-            key: "setting:4",
+            label: <Link href="http://localhost:3000/profilebycat/profile/173">Vice Chancellor</Link> ? <Link href="http://localhost:3000/profilebycat/faculty/vice-chancellor">Vice Chancellor</Link> : <Spin />,
+            key: "chancellor",
           },
           {
-            label: <Link href="http://localhost:3000/profilebycat/faculty/registrar">Registrar</Link> ? <Link href="http://localhost:3000/profilebycat/faculty/registrar">Registrar</Link> : <Spin/>,
-            key: "setting:5",
+            label: <Link href="http://localhost:3000/profilebycat/profile/175">Registrar</Link> ? <Link href="http://localhost:3000/profilebycat/faculty/registrar">Registrar</Link> : <Spin />,
+            key: "registrar",
           },
           {
-            label: <Link href="http://localhost:3000/profilebycat/faculty/director">Director</Link> ? <Link href="http://localhost:3000/profilebycat/faculty/director">Director</Link> : <Spin/>,
-            key: "setting:6",
+            label: <Link href="http://localhost:3000/profilebycat/profile/177">Director</Link> ? <Link href="http://localhost:3000/profilebycat/faculty/director">Director</Link> : <Spin />,
+            key: "director",
           },
         ],
       },
@@ -76,12 +76,12 @@ const items = [
     icon: <SettingOutlined />,
   },
   {
-    label: <Link href="https://www.iba-suk.edu.pk/student-resources">Resources</Link> ? <Link href="https://www.iba-suk.edu.pk/student-resources">Resources</Link> : <Spin/>,
+    label: <Link href="https://www.iba-suk.edu.pk/student-resources">Resources</Link> ? <Link href="https://www.iba-suk.edu.pk/student-resources">Resources</Link> : <Spin />,
     key: "resources",
     icon: <SettingOutlined />,
   },
   {
-    label: <Link href="/campus">Life at Campus</Link> ? <Link href="/campus">Life at Campus</Link> : <Spin/>,
+    label: <Link href="/campus">Life at Campus</Link> ? <Link href="/campus">Life at Campus</Link> : <Spin />,
     key: "campus",
     icon: <SettingOutlined />,
   },

@@ -21,6 +21,9 @@ import Link from "next/link";
 import Marquee from "react-easy-marquee";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import GlobalSliderMeta from "./GlobalSliderMeta";
+
+
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -85,7 +88,7 @@ const displayFlex = {
 const regex = /(<([^>]+)>)/gi;
 
 
-const GlobalSlider = ({globalSlider}) => {
+const GlobalSlider = ({ globalSlider }) => {
   const [GlobalSlider, setGlobalSlider] = useState();
   const [imagebyCat, setimageCat] = useState();
 
@@ -93,7 +96,7 @@ const GlobalSlider = ({globalSlider}) => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}${globalSlider.endpoints? globalSlider.endpoints:null}`)
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}${globalSlider.endpoints ? globalSlider.endpoints : null}`)
       .then((result) => setGlobalSlider(result.data));
     // .then((result) => console.log(result));
 
@@ -120,57 +123,46 @@ const GlobalSlider = ({globalSlider}) => {
   }, []);
   return (
     <>
-      <div style={{marginTop:"5%",marginBottom:"5%"}}>
-      <Carousel
-  swipeable={false}
-  draggable={false}
-  showDots={false}
-  responsive={responsive}
-  ssr={true} // means to render carousel on server-side.
-  infinite={true}
-  autoPlay={true}
-  autoPlaySpeed={3000}
-  keyBoardControl={true}
-  customTransition="all .5"
-  transitionDuration={500}
-  containerClass="carousel-container"
-  removeArrowOnDeviceType={["tablet", "mobile"]}
-  // deviceType={this.props.deviceType}
-  dotListClass="custom-dot-list-style"
-  itemClass="carousel-item-padding-40-px"
->
+      <div style={{ marginTop: "5%", marginBottom: "5%" }}>
+        <Carousel
+          swipeable={false}
+          draggable={false}
+          showDots={false}
+          responsive={responsive}
+          ssr={true} // means to render carousel on server-side.
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={3000}
+          keyBoardControl={true}
+          customTransition="all .5"
+          transitionDuration={500}
+          containerClass="carousel-container"
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          // deviceType={this.props.deviceType}
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
+        >
           {GlobalSlider ? (
             GlobalSlider.map((item) => {
               return (
-                <div style={{marginLeft:"2%",marginRight:"2%"}}>
-                  <div class="flip_card">
-                    <div class="flip_content">
-                      <div class="flip_front"
-                      style={{
-                        backgroundImage: `linear-gradient(0deg, ${globalSlider.rgba1? globalSlider.rgba1:"rgba(0, 0, 0, 0.86)"}, ${globalSlider.rgba2? globalSlider.rgba2:"rgba(0, 0, 0, 0.86)"}),url(${globalSlider.imageUrl? globalSlider.imageUrl:"https://picsum.photos/300/300/?random"}${item.id})`,
-                      }}
-                      >
-           {
-                         (globalSlider.titleDisplay === true)? 
-                        <h2 className="white">{item["title"]["rendered"].replace(regex,"")}</h2>
-                        : null
-          }
-                      </div>
-                      <div class="flip_back"
-                      style={{
-                        background:globalSlider.flip_back_bg? globalSlider.flip_back_bg:"#012447",
-                        color:globalSlider.flip_back_color? globalSlider.flip_back_color:"#ffffff"
-                      }}
-                      >{
+                <div style={{ marginLeft: "2%", marginRight: "2%" }}>
 
-                        (globalSlider.contentDisplay === true)? 
-                        <p className="white">{item["content"]["rendered"].replace(regex,"")}</p>
-                        : null
+                  <GlobalSliderMeta
+
+                    propsData={
+                      {
+                        featuredImage: item.featured_media,
+                        title: item["title"]["rendered"],
+                        content: item["content"]["rendered"],
+                        backgroundColor: globalSlider.flip_back_bg ? globalSlider.flip_back_bg : "#012447",
+                        color: globalSlider.flip_back_color ? globalSlider.flip_back_color : "#ffffff",
+                        rgba1: globalSlider.rgba1 ? globalSlider.rgba1 : "rgba(0, 0, 0, 0.86)",
+                        rgba2: globalSlider.rgba2 ? globalSlider.rgba2 : "rgba(0, 0, 0, 0.86)",
+
                       }
-                     
-                        </div>
-                    </div>
-                  </div>
+                    }
+                  />
+
                 </div>
 
                 // </p>
@@ -181,8 +173,8 @@ const GlobalSlider = ({globalSlider}) => {
           )}
         </Carousel>
       </div>
-    
-   
+
+
     </>
 
     // <>

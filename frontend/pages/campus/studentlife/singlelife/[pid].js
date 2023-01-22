@@ -88,7 +88,7 @@ const singleLife = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`http://iba-kdk.com/wp-json/wp/v2/campus?slug=${pid}`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus/${pid && pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -111,36 +111,13 @@ const singleLife = () => {
     
       });
 
-      const data = await axios.get(
-        `http://iba-kdk.com/wp-json/wp/v2/campus?slug=${pid}`
-      );
-      const featuredImage = data.data[0].featured_media;
-  
-      await axios
-        .get(`http://iba-kdk.com/wp-json/wp/v2/media/${featuredImage}`)
-        // .then((result) => console.log(result.data));
-        .then((result) => setimageCat(result.data))
-        .catch(function (error) {
-          if (error.response) {
-            // Request made and server responded
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log('Error', error.message);
-          }
       
-        });
   };
 
   useEffect(() => {
     getData();
     // console.log(pid);
-  }, []);
+  });
 
   // const onTab1Change = (key) => {
   //   setActiveTabKey1(key);
@@ -154,13 +131,13 @@ const singleLife = () => {
     <Header/>
     <header className="hero"
       style={{
-  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86)), url(${imagebyCat && imagebyCat.guid.rendered})`,
+  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86)), url("https://www.iba-suk.edu.pk/Content/assets/img/authorities.jpg")`,
 
       }}
 
       >
         <div className="hero-text">
-        <h1>{singleLife && singleLife[0]["title"]["rendered"].replace(regex, "")}</h1>
+        <h1>{singleLife && singleLife["title"]["rendered"].replace(regex, "")}</h1>
           {/* <p>Details</p> */}
         </div>
         <a href="#blogPost-header" className="hero-arrow">
@@ -169,14 +146,16 @@ const singleLife = () => {
       </header>
 
       <div className="container">
-      <p style={{ color: "#ea6645" }} className="hero-description">
+      {/* <p style={{ color: "#ea6645" }} className="hero-description">
           {singleLife && singleLife[0]["acf"]["Attachment"] ? (
             <a href={singleLife[0]["acf"]["Attachment"]}>Download Here</a>
           ) : null}
-        </p>
-        <p className='hero-description'>
+        </p> */}
+        <p className="hero-description" dangerouslySetInnerHTML={{ __html: singleLife && singleLife["content"]["rendered"] }}></p>
+
+        {/* <p className='hero-description'>
         {singleLife && singleLife[0]["content"]["rendered"].replace(regex, "")}
-        </p>
+        </p> */}
       </div>
       
       <FooterTwo/>

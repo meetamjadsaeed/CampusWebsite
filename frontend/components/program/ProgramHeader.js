@@ -6,6 +6,8 @@ import { Image } from "antd";
 import Events from "../../components/card/Events";
 // import News from "../../components/card/News";
 import Link from "next/link";
+import FeaturedImage from "../meta/FeaturedImage";
+
 
 const ProgramHeader = ({ props }) => {
   return (
@@ -50,8 +52,16 @@ const ProgramHeader = ({ props }) => {
             {props.title}
           </h1>
           {/* <p>Lorem ipsum</p> */}
-          <p>{props.description}</p>
-          <Image width="80%" src={props.imageUrl} />
+        <p className="hero-description" dangerouslySetInnerHTML={{ __html: props && props.description }}></p>
+
+          {/* <p>{props.description}</p> */}
+          {/* <Image width="80%" src={props.imageUrl} /> */}
+          <FeaturedImage
+            PropsData={{
+              featuredImage: props && props.featuredImage,
+              className: "",
+            }}
+          />
         </Col>
       </Row>
     </>

@@ -8,6 +8,7 @@ import { Table } from "antd";
 import "antd/dist/antd.css";
 import Header from "../../../layout/Header/Header";
 import FooterTwo from "../../../layout/Footer/FooterTwo";
+import FeaturedImage from "../../../components/meta/FeaturedImage";
 
 
 
@@ -15,7 +16,6 @@ import FooterTwo from "../../../layout/Footer/FooterTwo";
 const regex = /(<([^>]+)>)/gi;
 
 const faculty = () => {
-  const [imagebyCat, setimageCat] = useState();
   const [profile, setprofile] = useState();
 
   const router = useRouter();
@@ -24,34 +24,9 @@ const faculty = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?slug=${pid}`)
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus/${pid && pid}`)
       .then((result) => setprofile(result.data))
-    // .then((result) => console.log(result.data[0]["title"]["rendered"]));
-    .catch(function (error) {
-      if (error.response) {
-        // Request made and server responded
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
-      }
-  
-    });
-
-    const data = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_API}campus?slug=${pid}`
-    );
-    const featuredImage = data.data[0].featured_media;
-
-    await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}media/${featuredImage}`)
-      // .then((result) => console.log(result.data));
-      .then((result) => setimageCat(result.data))
+      // .then((result) => console.log(result.data[0]["title"]["rendered"]));
       .catch(function (error) {
         if (error.response) {
           // Request made and server responded
@@ -65,13 +40,15 @@ const faculty = () => {
           // Something happened in setting up the request that triggered an Error
           console.log('Error', error.message);
         }
-    
+
       });
+
+
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  });
 
   return (
     <>
@@ -90,40 +67,48 @@ const faculty = () => {
         >
           <div className="coverprofile bg-cover"></div>
           <div className="text-center">
-            <img
-              alt=""
-              src={imagebyCat && imagebyCat.guid.rendered}
-              className="avatar avatar-150 photo"
-              height="150"
-              width="150"
+            <FeaturedImage
+              PropsData={{
+                featuredImage: profile && profile.featured_media,
+                className: "avatar avatar-150 photo",
+              }}
             />
+
           </div>
           <div className="panel-body">
             <div className="text-center">
               <div className="dropdown inblock">
                 <h1 className="font-3x margtop-none inblock">
-                  {/* Prof. Dr. M. Abdul Rehman Soomrani */}
-                  {profile && profile[0]["title"]["rendered"].replace(regex, "")}
+                  {profile && profile.title.rendered && profile.title.rendered}
                 </h1>
               </div>
 
-              <h2>
-              {profile && profile[0]["acf"]["Designation"].replace(regex, "")}
 
-              </h2>
-              <p>
-                {profile &&
+              {/* <h2>
+                {profile && profile["acf"]["Designation"].replace(regex, "")}
+
+              </h2> */}
+              <p className="hero-description" dangerouslySetInnerHTML={{ __html: profile && profile.content.rendered }}></p>
+
+              {/* <p>
+              {profile &&
                   profile[0]["content"]["rendered"].replace(regex, "")}
+              content
               </p>
-              <p>Contact Member: {profile &&
-                  profile[0]["acf"]["Contact Member"].replace(regex, "")}</p>
-              <p>E-mail : {profile &&
-                  profile[0]["acf"]["e-mail"].replace(regex, "")}</p>
-              {/* <p>Office Extension : 4061</p> */}
+              <p>Contact Member:
+                {profile &&
+                  profile[0]["acf"]["Contact Member"].replace(regex, "")}
+              </p>
+              <p>E-mail :
+                {profile &&
+                  profile[0]["acf"]["e-mail"].replace(regex, "")}
 
-              {/* <h2>Qualifications</h2> */}
-              {/* <Table columns={columns} dataSource={data} /> */}
-              {/* <Card
+              </p>
+              <p>Office Extension : 4061</p>
+
+              <h2>Qualifications</h2>
+              <Table columns={columns} dataSource={data} />
+              <Card
                 style={{
                   width: "100%",
                 }}

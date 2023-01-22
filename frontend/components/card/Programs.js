@@ -112,50 +112,6 @@ const Programs = () => {
         }
       });
 
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?admissions=38`)
-      .then((response) => response.json())
-      // .then((result) => console.log(result.json()));
-      .catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log("Error", error.message);
-        }
-      })
-      .then((images) => {
-        const respones = images.map(
-          (image) =>
-            fetch(
-              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
-            ).then((res) => res.json())
-          // .then((res) => console.log(res.json())),
-        );
-        Promise.all(respones).then((fetchedImgaes) => {
-          setimageCat(fetchedImgaes);
-          // setIsLoading(false)
-        });
-      })
-      .catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log("Error", error.message);
-        }
-      });
   };
 
   useEffect(() => {
@@ -169,7 +125,7 @@ const Programs = () => {
             endpoints: "campus?admissions=38",
             rgba1: "rgba(0, 0, 0, 0.86)",
             rgba2: "rgba(0, 0, 0, 0.86)",
-            imageUrl: "https://picsum.photos/300/300/?random=",
+            // imageUrl: "https://picsum.photos/300/300/?random=",
             flip_back_bg: "#012447",
             flip_back_color: "#ffffff",
             titleDisplay: true,

@@ -15,6 +15,9 @@ import ProgramBody from "../../components/program/ProgramBody";
 import Gallery from "../../components/card/Gallery";
 import Header from "../../layout/Header/Header";
 import FooterTwo from "../../layout/Footer/FooterTwo";
+import FeaturedImage from "../../components/meta/FeaturedImage";
+
+
 import { useRouter } from "next/router";
 import qs from "qs";
 
@@ -32,80 +35,42 @@ const boardbypin = () => {
   const { pid } = router.query;
   const [boardbypin, setboardbypin] = useState();
   const [imagebypin, setimagebypin] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   const getData = async () => {
     // Get Posts
     await axios
       .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=${pid}`)
-      .then((result) => setboardbypin(result.data))
-    // .then((result) => console.log(result));
-    .catch(function (error) {
-      if (error.response) {
-        // Request made and server responded
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
-      }
-  
-    });
+      .then(result => {
+        setboardbypin(result.data)
+        setIsLoading(false)
+      })
+      // .then((result) => console.log(result));
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
 
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?pin_board=${pid}`)
-      .then((response) => response.json())
-      // .then((result) => console.log(result.json()));
-      .catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
-        }
-    
-      })
-      .then((images) => {
-        const respones = images.map(
-          (image) =>
-            fetch(
-              `${process.env.NEXT_PUBLIC_BACKEND_API}media/${image.featured_media}`
-            ).then((res) => res.json())
-          // .then((res) => console.log(res.json())),
-        );
-        Promise.all(respones).then((fetchedImgaes) => {
-          setimagebypin(fetchedImgaes);
-          // setIsLoading(false)
-        });
-      })
-      .catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
-        }
-    
       });
+
+
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  });
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
   return (
     <>
       <Header />
@@ -141,36 +106,26 @@ const boardbypin = () => {
         <div className="site-card-wrapper">
           {/* <h1 className="page-title">Events</h1> */}
           <Row gutter={16} style={{ marginTop: "30px" }}>
-            {boardbypin ? (
+            { 
+            boardbypin ? (
               boardbypin.map((item) => {
                 // console.log(item);
                 return (
                   <Col span={8} style={{ marginBottom: "50px" }}>
-                    <Link href={`pin/${item.slug}`}>
+                    <Link href={`pin/${item.id}`}>
                       <Card
                         style={{
                           width: 300,
                         }}
                         cover={
-                          imagebypin ? (
-                            imagebypin.map((featuredImage) => {
-                              // console.log(item);
-                              if (item.featured_media === featuredImage.id) {
-                                return (
-                                  <img
-                                    alt="example"
-                                    src={
-                                      featuredImage
-                                        ? featuredImage.guid.rendered
-                                        : null
-                                    }
-                                  />
-                                );
-                              }
-                            })
-                          ) : (
-                            <Spin />
-                          )
+                          <FeaturedImage
+                            PropsData={{
+                              featuredImage: item && item.featured_media,
+                              className: "",
+                            }}
+                          />
+
+
                         }
                         // actions={[
                         //   <SettingOutlined key="setting" />,

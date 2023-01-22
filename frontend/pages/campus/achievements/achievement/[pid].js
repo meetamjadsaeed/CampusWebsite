@@ -88,7 +88,7 @@ const achievement = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?slug=${pid}`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus/${pid && pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -111,36 +111,12 @@ const achievement = () => {
     
       });
 
-      const data = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_API}campus?slug=${pid}`
-      );
-      const featuredImage = data.data[0].featured_media;
-  
-      await axios
-        .get(`${process.env.NEXT_PUBLIC_BACKEND_API}media/${featuredImage}`)
-        // .then((result) => console.log(result.data));
-        .then((result) => setimageCat(result.data))
-        .catch(function (error) {
-          if (error.response) {
-            // Request made and server responded
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log('Error', error.message);
-          }
-      
-        });
   };
 
   useEffect(() => {
     getData();
     // console.log(pid);
-  }, []);
+  });
 
   // const onTab1Change = (key) => {
   //   setActiveTabKey1(key);
@@ -154,7 +130,7 @@ const achievement = () => {
     <Header/>
     <header className="hero"
       style={{
-  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86)), url(${imagebyCat && imagebyCat.guid.rendered})`,
+  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86)), url("https://www.iba-suk.edu.pk/Content/assets/img/authorities.jpg")`,
 
       }}
 
@@ -174,9 +150,11 @@ const achievement = () => {
             <a href={achievement[0]["acf"]["Attachment"]}>Download Here</a>
           ) : null}
         </p>
-        <p className='hero-description'>
+        <p className="hero-description" dangerouslySetInnerHTML={{ __html: achievement && achievement[0]["content"]["rendered"] }}></p>
+
+        {/* <p className='hero-description'>
         {achievement && achievement[0]["content"]["rendered"].replace(regex, "")}
-        </p>
+        </p> */}
     
       </div>
       

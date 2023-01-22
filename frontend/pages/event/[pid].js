@@ -14,7 +14,7 @@ const [Event, setEvent] = useState();
     const getData = async () => {
       // Get Posts
       await axios
-        .get( `http://iba-kdk.com/wp-json/wp/v2/campus/${pid}`)
+        .get( `${process.env.NEXT_PUBLIC_BACKEND_API}campus/${pid}`)
         .then((result) => setEvent(result.data))
     //   .then((result) => console.log(result.data.title));
     .catch(function (error) {

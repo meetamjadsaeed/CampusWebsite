@@ -15,6 +15,8 @@ import Gallery from "../../components/card/Gallery";
 import Header from "../../layout/Header/Header";
 import FooterTwo from "../../layout/Footer/FooterTwo";
 import { useRouter } from "next/router";
+import FeaturedImage from "../../components/meta/FeaturedImage";
+
 
 const handleChange = (value) => {
   console.log(`selected ${value}`);
@@ -101,7 +103,7 @@ const department = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  });
   return (
 <>
 <Header />
@@ -143,30 +145,18 @@ const department = () => {
               // console.log(item);
               return (
                 <Col style={{ marginTop: "2%", marginBottom: "2%" }}>
-                  <Link href={`program/${item.slug}`}>
+                  <Link href={`program/${item.id}`}>
                     <Card
                       hoverable
                       style={{ width: 240 }}
                       cover={
-                        imagebydepartment ? (
-                          imagebydepartment.map((featuredImage) => {
-                            // console.log(item);
-                            if (item.featured_media === featuredImage.id) {
-                              return (
-                                <img
-                                  alt="example"
-                                  src={
-                                    featuredImage
-                                      ? featuredImage.guid.rendered
-                                      : null
-                                  }
-                                />
-                              );
-                            }
-                          })
-                        ) : (
-                          <Spin />
-                        )
+                        <FeaturedImage
+                        PropsData={{
+                          featuredImage: item && item.featured_media,
+                          className: "",
+                        }}
+                      />
+                           
                       }
                     >
                       {/* <h1>{item.slug}</h1> */}

@@ -91,7 +91,7 @@ const program = () => {
   const getData = async () => {
     // Get Posts
     await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus?slug=${pid}`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}campus/${pid && pid}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -114,30 +114,7 @@ const program = () => {
   
     });
 
-    const data = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_API}campus?slug=${pid}`
-    );
-    const featuredImage = data.data[0].featured_media;
-
-    await axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_API}media/${featuredImage}`)
-      // .then((result) => console.log(result.data));
-      .then((result) => setimageCat(result.data))
-      .catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
-        }
-    
-      });
+   
 
   };
 
@@ -147,20 +124,21 @@ const program = () => {
   }, []);
 
   const header = {
-    Id:program && program[0].id,
-    title: program && program[0]["title"]["rendered"].replace(regex, ""),
-    description: program && program[0]["content"]["rendered"].replace(regex, ""),
-    process: program && program[0]["acf"]["process"].replace(regex, ""),
-    feeStructure: program && program[0]["acf"]["Fee Structure"].replace(regex, ""),
-    courseSchemata: program && program[0]["acf"]["Course Schema"].replace(regex, ""),
-    apply: program && program[0]["acf"]["Apply"].replace(regex, ""),
-    imageUrl:imagebyCat && imagebyCat.guid.rendered,
+    Id:program && program.id,
+    title: program && program["title"]["rendered"].replace(regex, ""),
+    description: program && program["content"]["rendered"],
+    process: program && program["acf"]["process"].replace(regex, ""),
+    feeStructure: program && program["acf"]["Fee Structure"].replace(regex, ""),
+    courseSchemata: program && program["acf"]["Course Schema"].replace(regex, ""),
+    apply: program && program["acf"]["Apply"].replace(regex, ""),
+    // imageUrl:imagebyCat && imagebyCat.guid.rendered,
+    featuredImage: program && program.guid && program.guid.rendered
   };
 
   const body = {
-    mission: program && program[0]["acf"]["Mission"].replace(regex, ""),
-    eligibility: program && program[0]["acf"]["PLO"].replace(regex, ""),
-    outcomes: program && program[0]["acf"]["Eligibility Criteria"].replace(regex, ""),
+    mission: program && program["acf"]["Mission"].replace(regex, ""),
+    eligibility: program && program["acf"]["PLO"].replace(regex, ""),
+    outcomes: program && program["acf"]["Eligibility Criteria"].replace(regex, ""),
   };
 
   return (
