@@ -24,7 +24,7 @@ const vision = () => {
       <MainHero
         data={{
           content:
-            "“To become a world class university in the fields of Management Sciences, Information Technology, Engineering, Education and Mathematics”",
+            "“To become a world className university in the fields of Management Sciences, Information Technology, Engineering, Education and Mathematics”",
         }}
       />
       <Footer />

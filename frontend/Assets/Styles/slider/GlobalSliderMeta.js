@@ -37,9 +37,9 @@ const GlobalSliderMeta = ({propsData}) => {
 
     return (
         <>
-            <div class="flip_card">
-                <div class="flip_content">
-                    <div class="flip_front"
+            <div className="flip_card">
+                <div className="flip_content">
+                    <div className="flip_front"
                         style={{
                             backgroundImage: `linear-gradient(0deg, ${propsData.rgba1}, ${propsData.rgba2}),url(${ featuredImage ? featuredImage &&
                                 featuredImage.guid &&
@@ -52,7 +52,7 @@ const GlobalSliderMeta = ({propsData}) => {
                             
                         
                     </div>
-                    <div class="flip_back"
+                    <div className="flip_back"
                         style={{
                             background: propsData.backgroundColor,
                             color: propsData.color,

@@ -76,11 +76,11 @@ const test = () => {
     </div> */}
 
       {/* <Carousel slides={slides} autoplay={true} interval={1000}/> */}
-      {/* <div class="hero-container">
-    <div class="hero-body">
+      {/* <div className="hero-container">
+    <div className="hero-body">
       <h1>Hero Image</h1>
       <span>Efecto hero image</span>
-      <div class="form">
+      <div className="form">
         <input type="text" />
     <button>Buscar</button>
       </div>
@@ -93,10 +93,10 @@ const test = () => {
 
       {/* <AnimatedContent/> */}
 
-      {/* <div class="flip_card">
-        <div class="flip_content">
-          <div class="flip_front">Front</div>
-          <div class="flip_back">Back!</div>
+      {/* <div className="flip_card">
+        <div className="flip_content">
+          <div className="flip_front">Front</div>
+          <div className="flip_back">Back!</div>
         </div>
       </div> */}
 
@@ -119,58 +119,58 @@ const test = () => {
   itemClass="carousel-item-padding-40-px"
 >
   <div style={{marginLeft:"2%",marginRight:"2%"}}>
-        <div class="flip_card">
-        <div class="flip_content">
-          <div class="flip_front">Front</div>
-          <div class="flip_back">Back!</div>
+        <div className="flip_card">
+        <div className="flip_content">
+          <div className="flip_front">Front</div>
+          <div className="flip_back">Back!</div>
         </div>
       </div>
   </div>
   <div style={{marginLeft:"2%",marginRight:"2%"}}>
-        <div class="flip_card">
-        <div class="flip_content">
-          <div class="flip_front">sds</div>
-          <div class="flip_back">Back!</div>
+        <div className="flip_card">
+        <div className="flip_content">
+          <div className="flip_front">sds</div>
+          <div className="flip_back">Back!</div>
         </div>
       </div>
   </div>
   <div style={{marginLeft:"2%",marginRight:"2%"}}>
-        <div class="flip_card">
-        <div class="flip_content">
-          <div class="flip_front">Fasaront</div>
-          <div class="flip_back">Back!</div>
+        <div className="flip_card">
+        <div className="flip_content">
+          <div className="flip_front">Fasaront</div>
+          <div className="flip_back">Back!</div>
         </div>
       </div>
   </div>
   <div style={{marginLeft:"2%",marginRight:"2%"}}>
-        <div class="flip_card">
-        <div class="flip_content">
-          <div class="flip_front">Fsddront</div>
-          <div class="flip_back">Back!</div>
+        <div className="flip_card">
+        <div className="flip_content">
+          <div className="flip_front">Fsddront</div>
+          <div className="flip_back">Back!</div>
         </div>
       </div>
   </div>
   <div style={{marginLeft:"2%",marginRight:"2%"}}>
-        <div class="flip_card">
-        <div class="flip_content">
-          <div class="flip_front">Frsdsont</div>
-          <div class="flip_back">Back!</div>
+        <div className="flip_card">
+        <div className="flip_content">
+          <div className="flip_front">Frsdsont</div>
+          <div className="flip_back">Back!</div>
         </div>
       </div>
   </div>
   <div style={{marginLeft:"2%",marginRight:"2%"}}>
-        <div class="flip_card">
-        <div class="flip_content">
-          <div class="flip_front">Frsdsont</div>
-          <div class="flip_back">Back!</div>
+        <div className="flip_card">
+        <div className="flip_content">
+          <div className="flip_front">Frsdsont</div>
+          <div className="flip_back">Back!</div>
         </div>
       </div>
   </div>
   <div style={{marginLeft:"2%",marginRight:"2%"}}>
-        <div class="flip_card">
-        <div class="flip_content">
-          <div class="flip_front">sdsd</div>
-          <div class="flip_back">Back!</div>
+        <div className="flip_card">
+        <div className="flip_content">
+          <div className="flip_front">sdsd</div>
+          <div className="flip_back">Back!</div>
         </div>
       </div>
   </div>

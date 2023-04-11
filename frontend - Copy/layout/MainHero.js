@@ -10,7 +10,7 @@ const MainHero = ({ data }) => {
   return (
     <>
       {!data.content ? (
-        <div class="container" style={{ paddingTop: "10%" }}>
+        <div className="container" style={{ paddingTop: "10%" }}>
 
           <GlobalSlider
             globalSlider={{
@@ -27,8 +27,8 @@ const MainHero = ({ data }) => {
         </div>
       ) : null}
 
-      <div class="hero-container">
-        <div class="hero-body">
+      <div className="hero-container">
+        <div className="hero-body">
           {/* <h1 style={{ color: "#ffffff" }}>SIBA KDK Campus</h1> */}
 
           {
@@ -63,7 +63,7 @@ const MainHero = ({ data }) => {
 
           {/* <Button>Details</Button> */}
           {/* <span className="hero-span">Find, What You Want</span> */}
-          {/* <div class="form" style={{ marginTop: "2%" }}>
+          {/* <div className="form" style={{ marginTop: "2%" }}>
             <input className="hero-input" type="text" />
             <button>Search</button>
           </div> */}
@@ -73,7 +73,7 @@ const MainHero = ({ data }) => {
 
       {/* </div> */}
 
-      <div class="fixed-bg"></div>
+      <div className="fixed-bg"></div>
     </>
   );
 };
